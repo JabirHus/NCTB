@@ -1,12 +1,10 @@
 import sqlite3
 
 def create_connection(db_file="trading_bot.db"):
-    """Create a database connection to the SQLite database."""
     conn = sqlite3.connect(db_file)
     return conn
 
 def create_table():
-    """Create the trades table if it doesn't exist."""
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
@@ -23,8 +21,7 @@ def create_table():
     conn.close()
 
 def insert_sample_trade():
-    """Insert a sample trade into the trades table."""
-    conn = create_connection()
+    conn = sqlite3.connect("trading_bot.db")
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO trades (symbol, entry_price, exit_price, profit_loss)
@@ -33,12 +30,28 @@ def insert_sample_trade():
     conn.commit()
     conn.close()
 
+def create_strategies_table():
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS strategies (
+            id INTEGER PRIMARY KEY,
+            rsi_selected INTEGER,
+            macd_selected INTEGER,
+            rsi_threshold REAL,
+            macd_threshold REAL
+        )
+    """)
+    conn.commit()
+    conn.close()
 
-def view_table():
+# Call create_strategies_table() in main.py to ensure this table is created
+
+def get_trade_history():
+    """Fetch all rows from the trades table."""
     conn = sqlite3.connect("trading_bot.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM trades")
     rows = cursor.fetchall()
     conn.close()
-    for row in rows:
-        print(row)
+    return rows
