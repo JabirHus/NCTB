@@ -122,7 +122,6 @@ def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, addit
         print(f"Error loading strategy: {e}")
 
 
-
 def create_strategy_page(root, strategy_frame, main_frame):
     """Set up the enhanced strategy builder page."""
     strategy_frame.configure(bg="#1C1C2E")
@@ -159,6 +158,49 @@ def create_strategy_page(root, strategy_frame, main_frame):
     dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
     dynamic_frame.pack()
 
+    def save_strategy():
+        """Validate and save the strategy."""
+        validation_failed = False
+
+        # Validate RSI
+        if rsi_var.get() and not rsi_entry.get():
+            rsi_entry.config(bg="red")
+            validation_failed = True
+        else:
+            rsi_entry.config(bg="white")
+
+        # Validate MACD
+        if macd_var.get() and not macd_entry.get():
+            macd_entry.config(bg="red")
+            validation_failed = True
+        else:
+            macd_entry.config(bg="white")
+
+        # Validate additional indicators
+        for key, data in additional_indicators.items():
+            if data["var"].get() and not data["entry"].get():
+                data["entry"].config(bg="red")
+                validation_failed = True
+            else:
+                data["entry"].config(bg="white")
+
+        if validation_failed:
+            print("Validation failed. Fix highlighted fields.")
+            return
+
+        # Save to DB
+        save_strategy_to_db(
+            rsi_var.get(),
+            macd_var.get(),
+            rsi_entry.get(),
+            macd_entry.get(),
+            {
+                key: {"selected": data["var"].get(), "value": data["entry"].get()}
+                for key, data in additional_indicators.items()
+            },
+        )
+        print("Strategy saved successfully!")
+
     tk.Button(
         strategy_content,
         text="Add Indicator",
@@ -179,16 +221,7 @@ def create_strategy_page(root, strategy_frame, main_frame):
         text="Save Strategy",
         bg="#1C1C2E",
         fg="white",
-        command=lambda: save_strategy_to_db(
-            rsi_var.get(),
-            macd_var.get(),
-            rsi_entry.get() or None,
-            macd_entry.get() or None,
-            {
-                key: {"selected": indicator["var"].get(), "value": indicator["entry"].get()}
-                for key, indicator in additional_indicators.items()
-            },
-        ),
+        command=save_strategy,
     ).pack(pady=10)
 
     tk.Button(strategy_content, text="Back", bg="#1C1C2E", fg="white", command=lambda: show_frame(main_frame)).pack(pady=10)
