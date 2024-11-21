@@ -1,20 +1,11 @@
 import tkinter as tk
 import sqlite3
-from data.db_handler import create_table, insert_sample_trade, create_strategies_table
+from data.db_handler import create_table, insert_sample_trade, create_strategies_table, get_trade_history
 
 # Ensure tables are created
 create_table()
 create_strategies_table()
 insert_sample_trade()
-
-# Function to retrieve trade history
-def get_trade_history():
-    conn = sqlite3.connect("trading_bot.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trades")
-    rows = cursor.fetchall()
-    conn.close()
-    return rows
 
 # Function to save the selected strategy in the database
 def save_strategy():

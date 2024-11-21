@@ -1,9 +1,11 @@
 import sqlite3
 
+# Create a connection to the SQLite database (default file: trading_bot.db)
 def create_connection(db_file="trading_bot.db"):
     conn = sqlite3.connect(db_file)
     return conn
 
+# Create the 'trades' table if it does not already exist
 def create_table():
     conn = create_connection()
     cursor = conn.cursor()
@@ -20,6 +22,7 @@ def create_table():
     conn.commit()
     conn.close()
 
+# Insert a sample trade record into the 'trades' table
 def insert_sample_trade():
     conn = sqlite3.connect("trading_bot.db")
     cursor = conn.cursor()
@@ -30,6 +33,7 @@ def insert_sample_trade():
     conn.commit()
     conn.close()
 
+# Create the 'strategies' table if it does not already exist
 def create_strategies_table():
     conn = create_connection()
     cursor = conn.cursor()
@@ -45,10 +49,8 @@ def create_strategies_table():
     conn.commit()
     conn.close()
 
-# Call create_strategies_table() in main.py to ensure this table is created
-
+# Retrieve all rows from the 'trades' table
 def get_trade_history():
-    """Fetch all rows from the trades table."""
     conn = sqlite3.connect("trading_bot.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM trades")
