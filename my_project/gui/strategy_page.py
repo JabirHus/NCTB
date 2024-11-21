@@ -1,4 +1,3 @@
-# gui/strategy_page.py
 import tkinter as tk
 from tkinter import ttk
 from gui.shared_components import show_frame, center_frame
@@ -6,7 +5,73 @@ import json
 from data.db_handler import create_connection
 
 
-def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, additional_indicators):
+def update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator):
+    """Update the dropdown menu to show only unticked indicators."""
+    dropdown['menu'].delete(0, "end")
+
+    # Get unticked indicators (not in additional_indicators)
+    unticked_indicators = [indicator for indicator in indicators if indicator not in additional_indicators]
+
+    # Populate the dropdown with unticked indicators
+    for indicator in unticked_indicators:
+        dropdown['menu'].add_command(
+            label=indicator,
+            command=lambda val=indicator: selected_indicator.set(val)
+        )
+
+
+def add_indicator_to_ui(dynamic_frame, indicator, is_selected, value, additional_indicators, dropdown, indicators, selected_indicator):
+    """Add an indicator dynamically to the UI."""
+    if indicator in additional_indicators:
+        return  # Prevent duplicates
+
+    frame = tk.Frame(dynamic_frame, bg="#1C1C2E")
+    frame.pack()
+
+    # Create a checkbox for the indicator
+    indicator_var = tk.IntVar(value=is_selected)
+    indicator_checkbox = tk.Checkbutton(
+        frame,
+        text=indicator,
+        variable=indicator_var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E"
+    )
+    indicator_checkbox.pack(side="left")
+
+    # Create an entry field for the value
+    value_label = tk.Label(frame, text="Value:", fg="white", bg="#1C1C2E")
+    value_label.pack(side="left")
+    value_entry = tk.Entry(frame)
+    value_entry.pack(side="left")
+    value_entry.insert(0, value)
+
+    # Save the indicator's state
+    additional_indicators[indicator] = {"var": indicator_var, "entry": value_entry}
+
+    # Update the dropdown to exclude the selected indicator
+    indicators.remove(indicator)
+    update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
+
+    # Handle deselection (removal) of the indicator
+    def toggle_indicator():
+        if indicator_var.get() == 0:  # Checkbox deselected
+            # Remove UI components
+            frame.destroy()
+
+            # Add the indicator back to the dropdown menu
+            indicators.append(indicator)
+            del additional_indicators[indicator]  # Remove from active indicators
+
+            # Update dropdown menu immediately
+            update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
+
+    # Bind deselection to checkbox
+    indicator_checkbox.config(command=toggle_indicator)
+
+
+def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, additional_indicators, dropdown, indicators, selected_indicator):
     """Load the last saved strategy from the database and populate the UI."""
     try:
         conn = create_connection()
@@ -36,48 +101,25 @@ def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, addit
             # Update dynamically added indicators
             additional_data = json.loads(additional_data) if additional_data else {}
             for key, data in additional_data.items():
-                if key not in additional_indicators:
-                    add_indicator_to_ui(dynamic_frame, key, data.get("selected", 0), data.get("value", ""), additional_indicators)
+                add_indicator_to_ui(
+                    dynamic_frame,
+                    key,
+                    data.get("selected", 0),
+                    data.get("value", ""),
+                    additional_indicators,
+                    dropdown,
+                    indicators,
+                    selected_indicator
+                )
+
+            # Ensure dropdown reflects only unticked indicators
+            update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
             print("Strategy loaded successfully!")
         else:
             print("No strategies found in the database.")
     except Exception as e:
         print(f"Error loading strategy: {e}")
-
-
-def add_indicator_to_ui(frame, indicator_name, is_selected, value, additional_indicators):
-    """Add the selected indicator to the UI dynamically."""
-    indicator_var = tk.IntVar(value=is_selected)
-    sub_frame = tk.Frame(frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    indicator_check = tk.Checkbutton(
-        sub_frame,
-        text=f"{indicator_name}",
-        variable=indicator_var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E"
-    )
-    indicator_check.pack(side="left")
-
-    value_label = tk.Label(sub_frame, text="Value:", fg="white", bg="#1C1C2E")
-    value_label.pack(side="left")
-
-    value_entry = tk.Entry(sub_frame)
-    value_entry.pack(side="left")
-    value_entry.insert(0, value)
-
-    additional_indicators[indicator_name] = {"var": indicator_var, "entry": value_entry}
-
-    # Function to remove the indicator if unchecked
-    def remove_indicator():
-        if indicator_var.get() == 0:
-            sub_frame.destroy()
-            del additional_indicators[indicator_name]
-
-    indicator_check.config(command=remove_indicator)
 
 
 def create_strategy_page(root, strategy_frame, main_frame):
@@ -139,27 +181,31 @@ def create_strategy_page(root, strategy_frame, main_frame):
     dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
     dynamic_frame.pack()
 
-    def add_indicator():
-        indicator = selected_indicator.get()
-        if indicator in indicators:
-            indicators.remove(indicator)
-            dropdown['menu'].delete(0, "end")
-            for i in indicators:
-                dropdown['menu'].add_command(label=i, command=lambda val=i: selected_indicator.set(val))
-            add_indicator_to_ui(dynamic_frame, indicator, 1, "", additional_indicators)
-
+    # Add indicator button
     add_indicator_button = tk.Button(
-        strategy_content, text="Add Indicator", command=add_indicator, bg="#1C1C2E", fg="white"
+        strategy_content,
+        text="Add Indicator",
+        command=lambda: add_indicator_to_ui(
+            dynamic_frame,
+            selected_indicator.get(),
+            1,
+            "",
+            additional_indicators,
+            dropdown,
+            indicators,
+            selected_indicator,
+        ),
+        bg="#1C1C2E",
+        fg="white",
     )
     add_indicator_button.pack(pady=10)
 
     def save_strategy():
-        print("Saving strategy...")  # Debug statement
-
+        """Save the strategy."""
         # Capture values from UI components
         rsi_selected = rsi_var.get()
         macd_selected = macd_var.get()
-        rsi_threshold = rsi_entry.get() or None
+        rsi_threshold = rsi_entry.get() or None  # Default to None if empty
         macd_threshold = macd_entry.get() or None
 
         # Collect additional indicators and their thresholds
@@ -172,21 +218,41 @@ def create_strategy_page(root, strategy_frame, main_frame):
         print(f"MACD Selected: {macd_selected}")
         print(f"RSI Threshold: {rsi_threshold}")
         print(f"MACD Threshold: {macd_threshold}")
-        print(f"Additional Indicators: {additional_data}")
+        print(f"Additional Indicators: {additional_data}")  # Debug statement
 
+        # Convert thresholds to floats if they exist
+        try:
+            rsi_threshold = float(rsi_threshold) if rsi_threshold else None
+            macd_threshold = float(macd_threshold) if macd_threshold else None
+        except ValueError:
+            print("Error: Invalid threshold value.")
+            return
+
+        # Save the strategy in the database
         try:
             conn = create_connection()
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM strategies;")  # Remove previous strategy
 
-            # Insert updated strategy
-            cursor.execute("""
-                INSERT INTO strategies (rsi_selected, macd_selected, rsi_threshold, macd_threshold, additional_indicators)
-                VALUES (?, ?, ?, ?, ?)
-            """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+            # Check if a strategy already exists
+            cursor.execute("SELECT COUNT(*) FROM strategies;")
+            strategy_exists = cursor.fetchone()[0] > 0
+
+            if strategy_exists:
+                # Update the existing strategy
+                cursor.execute("""
+                    UPDATE strategies
+                    SET rsi_selected = ?, macd_selected = ?, rsi_threshold = ?, macd_threshold = ?, additional_indicators = ?
+                """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+                print("Strategy updated successfully!")
+            else:
+                # Insert a new strategy if none exists
+                cursor.execute("""
+                    INSERT INTO strategies (rsi_selected, macd_selected, rsi_threshold, macd_threshold, additional_indicators)
+                    VALUES (?, ?, ?, ?, ?)
+                """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+                print("Strategy saved successfully!")
 
             conn.commit()
-            print("Strategy saved successfully!")
         except Exception as e:
             print(f"Error saving strategy: {e}")
         finally:
@@ -202,4 +268,15 @@ def create_strategy_page(root, strategy_frame, main_frame):
     )
     back_button_strategy.pack(pady=10)
 
-    load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, additional_indicators)
+    # Load the saved strategy on page load
+    load_strategy(
+        rsi_var,
+        macd_var,
+        rsi_entry,
+        macd_entry,
+        dynamic_frame,
+        additional_indicators,
+        dropdown,
+        indicators,
+        selected_indicator,
+    )
