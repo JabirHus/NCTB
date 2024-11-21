@@ -1,3 +1,4 @@
+# gui/history_page.py
 import tkinter as tk
 from data.db_handler import get_trade_history
 from gui.shared_components import show_frame, center_frame
