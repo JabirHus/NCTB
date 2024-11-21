@@ -43,3 +43,20 @@ show_frame(main_frame)
 
 # Start the Tkinter main loop
 root.mainloop()
+
+
+import duckdb
+
+def inspect_database():
+    conn = duckdb.connect("trading_bot.db")
+    cursor = conn.cursor()
+
+    # Check the contents of the strategies table
+    print("Strategies Table Content:")
+    cursor.execute("SELECT * FROM strategies;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+    conn.close()
+    inspect_database()
