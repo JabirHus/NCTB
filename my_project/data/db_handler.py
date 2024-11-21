@@ -6,19 +6,21 @@ def create_connection(db_file="trading_bot.db"):
     return conn
 
 def create_table():
+    """Create the trades table."""
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS trades (
-            id INTEGER PRIMARY KEY,  -- Define as PRIMARY KEY without auto-increment
+            id INTEGER PRIMARY KEY,
             symbol TEXT,
-            entry_price REAL,
-            exit_price REAL,
-            profit_loss REAL,
-            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            entry_price REAL,  -- Floating-point number
+            exit_price REAL,   -- Floating-point number
+            profit_loss REAL,  -- Floating-point number
+            timestamp TIMESTAMP DEFAULT NOW()  -- Automatically inserts current time
         )
     """)
     conn.close()
+
 
 def insert_sample_trade():
     conn = create_connection()
@@ -53,9 +55,20 @@ def create_strategies_table():
     conn.close()
 
 def get_trade_history():
+    """Fetch all rows from the trades table with built-in formatting."""
     conn = create_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trades")
-    rows = cursor.fetchall()
+
+    # Query with built-in rounding and timestamp formatting
+    rows = cursor.execute("""
+        SELECT 
+            symbol, 
+            ROUND(entry_price, 4) AS entry_price,  -- Round to 4 decimal places
+            ROUND(exit_price, 4) AS exit_price,   -- Round to 4 decimal places
+            ROUND(profit_loss, 2) AS profit_loss, -- Round to 2 decimal places
+            STRFTIME(timestamp, '%Y-%m-%d %H:%M:%S') AS formatted_time -- Format timestamp
+        FROM trades
+    """).fetchall()
+
     conn.close()
     return rows
