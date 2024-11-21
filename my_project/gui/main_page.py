@@ -43,3 +43,21 @@ def create_main_page(root, main_frame, history_frame, strategy_frame, populate_t
 
     quit_button = tk.Button(main_content, text="Quit", command=root.destroy, bg="#1C1C2E", fg="white")
     quit_button.pack(pady=10)
+
+    import duckdb
+
+    def inspect_database():
+        conn = duckdb.connect("trading_bot.db")
+        cursor = conn.cursor()
+
+        # Check the contents of the strategies table
+        print("Strategies Table Content:")
+        cursor.execute("SELECT * FROM strategies;")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+
+        conn.close()
+
+    # Run the inspection
+    inspect_database()

@@ -1,3 +1,4 @@
+#db_handler.py
 import duckdb
 
 def create_connection(db_file="trading_bot.db"):

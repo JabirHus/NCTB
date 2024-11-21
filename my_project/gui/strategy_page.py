@@ -1,3 +1,4 @@
+# gui/strategy_page.py
 import tkinter as tk
 from tkinter import ttk
 from gui.shared_components import show_frame, center_frame
@@ -157,17 +158,31 @@ def create_strategy_page(root, strategy_frame, main_frame):
             conn = create_connection()
             cursor = conn.cursor()
 
-            # Insert the strategy into the database
-            cursor.execute("""
-                INSERT INTO strategies (rsi_selected, macd_selected, rsi_threshold, macd_threshold, additional_indicators)
-                VALUES (?, ?, ?, ?, ?)
-            """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+            # Check if a strategy already exists
+            cursor.execute("SELECT COUNT(*) FROM strategies;")
+            strategy_exists = cursor.fetchone()[0] > 0
 
-            conn.close()
-            print("Strategy saved successfully!")
+            if strategy_exists:
+                # Update the existing strategy
+                cursor.execute("""
+                    UPDATE strategies
+                    SET rsi_selected = ?, macd_selected = ?, rsi_threshold = ?, macd_threshold = ?, additional_indicators = ?
+                """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+                print("Strategy updated successfully!")
+            else:
+                # Insert a new strategy if none exists
+                cursor.execute("""
+                    INSERT INTO strategies (rsi_selected, macd_selected, rsi_threshold, macd_threshold, additional_indicators)
+                    VALUES (?, ?, ?, ?, ?)
+                """, (rsi_selected, macd_selected, rsi_threshold, macd_threshold, json.dumps(additional_data)))
+                print("Strategy saved successfully!")
 
+            conn.commit()
         except Exception as e:
             print(f"Error saving strategy: {e}")
+        finally:
+            conn.close()
+
 
 
     save_button = tk.Button(
