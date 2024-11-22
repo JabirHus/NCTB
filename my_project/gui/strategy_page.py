@@ -160,14 +160,17 @@ def create_strategy_page(root, strategy_frame, main_frame):
     macd_entry.pack(pady=5)
     tk.Label(strategy_content, text="MACD Threshold:", fg="white", bg="#1C1C2E").pack()
 
-    dropdown = ttk.OptionMenu(strategy_content, selected_indicator, *indicators)
-    dropdown.pack(pady=10)
+    indicator_frame = tk.Frame(strategy_content, bg="#1C1C2E")  # New frame for dropdown and button
+    indicator_frame.pack(pady=10)
+
+    dropdown = ttk.OptionMenu(indicator_frame, selected_indicator, *indicators)
+    dropdown.pack(side="left", padx=5)  # Dropdown aligned to the left in the new frame
 
     dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
     dynamic_frame.pack()
 
-    tk.Button(
-        strategy_content,
+    add_button = tk.Button(
+        indicator_frame,
         text="Add Indicator",
         bg="#1C1C2E",
         fg="white",
@@ -179,7 +182,8 @@ def create_strategy_page(root, strategy_frame, main_frame):
             dropdown,
             selected_indicator,
         ),
-    ).pack(pady=10)
+    )
+    add_button.pack(side="left", padx=5)  # Button placed to the right of the dropdown
 
     def save_strategy():
         """Validate and save the strategy."""
