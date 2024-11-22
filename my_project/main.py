@@ -4,9 +4,10 @@ from gui.shared_components import toggle_fullscreen, show_frame
 from gui.main_page import create_main_page
 from gui.history_page import create_history_page
 from gui.strategy_page import create_strategy_page
-from data.db_handler import create_table, create_strategies_table, insert_sample_trade
+from data.db_handler import create_table, create_strategies_table, insert_sample_trade,drop_strategies_table
 
 # Initialize database tables
+# drop_strategies_table()
 create_table()
 create_strategies_table()
 
@@ -45,6 +46,7 @@ show_frame(main_frame)
 root.mainloop()
 
 
+
 import duckdb
 
 def inspect_database():
@@ -60,3 +62,4 @@ def inspect_database():
 
     conn.close()
     inspect_database()
+

@@ -5,6 +5,13 @@ def create_connection(db_file="trading_bot.db"):
     conn = duckdb.connect(db_file)
     return conn
 
+def drop_strategies_table():
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("DROP TABLE IF EXISTS strategies")
+    conn.close()
+
+
 def create_table():
     """Create the trades table."""
     conn = create_connection()
@@ -41,18 +48,16 @@ def insert_sample_trade():
     print(f"Sample trade inserted successfully with ID: {next_id}")
 
 def create_strategies_table():
+    """Create the strategies table with a unique primary key."""
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS strategies (
-            rsi_selected INTEGER,
-            macd_selected INTEGER,
-            rsi_threshold REAL,
-            macd_threshold REAL,
             additional_indicators JSON
         )
     """)
     conn.close()
+
 
 def get_trade_history():
     """Fetch all rows from the trades table with built-in formatting."""

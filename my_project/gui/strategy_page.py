@@ -33,7 +33,7 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     )
     checkbox.pack(side="left", padx=5)
 
-    entry = tk.Entry(ui_frame, validate="key", validatecommand=(frame.register(validate_integer_input), "%P"))
+    entry = tk.Entry(ui_frame)
     entry.pack(side="left", padx=5)
 
     # Store state in additional indicators
@@ -52,12 +52,7 @@ def toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators
         update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
 
-def validate_integer_input(value):
-    """Ensure only integers or empty values are allowed."""
-    return value == "" or value.isdigit()
-
-
-def save_strategy_to_db(rsi, macd, rsi_thresh, macd_thresh, additional_data):
+def save_strategy_to_db(additional_data):
     """Save the strategy to the database."""
     try:
         conn = create_connection()
@@ -67,10 +62,10 @@ def save_strategy_to_db(rsi, macd, rsi_thresh, macd_thresh, additional_data):
         cursor.execute("DELETE FROM strategies")
         cursor.execute(
             """
-            INSERT INTO strategies (rsi_selected, macd_selected, rsi_threshold, macd_threshold, additional_indicators)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO strategies (additional_indicators)
+            VALUES (?)
             """,
-            (rsi, macd, rsi_thresh, macd_thresh, json.dumps(additional_data)),
+            (json.dumps(additional_data),),
         )
         conn.commit()
         print("Strategy saved successfully!")
@@ -80,29 +75,17 @@ def save_strategy_to_db(rsi, macd, rsi_thresh, macd_thresh, additional_data):
         conn.close()
 
 
-def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator):
+def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator):
     """Load the last saved strategy and populate the UI."""
     try:
         conn = create_connection()
         cursor = conn.cursor()
-        row = cursor.execute("SELECT * FROM strategies ORDER BY rowid DESC LIMIT 1").fetchone()
+        row = cursor.execute("SELECT * FROM strategies LIMIT 1").fetchone()
         conn.close()
 
         if row:
-            # Update RSI and MACD selection and thresholds
-            rsi_var.set(row[0])
-            macd_var.set(row[1])
-
-            rsi_entry.delete(0, tk.END)
-            if row[2] is not None:
-                rsi_entry.insert(0, str(int(row[2])))
-
-            macd_entry.delete(0, tk.END)
-            if row[3] is not None:
-                macd_entry.insert(0, str(int(row[3])))
-
             # Parse and load additional indicators
-            additional_data = json.loads(row[4]) if row[4] else {}
+            additional_data = json.loads(row[0]) if row[0] else {}
             for key, data in additional_data.items():
                 if key not in additional_indicators:
                     # Add UI elements for the additional indicator
@@ -130,6 +113,18 @@ def load_strategy(rsi_var, macd_var, rsi_entry, macd_entry, dynamic_frame, addit
         print(f"Error loading strategy: {e}")
 
 
+def validate_inputs(additional_indicators):
+    """Validate that all selected indicators have valid inputs."""
+    errors = []
+    for key, data in additional_indicators.items():
+        if data["var"].get():  # If indicator is selected
+            value = data["entry"].get()
+            if not value.isdigit():  # Check if the value is a valid integer
+                errors.append(f"{key}: Value must be an integer.")
+
+    return errors
+
+
 def create_strategy_page(root, strategy_frame, main_frame):
     """Set up the enhanced strategy builder page."""
     strategy_frame.configure(bg="#1C1C2E")
@@ -140,37 +135,18 @@ def create_strategy_page(root, strategy_frame, main_frame):
 
     tk.Label(strategy_content, text="Strategy Builder", font=('Helvetica', 16), fg="white", bg="#1C1C2E").pack(pady=20)
 
-    rsi_var = tk.IntVar()
-    macd_var = tk.IntVar()
     additional_indicators = {}
-    indicators = ["Bollinger Bands", "Moving Average", "Stochastic Oscillator"]
+    indicators = ["RSI", "MACD", "Bollinger Bands", "Moving Average", "Stochastic Oscillator"]
     selected_indicator = tk.StringVar(value="Select an Indicator")
 
-    tk.Checkbutton(
-        strategy_content, text="RSI", variable=rsi_var, bg="#1C1C2E", fg="white", selectcolor="#1C1C2E"
-    ).pack()
-    rsi_entry = tk.Entry(strategy_content, validate="key", validatecommand=(root.register(validate_integer_input), "%P"))
-    rsi_entry.pack(pady=5)
-    tk.Label(strategy_content, text="RSI Threshold:", fg="white", bg="#1C1C2E").pack()
+    dropdown_frame = tk.Frame(strategy_content, bg="#1C1C2E")
+    dropdown_frame.pack()
 
-    tk.Checkbutton(
-        strategy_content, text="MACD", variable=macd_var, bg="#1C1C2E", fg="white", selectcolor="#1C1C2E"
-    ).pack()
-    macd_entry = tk.Entry(strategy_content, validate="key", validatecommand=(root.register(validate_integer_input), "%P"))
-    macd_entry.pack(pady=5)
-    tk.Label(strategy_content, text="MACD Threshold:", fg="white", bg="#1C1C2E").pack()
+    dropdown = ttk.OptionMenu(dropdown_frame, selected_indicator, *indicators)
+    dropdown.pack(side="left", pady=10, padx=5)
 
-    indicator_frame = tk.Frame(strategy_content, bg="#1C1C2E")  # New frame for dropdown and button
-    indicator_frame.pack(pady=10)
-
-    dropdown = ttk.OptionMenu(indicator_frame, selected_indicator, *indicators)
-    dropdown.pack(side="left", padx=5)  # Dropdown aligned to the left in the new frame
-
-    dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
-    dynamic_frame.pack()
-
-    add_button = tk.Button(
-        indicator_frame,
+    tk.Button(
+        dropdown_frame,
         text="Add Indicator",
         bg="#1C1C2E",
         fg="white",
@@ -182,51 +158,40 @@ def create_strategy_page(root, strategy_frame, main_frame):
             dropdown,
             selected_indicator,
         ),
-    )
-    add_button.pack(side="left", padx=5)  # Button placed to the right of the dropdown
+    ).pack(side="left", padx=5)
+
+    dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
+    dynamic_frame.pack()
 
     def save_strategy():
-        """Validate and save the strategy."""
-        validation_failed = False
+        """Validate inputs and save the strategy."""
+        errors = validate_inputs(additional_indicators)
 
-        # Validate RSI
-        if rsi_var.get() and not rsi_entry.get():
-            rsi_entry.config(bg="red")
-            validation_failed = True
-        else:
-            rsi_entry.config(bg="white")
+        if errors:
+            # Highlight invalid fields in red
+            for key, data in additional_indicators.items():
+                if data["var"].get():
+                    value = data["entry"].get()
+                    if not value.isdigit():
+                        data["entry"].configure(bg="red")  # Highlight invalid input
+                    else:
+                        data["entry"].configure(bg="white")  # Reset valid inputs
+            print("Validation Errors:", errors)
+            return  # Stop saving if there are validation errors
 
-        # Validate MACD
-        if macd_var.get() and not macd_entry.get():
-            macd_entry.config(bg="red")
-            validation_failed = True
-        else:
-            macd_entry.config(bg="white")
-
-        # Validate additional indicators
+        # Reset input field highlights
         for key, data in additional_indicators.items():
-            if data["var"].get() and not data["entry"].get():
-                data["entry"].config(bg="red")
-                validation_failed = True
-            else:
-                data["entry"].config(bg="white")
+            data["entry"].configure(bg="white")
 
-        if validation_failed:
-            print("Validation failed. Fix highlighted fields.")
-            return
+        try:
+            # Save to the database
+            save_strategy_to_db({
+                key: {"selected": indicator["var"].get(), "value": indicator["entry"].get()}
+                for key, indicator in additional_indicators.items()
+            })
+        except Exception as e:
+            print(f"Error saving strategy: {e}")
 
-        # Save to DB
-        save_strategy_to_db(
-            rsi_var.get(),
-            macd_var.get(),
-            rsi_entry.get() or None,
-            macd_entry.get() or None,
-            {
-                key: {"selected": data["var"].get(), "value": data["entry"].get()}
-                for key, data in additional_indicators.items()
-            },
-        )
-        print("Strategy saved successfully!")
 
     tk.Button(
         strategy_content,
@@ -238,14 +203,4 @@ def create_strategy_page(root, strategy_frame, main_frame):
 
     tk.Button(strategy_content, text="Back", bg="#1C1C2E", fg="white", command=lambda: show_frame(main_frame)).pack(pady=10)
 
-    load_strategy(
-        rsi_var,
-        macd_var,
-        rsi_entry,
-        macd_entry,
-        dynamic_frame,
-        additional_indicators,
-        indicators,
-        dropdown,
-        selected_indicator,
-    )
+    load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator)
