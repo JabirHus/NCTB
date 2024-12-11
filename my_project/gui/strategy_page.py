@@ -20,147 +20,40 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     ui_frame.pack()
 
     var = tk.IntVar(value=1)
-    if indicator == "RSI":
-        add_rsi_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
-    elif indicator == "MACD":
-        add_macd_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
-    elif indicator == "Bollinger Bands":
-        add_bollinger_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
-    elif indicator == "Stochastic Oscillator":
-        add_stochastic_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
-    elif indicator == "Moving Average":
-        add_moving_average_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    indicator_settings = {
+        "RSI": {"Period": "14", "Undersold": "30", "Oversold": "70"},
+        "MACD": {"Fast EMA": "12", "Slow EMA": "26", "MACD SMA": "9"},
+        "Bollinger Bands": {"Period": "20", "Deviation": "2", "Shift": "0"},
+        "Stochastic Oscillator": {"%K Period": "5", "%D Period": "3", "Slowing": "3"},
+        "Moving Average": {"Period": "10", "Shift": "0"}
+    }
+
+    if indicator in indicator_settings:
+        sub_indicators = indicator_settings[indicator]
+        vars_dict = {}
+        for sub_ind, placeholder in sub_indicators.items():
+            add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder)
+        additional_indicators[indicator] = {"var": var, "sub_indicators": vars_dict}
     else:
-        add_generic_indicator_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+        entry = tk.Entry(sub_frame)
+        entry.pack(side="left", padx=5)
+        additional_indicators[indicator] = {"var": var, "entry": entry}
 
     update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
-
-def add_rsi_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    rsi_vars = {}
-    sub_indicators = {"Period": "14", "Undersold": "30", "Oversold": "70"}
-    for sub_ind, placeholder in sub_indicators.items():
-        add_sub_indicator_ui(sub_frame, rsi_vars, sub_ind, placeholder)
-
-    additional_indicators[indicator] = {"var": var, "sub_indicators": rsi_vars}
-
-def add_macd_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    macd_vars = {}
-    sub_indicators = {"Fast EMA": "12", "Slow EMA": "26", "MACD SMA": "9"}
-    for sub_ind, placeholder in sub_indicators.items():
-        add_sub_indicator_ui(sub_frame, macd_vars, sub_ind, placeholder)
-
-    additional_indicators[indicator] = {"var": var, "sub_indicators": macd_vars}
-
-def add_bollinger_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    bollinger_vars = {}
-    sub_indicators = {"Period": "20", "Deviation": "2", "Shift": "0"}
-    for sub_ind, placeholder in sub_indicators.items():
-        add_sub_indicator_ui(sub_frame, bollinger_vars, sub_ind, placeholder)
-
-    additional_indicators[indicator] = {"var": var, "sub_indicators": bollinger_vars}
-
-def add_stochastic_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    stochastic_vars = {}
-    sub_indicators = {"%K Period": "5", "%D Period": "3", "Slowing": "3"}
-    for sub_ind, placeholder in sub_indicators.items():
-        add_sub_indicator_ui(sub_frame, stochastic_vars, sub_ind, placeholder)
-
-    additional_indicators[indicator] = {"var": var, "sub_indicators": stochastic_vars}
-
-def add_moving_average_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
-
-    ma_vars = {}
-    sub_indicators = {"Period": "10", "Shift": "0"}
-    for sub_ind, placeholder in sub_indicators.items():
-        add_sub_indicator_ui(sub_frame, ma_vars, sub_ind, placeholder)
-
-    additional_indicators[indicator] = {"var": var, "sub_indicators": ma_vars}
-
-def add_generic_indicator_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
-    checkbox = tk.Checkbutton(
-        ui_frame,
-        text=indicator,
-        variable=var,
-        bg="#1C1C2E",
-        fg="white",
-        selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
-    )
-    checkbox.pack(side="left", padx=5)
-
-    entry = tk.Entry(ui_frame)
-    entry.pack(side="left", padx=5)
-
-    additional_indicators[indicator] = {"var": var, "entry": entry}
 
 def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder):
     label = tk.Label(
