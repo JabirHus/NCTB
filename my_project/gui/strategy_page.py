@@ -35,18 +35,18 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     sub_frame.pack()
 
     indicator_settings = {
-        "RSI": {"Period": "14", "Undersold": "30", "Oversold": "70"},
-        "MACD": {"Fast EMA": "12", "Slow EMA": "26", "MACD SMA": "9"},
-        "Bollinger Bands": {"Period": "20", "Deviation": "2", "Shift": "0"},
-        "Stochastic Oscillator": {"%K Period": "5", "%D Period": "3", "Slowing": "3"},
-        "Moving Average": {"Period": "10", "Shift": "0"}
+        "RSI": {"Period": ("14", None, None), "Undersold": ("30", lambda x: x < 50, "must be < 50"), "Oversold": ("70", lambda x: x > 50, "must be > 50")},
+        "MACD": {"Fast EMA": ("12", None, None), "Slow EMA": ("26", None, None), "MACD SMA": ("9", None, None)},
+        "Bollinger Bands": {"Period": ("20", lambda x: x > 0, "must be > 0"), "Deviation": ("2", lambda x: x > 0, "must be > 0"), "Shift": ("0", None, None)},
+        "Stochastic Oscillator": {"%K Period": ("5", lambda x: x > 0, "must be > 0"), "%D Period": ("3", lambda x: x > 0, "must be > 0"), "Slowing": ("3", lambda x: x > 0, "must be > 0")},
+        "Moving Average": {"Period": ("10", lambda x: x > 0, "must be > 0"), "Shift": ("0", None, None)}
     }
 
     if indicator in indicator_settings:
         sub_indicators = indicator_settings[indicator]
         vars_dict = {}
-        for sub_ind, placeholder in sub_indicators.items():
-            add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder)
+        for sub_ind, (placeholder, validation, message) in sub_indicators.items():
+            add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message)
         additional_indicators[indicator] = {"var": var, "sub_indicators": vars_dict}
     else:
         entry = tk.Entry(sub_frame)
@@ -55,7 +55,7 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
 
     update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
-def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder):
+def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message):
     label = tk.Label(
         sub_frame,
         text=sub_ind,
@@ -81,7 +81,7 @@ def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder):
     entry.bind("<FocusOut>", restore_placeholder)
     entry.pack(side="left", padx=5)
 
-    vars_dict[sub_ind] = {"entry": entry}
+    vars_dict[sub_ind] = {"entry": entry, "validation": validation, "message": message}
 
 def toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator):
     """Handle indicator removal from UI and update dropdown menu."""
@@ -168,11 +168,20 @@ def validate_inputs(additional_indicators):
                 value = sub_data["entry"].get()
                 if not value.isdigit():
                     errors.append(f"{key} ({sub_key}): Value must be an integer.")
+                    sub_data["entry"].configure(bg="red")
+                elif sub_data["validation"] and not sub_data["validation"](int(value)):
+                    errors.append(f"{key} ({sub_key}): {sub_data['message']}")
+                    sub_data["entry"].configure(bg="red")
+                else:
+                    sub_data["entry"].configure(bg="white")
         else:
             if data["var"].get():
                 value = data["entry"].get()
                 if not value.isdigit():
                     errors.append(f"{key}: Value must be an integer.")
+                    data["entry"].configure(bg="red")
+                else:
+                    data["entry"].configure(bg="white")
     return errors
 
 def create_strategy_page(root, strategy_frame, main_frame):
@@ -220,30 +229,8 @@ def create_strategy_page(root, strategy_frame, main_frame):
         errors = validate_inputs(additional_indicators)
 
         if errors:
-            for key, data in additional_indicators.items():
-                if "sub_indicators" in data:
-                    for sub_key, sub_data in data["sub_indicators"].items():
-                        value = sub_data["entry"].get()
-                        if not value.isdigit():
-                            sub_data["entry"].configure(bg="red")
-                        else:
-                            sub_data["entry"].configure(bg="white")
-                else:
-                    if data["var"].get():
-                        value = data["entry"].get()
-                        if not value.isdigit():
-                            data["entry"].configure(bg="red")
-                        else:
-                            data["entry"].configure(bg="white")
             print("Validation Errors:", errors)
             return
-
-        for key, data in additional_indicators.items():
-            if "sub_indicators" in data:
-                for sub_key, sub_data in data["sub_indicators"].items():
-                    sub_data["entry"].configure(bg="white")
-            else:
-                data["entry"].configure(bg="white")
 
         try:
             save_strategy_to_db({
