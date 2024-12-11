@@ -11,7 +11,7 @@ from data.db_handler import create_table, create_strategies_table, insert_sample
 create_table()
 create_strategies_table()
 
-# Insert a sample trade (test data)
+# Insert a sample trade upon laoding the app(test data)
 insert_sample_trade()
 
 # Set up the main Tkinter window

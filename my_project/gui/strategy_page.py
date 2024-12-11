@@ -4,14 +4,12 @@ from gui.shared_components import show_frame, center_frame
 import json
 from data.db_handler import create_connection
 
-
 def update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator):
     """Update the dropdown menu to show only unticked indicators."""
     dropdown['menu'].delete(0, "end")
     unticked = [i for i in indicators if i not in additional_indicators]
     for ind in unticked:
         dropdown['menu'].add_command(label=ind, command=lambda val=ind: selected_indicator.set(val))
-
 
 def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdown, selected_indicator):
     """Add or update an indicator dynamically in the UI."""
@@ -22,6 +20,132 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     ui_frame.pack()
 
     var = tk.IntVar(value=1)
+    if indicator == "RSI":
+        add_rsi_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    elif indicator == "MACD":
+        add_macd_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    elif indicator == "Bollinger Bands":
+        add_bollinger_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    elif indicator == "Stochastic Oscillator":
+        add_stochastic_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    elif indicator == "Moving Average":
+        add_moving_average_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+    else:
+        add_generic_indicator_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator)
+
+    update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
+
+def add_rsi_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    rsi_vars = {}
+    sub_indicators = {"Period": "14", "Undersold": "30", "Oversold": "70"}
+    for sub_ind, placeholder in sub_indicators.items():
+        add_sub_indicator_ui(sub_frame, rsi_vars, sub_ind, placeholder)
+
+    additional_indicators[indicator] = {"var": var, "sub_indicators": rsi_vars}
+
+def add_macd_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    macd_vars = {}
+    sub_indicators = {"Fast EMA": "12", "Slow EMA": "26", "MACD SMA": "9"}
+    for sub_ind, placeholder in sub_indicators.items():
+        add_sub_indicator_ui(sub_frame, macd_vars, sub_ind, placeholder)
+
+    additional_indicators[indicator] = {"var": var, "sub_indicators": macd_vars}
+
+def add_bollinger_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    bollinger_vars = {}
+    sub_indicators = {"Period": "20", "Deviation": "2", "Shift": "0"}
+    for sub_ind, placeholder in sub_indicators.items():
+        add_sub_indicator_ui(sub_frame, bollinger_vars, sub_ind, placeholder)
+
+    additional_indicators[indicator] = {"var": var, "sub_indicators": bollinger_vars}
+
+def add_stochastic_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    stochastic_vars = {}
+    sub_indicators = {"%K Period": "5", "%D Period": "3", "Slowing": "3"}
+    for sub_ind, placeholder in sub_indicators.items():
+        add_sub_indicator_ui(sub_frame, stochastic_vars, sub_ind, placeholder)
+
+    additional_indicators[indicator] = {"var": var, "sub_indicators": stochastic_vars}
+
+def add_moving_average_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
+    checkbox = tk.Checkbutton(
+        ui_frame,
+        text=indicator,
+        variable=var,
+        bg="#1C1C2E",
+        fg="white",
+        selectcolor="#1C1C2E",
+        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+    )
+    checkbox.pack(side="left", padx=5)
+
+    sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
+    sub_frame.pack()
+
+    ma_vars = {}
+    sub_indicators = {"Period": "10", "Shift": "0"}
+    for sub_ind, placeholder in sub_indicators.items():
+        add_sub_indicator_ui(sub_frame, ma_vars, sub_ind, placeholder)
+
+    additional_indicators[indicator] = {"var": var, "sub_indicators": ma_vars}
+
+def add_generic_indicator_ui(ui_frame, additional_indicators, indicator, var, indicators, dropdown, selected_indicator):
     checkbox = tk.Checkbutton(
         ui_frame,
         text=indicator,
@@ -36,10 +160,35 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     entry = tk.Entry(ui_frame)
     entry.pack(side="left", padx=5)
 
-    # Store state in additional indicators
     additional_indicators[indicator] = {"var": var, "entry": entry}
-    update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
+def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder):
+    label = tk.Label(
+        sub_frame,
+        text=sub_ind,
+        bg="#1C1C2E",
+        fg="white"
+    )
+    label.pack(side="left", padx=5)
+
+    entry = tk.Entry(sub_frame, width=5, fg="grey", font=("Helvetica", 10))
+    entry.insert(0, placeholder)
+
+    def clear_placeholder(event, e=entry, p=placeholder):
+        if e.get() == p:
+            e.delete(0, tk.END)
+            e.config(fg="black", font=("Helvetica", 10, "bold"))
+
+    def restore_placeholder(event, e=entry, p=placeholder):
+        if not e.get():
+            e.insert(0, p)
+            e.config(fg="grey", font=("Helvetica", 10))
+
+    entry.bind("<FocusIn>", clear_placeholder)
+    entry.bind("<FocusOut>", restore_placeholder)
+    entry.pack(side="left", padx=5)
+
+    vars_dict[sub_ind] = {"entry": entry}
 
 def toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator):
     """Handle indicator removal from UI and update dropdown menu."""
@@ -48,9 +197,9 @@ def toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators
         if indicator not in indicators:
             indicators.append(indicator)  # Add back to available indicators
             indicators.sort()  # Keep dropdown sorted
-        del additional_indicators[indicator]
+        if indicator in additional_indicators:
+            del additional_indicators[indicator]
         update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
-
 
 def save_strategy_to_db(additional_data):
     """Save the strategy to the database."""
@@ -74,7 +223,6 @@ def save_strategy_to_db(additional_data):
     finally:
         conn.close()
 
-
 def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator):
     """Load the last saved strategy and populate the UI."""
     try:
@@ -97,13 +245,19 @@ def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, se
                         dropdown,
                         selected_indicator,
                     )
-                    # Set the checkbox and entry field values
-                    indicator_data = additional_indicators[key]
-                    indicator_data["var"].set(data["selected"])
-                    indicator_data["entry"].delete(0, tk.END)
-                    indicator_data["entry"].insert(0, data["value"])
+                    if "sub_indicators" in data:
+                        for sub_key, sub_data in data["sub_indicators"].items():
+                            indicator_data = additional_indicators[key]["sub_indicators"][sub_key]
+                            indicator_data["entry"].delete(0, tk.END)
+                            indicator_data["entry"].insert(0, sub_data["value"])
+                            indicator_data["entry"].config(fg="black", font=("Helvetica", 10, "bold"))
+                    else:
+                        indicator_data = additional_indicators[key]
+                        indicator_data["var"].set(data["var"])
+                        indicator_data["entry"].delete(0, tk.END)
+                        indicator_data["entry"].insert(0, data["value"])
+                        indicator_data["entry"].config(fg="black", font=("Helvetica", 10, "bold"))
 
-            # Update dropdown menu to reflect unticked indicators
             update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
             print("Strategy loaded successfully!")
@@ -112,18 +266,21 @@ def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, se
     except Exception as e:
         print(f"Error loading strategy: {e}")
 
-
 def validate_inputs(additional_indicators):
     """Validate that all selected indicators have valid inputs."""
     errors = []
     for key, data in additional_indicators.items():
-        if data["var"].get():  # If indicator is selected
-            value = data["entry"].get()
-            if not value.isdigit():  # Check if the value is a valid integer
-                errors.append(f"{key}: Value must be an integer.")
-
+        if "sub_indicators" in data:
+            for sub_key, sub_data in data["sub_indicators"].items():
+                value = sub_data["entry"].get()
+                if not value.isdigit():
+                    errors.append(f"{key} ({sub_key}): Value must be an integer.")
+        else:
+            if data["var"].get():
+                value = data["entry"].get()
+                if not value.isdigit():
+                    errors.append(f"{key}: Value must be an integer.")
     return errors
-
 
 def create_strategy_page(root, strategy_frame, main_frame):
     """Set up the enhanced strategy builder page."""
@@ -144,6 +301,8 @@ def create_strategy_page(root, strategy_frame, main_frame):
 
     dropdown = ttk.OptionMenu(dropdown_frame, selected_indicator, *indicators)
     dropdown.pack(side="left", pady=10, padx=5)
+
+    tk.Label(strategy_content, text="", bg="#1C1C2E").pack()
 
     tk.Button(
         dropdown_frame,
@@ -168,30 +327,48 @@ def create_strategy_page(root, strategy_frame, main_frame):
         errors = validate_inputs(additional_indicators)
 
         if errors:
-            # Highlight invalid fields in red
             for key, data in additional_indicators.items():
-                if data["var"].get():
-                    value = data["entry"].get()
-                    if not value.isdigit():
-                        data["entry"].configure(bg="red")  # Highlight invalid input
-                    else:
-                        data["entry"].configure(bg="white")  # Reset valid inputs
+                if "sub_indicators" in data:
+                    for sub_key, sub_data in data["sub_indicators"].items():
+                        value = sub_data["entry"].get()
+                        if not value.isdigit():
+                            sub_data["entry"].configure(bg="red")
+                        else:
+                            sub_data["entry"].configure(bg="white")
+                else:
+                    if data["var"].get():
+                        value = data["entry"].get()
+                        if not value.isdigit():
+                            data["entry"].configure(bg="red")
+                        else:
+                            data["entry"].configure(bg="white")
             print("Validation Errors:", errors)
-            return  # Stop saving if there are validation errors
+            return
 
-        # Reset input field highlights
         for key, data in additional_indicators.items():
-            data["entry"].configure(bg="white")
+            if "sub_indicators" in data:
+                for sub_key, sub_data in data["sub_indicators"].items():
+                    sub_data["entry"].configure(bg="white")
+            else:
+                data["entry"].configure(bg="white")
 
         try:
-            # Save to the database
             save_strategy_to_db({
-                key: {"selected": indicator["var"].get(), "value": indicator["entry"].get()}
-                for key, indicator in additional_indicators.items()
+                key: {
+                    "sub_indicators": {
+                        sub_key: {"value": sub_data["entry"].get()}
+                        for sub_key, sub_data in data["sub_indicators"].items()
+                    },
+                    "var": data["var"].get()
+                } if "sub_indicators" in data else {
+                    "var": data["var"].get(), "value": data["entry"].get()
+                }
+                for key, data in additional_indicators.items()
             })
         except Exception as e:
             print(f"Error saving strategy: {e}")
 
+    tk.Label(strategy_content, text="", bg="#1C1C2E").pack()
 
     tk.Button(
         strategy_content,
