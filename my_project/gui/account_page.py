@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from gui.shared_components import show_frame
 
-def create_account_page(root, account_frame):
+def create_account_page(root, account_frame, strategy_frame):
     """Set up the Account Page."""
     account_frame.configure(bg="white")  # Set background color
 
@@ -31,3 +32,8 @@ def create_account_page(root, account_frame):
     # Add Slave Account Button
     add_slave_button = tk.Button(account_frame, text="Add Slave Account", font=("Arial", 12, "bold"), bg="lightgray", padx=10, pady=5)
     add_slave_button.grid(row=4, column=0, columnspan=3, pady=(10, 20))
+
+    # Back Button
+    back_button = tk.Button(account_frame, text="Back", font=("Arial", 12), bg="white", fg="black",
+                             command=lambda: show_frame(strategy_frame))
+    back_button.grid(row=5, column=0, columnspan=3, pady=(10, 20))

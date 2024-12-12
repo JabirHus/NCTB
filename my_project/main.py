@@ -37,7 +37,7 @@ for frame in (main_frame, history_frame, strategy_frame, account_frame):
 populate_trade_history = create_history_page(root, history_frame, main_frame)  # Get the populate function
 create_main_page(root, main_frame, history_frame, strategy_frame, populate_trade_history)  # Pass it here
 create_strategy_page(root, strategy_frame, main_frame, account_frame)
-create_account_page(root, account_frame)
+create_account_page(root, account_frame, strategy_frame)
 
 # Fullscreen toggle binding
 root.bind("<F11>", lambda event: toggle_fullscreen(root))
