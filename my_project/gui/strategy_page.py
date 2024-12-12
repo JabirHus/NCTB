@@ -179,6 +179,12 @@ def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, se
 def validate_inputs(additional_indicators, error_label):
     """Validate that all selected indicators have valid inputs."""
     errors = []
+
+    # Base case: Check if no indicators are selected
+    if not additional_indicators:
+        error_label.config(text="You must select an indicator(s) to build your strategy.", fg="red")
+        return ["No indicators selected."]
+    
     for key, data in additional_indicators.items():
         if "sub_indicators" in data:
             for sub_key, sub_data in data["sub_indicators"].items():
