@@ -159,7 +159,7 @@ def load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, se
     except Exception as e:
         print(f"Error loading strategy: {e}")
 
-def validate_inputs(additional_indicators):
+def validate_inputs(additional_indicators, error_label):
     """Validate that all selected indicators have valid inputs."""
     errors = []
     for key, data in additional_indicators.items():
@@ -182,6 +182,8 @@ def validate_inputs(additional_indicators):
                     data["entry"].configure(bg="red")
                 else:
                     data["entry"].configure(bg="white")
+
+    error_label.config(text="\n".join(errors) if errors else "", fg="red" if errors else "green")
     return errors
 
 def create_strategy_page(root, strategy_frame, main_frame):
@@ -224,9 +226,12 @@ def create_strategy_page(root, strategy_frame, main_frame):
     dynamic_frame = tk.Frame(strategy_content, bg="#1C1C2E")
     dynamic_frame.pack()
 
+    error_label = tk.Label(strategy_content, text="", font=("Helvetica", 10), fg="red", bg="#1C1C2E")
+    error_label.pack(pady=10)
+
     def save_strategy():
         """Validate inputs and save the strategy."""
-        errors = validate_inputs(additional_indicators)
+        errors = validate_inputs(additional_indicators, error_label)
 
         if errors:
             print("Validation Errors:", errors)
@@ -245,8 +250,9 @@ def create_strategy_page(root, strategy_frame, main_frame):
                 }
                 for key, data in additional_indicators.items()
             })
+            error_label.config(text="Strategy saved successfully!", fg="green")
         except Exception as e:
-            print(f"Error saving strategy: {e}")
+            error_label.config(text=f"Error saving strategy: {e}", fg="red")
 
     tk.Label(strategy_content, text="", bg="#1C1C2E").pack()
 
