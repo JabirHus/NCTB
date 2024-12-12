@@ -16,10 +16,14 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
     if indicator in additional_indicators:
         return  # Prevent duplicates
 
+    # Create a frame for the indicator
     ui_frame = tk.Frame(frame, bg="#1C1C2E")
-    ui_frame.pack()
+    ui_frame.pack(pady=5, fill="x", anchor="w")  # Align to the left
 
+    # Create a variable to manage the checkbox state
     var = tk.IntVar(value=1)
+
+    # Add the checkbox for the indicator
     checkbox = tk.Checkbutton(
         ui_frame,
         text=indicator,
@@ -27,13 +31,19 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
         bg="#1C1C2E",
         fg="white",
         selectcolor="#1C1C2E",
-        command=lambda: toggle_indicator(var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator)
+        width=20,  # Fixed width for consistent alignment
+        anchor="w",
+        command=lambda: toggle_indicator(
+            var, ui_frame, indicator, indicators, additional_indicators, dropdown, selected_indicator
+        )
     )
-    checkbox.pack(side="left", padx=5)
+    checkbox.grid(row=0, column=0, padx=(10, 20), sticky="w")  # Checkbox in the first column
 
+    # Add a sub-frame for sub-indicators
     sub_frame = tk.Frame(ui_frame, bg="#1C1C2E")
-    sub_frame.pack()
+    sub_frame.grid(row=0, column=1, sticky="w")  # Sub-indicators in the second column
 
+    # Indicator-specific settings
     indicator_settings = {
         "RSI": {"Period": ("14", None, None), "Undersold": ("30", lambda x: x < 50, "must be < 50"), "Oversold": ("70", lambda x: x > 50, "must be > 50")},
         "MACD": {"Fast EMA": ("12", None, None), "Slow EMA": ("26", None, None), "MACD SMA": ("9", None, None)},
@@ -42,29 +52,36 @@ def add_indicator_ui(indicator, frame, indicators, additional_indicators, dropdo
         "Moving Average": {"Period": ("10", lambda x: x > 0, "must be > 0"), "Shift": ("0", None, None)}
     }
 
+    # Add sub-indicators for the selected indicator
     if indicator in indicator_settings:
         sub_indicators = indicator_settings[indicator]
         vars_dict = {}
+        col_index = 0
         for sub_ind, (placeholder, validation, message) in sub_indicators.items():
-            add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message)
-        additional_indicators[indicator] = {"var": var, "sub_indicators": vars_dict}
+            add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message, col_index)
+            col_index += 2  # Increment column for each sub-indicator
+        additional_indicators[indicator] = {"var": var, "sub_indicators": vars_dict, "frame": ui_frame}
     else:
-        entry = tk.Entry(sub_frame)
-        entry.pack(side="left", padx=5)
-        additional_indicators[indicator] = {"var": var, "entry": entry}
+        # If no sub-indicators, add a single entry
+        entry = tk.Entry(sub_frame, width=15)
+        entry.grid(row=0, column=1, padx=5, sticky="w")
+        additional_indicators[indicator] = {"var": var, "entry": entry, "frame": ui_frame}
 
     update_dropdown_menu(dropdown, indicators, additional_indicators, selected_indicator)
 
-def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message):
+
+def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation, message, col_index):
+    """Add sub-indicator UI components, aligned horizontally in one line."""
     label = tk.Label(
         sub_frame,
         text=sub_ind,
+        width=10,
         bg="#1C1C2E",
         fg="white"
     )
-    label.pack(side="left", padx=5)
+    label.grid(row=0, column=col_index, padx=(10, 5), pady=2, sticky="w")  # Left-align label in the specified column
 
-    entry = tk.Entry(sub_frame, width=5, fg="grey", font=("Helvetica", 10))
+    entry = tk.Entry(sub_frame, width=10, fg="grey", font=("Helvetica", 10))
     entry.insert(0, placeholder)
 
     def clear_placeholder(event, e=entry, p=placeholder):
@@ -79,7 +96,7 @@ def add_sub_indicator_ui(sub_frame, vars_dict, sub_ind, placeholder, validation,
 
     entry.bind("<FocusIn>", clear_placeholder)
     entry.bind("<FocusOut>", restore_placeholder)
-    entry.pack(side="left", padx=5)
+    entry.grid(row=0, column=col_index + 1, padx=(0, 10), pady=2, sticky="w")  # Align entry to the right of the label
 
     vars_dict[sub_ind] = {"entry": entry, "validation": validation, "message": message}
 
@@ -166,25 +183,29 @@ def validate_inputs(additional_indicators, error_label):
         if "sub_indicators" in data:
             for sub_key, sub_data in data["sub_indicators"].items():
                 value = sub_data["entry"].get()
-                if not value.isdigit():
+                try:
+                    int_value = int(value)  # Ensure it's an integer
+                    if sub_data["validation"] and not sub_data["validation"](int_value):
+                        errors.append(f"{key} ({sub_key}): {sub_data['message']}")
+                        sub_data["entry"].configure(bg="red")
+                    else:
+                        sub_data["entry"].configure(bg="white")
+                except ValueError:
                     errors.append(f"{key} ({sub_key}): Value must be an integer.")
                     sub_data["entry"].configure(bg="red")
-                elif sub_data["validation"] and not sub_data["validation"](int(value)):
-                    errors.append(f"{key} ({sub_key}): {sub_data['message']}")
-                    sub_data["entry"].configure(bg="red")
-                else:
-                    sub_data["entry"].configure(bg="white")
         else:
             if data["var"].get():
                 value = data["entry"].get()
-                if not value.isdigit():
+                try:
+                    int_value = int(value)  # Ensure it's an integer
+                    data["entry"].configure(bg="white")
+                except ValueError:
                     errors.append(f"{key}: Value must be an integer.")
                     data["entry"].configure(bg="red")
-                else:
-                    data["entry"].configure(bg="white")
 
     error_label.config(text="\n".join(errors) if errors else "", fg="red" if errors else "green")
     return errors
+
 
 def create_strategy_page(root, strategy_frame, main_frame):
     """Set up the enhanced strategy builder page."""
