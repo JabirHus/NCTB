@@ -213,7 +213,7 @@ def validate_inputs(additional_indicators, error_label):
     return errors
 
 
-def create_strategy_page(root, strategy_frame, main_frame):
+def create_strategy_page(root, strategy_frame, main_frame, account_frame):
     """Set up the enhanced strategy builder page."""
     strategy_frame.configure(bg="#1C1C2E")
     center_frame(strategy_frame)
@@ -226,6 +226,7 @@ def create_strategy_page(root, strategy_frame, main_frame):
     additional_indicators = {}
     indicators = ["RSI", "MACD", "Bollinger Bands", "Moving Average", "Stochastic Oscillator"]
     selected_indicator = tk.StringVar(value="Select an Indicator")
+    strategy_saved = tk.BooleanVar(value=False)  # Track if a strategy is saved
 
     dropdown_frame = tk.Frame(strategy_content, bg="#1C1C2E")
     dropdown_frame.pack()
@@ -260,8 +261,15 @@ def create_strategy_page(root, strategy_frame, main_frame):
         """Validate inputs and save the strategy."""
         errors = validate_inputs(additional_indicators, error_label)
 
+        # Ensure at least one indicator is selected
+        if not additional_indicators:
+            error_label.config(text="You must select and save at least one indicator.", fg="red")
+            strategy_saved.set(False)
+            return
+
         if errors:
             print("Validation Errors:", errors)
+            strategy_saved.set(False)
             return
 
         try:
@@ -278,10 +286,36 @@ def create_strategy_page(root, strategy_frame, main_frame):
                 for key, data in additional_indicators.items()
             })
             error_label.config(text="Strategy saved successfully!", fg="green")
+            strategy_saved.set(True)  # Mark the strategy as saved
         except Exception as e:
             error_label.config(text=f"Error saving strategy: {e}", fg="red")
+            strategy_saved.set(False)
 
-    tk.Label(strategy_content, text="", bg="#1C1C2E").pack()
+    def load_strategy_on_start():
+        """Load the strategy from the database and set strategy_saved."""
+        try:
+            conn = create_connection()
+            cursor = conn.cursor()
+            row = cursor.execute("SELECT * FROM strategies LIMIT 1").fetchone()
+            conn.close()
+
+            if row:
+                # Populate UI with the loaded strategy
+                load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator)
+                strategy_saved.set(True)  # Mark as saved if a strategy exists
+            else:
+                strategy_saved.set(False)  # No strategy in the database
+        except Exception as e:
+            print(f"Error loading strategy: {e}")
+            strategy_saved.set(False)
+
+    def navigate_to_account_page():
+        """Validate if the strategy is saved before navigating."""
+        if not strategy_saved.get():
+            error_label.config(text="Please save your strategy before accessing the Account Page.", fg="red")
+        else:
+            error_label.config(text="")  # Clear any previous error messages
+            show_frame(account_frame)
 
     tk.Button(
         strategy_content,
@@ -291,6 +325,21 @@ def create_strategy_page(root, strategy_frame, main_frame):
         command=save_strategy,
     ).pack(pady=10)
 
-    tk.Button(strategy_content, text="Back", bg="#1C1C2E", fg="white", command=lambda: show_frame(main_frame)).pack(pady=10)
+    tk.Button(
+        strategy_content,
+        text="Account Page",
+        bg="#1C1C2E",
+        fg="white",
+        command=navigate_to_account_page,  # Validate before navigation
+    ).pack(pady=10)
 
-    load_strategy(dynamic_frame, additional_indicators, indicators, dropdown, selected_indicator)
+    tk.Button(
+        strategy_content,
+        text="Back",
+        bg="#1C1C2E",
+        fg="white",
+        command=lambda: show_frame(main_frame),
+    ).pack(pady=10)
+
+    # Load strategy and initialize state
+    load_strategy_on_start()
