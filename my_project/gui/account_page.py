@@ -16,6 +16,7 @@ def create_account_page(root, account_frame, strategy_frame):
     master_frame = tk.Frame(account_frame, bg="#1C1C2E")
     master_frame.pack(pady=10)
 
+    # Username Input
     tk.Label(master_frame, text="Username:", font=("Helvetica", 12), fg="white", bg="#1C1C2E").grid(
         row=0, column=0, padx=10, pady=5, sticky="w"
     )
@@ -23,6 +24,7 @@ def create_account_page(root, account_frame, strategy_frame):
         row=0, column=1, padx=10, pady=5
     )
 
+    # Password Input
     tk.Label(master_frame, text="Password:", font=("Helvetica", 12), fg="white", bg="#1C1C2E").grid(
         row=1, column=0, padx=10, pady=5, sticky="w"
     )
@@ -30,6 +32,7 @@ def create_account_page(root, account_frame, strategy_frame):
         row=1, column=1, padx=10, pady=5
     )
 
+    # Connection Status
     tk.Label(master_frame, text="Not connected", font=("Helvetica", 12), fg="red", bg="#1C1C2E").grid(
         row=0, column=2, rowspan=2, padx=10, sticky="e"
     )
@@ -42,13 +45,63 @@ def create_account_page(root, account_frame, strategy_frame):
         account_frame, text="Slave Accounts", font=("Helvetica", 16), fg="white", bg="#1C1C2E"
     ).pack(pady=(0, 10))
 
-    slave_accounts_frame = tk.Frame(account_frame, bg="#1C1C2E")
-    slave_accounts_frame.pack()
+    # Frame for Buttons (centered below the title)
+    button_frame = tk.Frame(account_frame, bg="#1C1C2E")
+    button_frame.pack()
+
+    # Frame to contain the entire scrollable section with a border
+    border_frame = tk.Frame(account_frame, bg="#44475a", highlightthickness=2, highlightbackground="#44475a")
+    border_frame.pack(padx=10, pady=10, fill="both", expand=True)
+
+    # Scrollable Frame for Slave Accounts
+    canvas = tk.Canvas(border_frame, bg="#1C1C2E", highlightthickness=0)
+    scrollbar = tk.Scrollbar(border_frame, orient="vertical", command=canvas.yview)
+    scrollable_frame = tk.Frame(canvas, bg="#1C1C2E")
+
+    # Configure scrolling
+    scrollable_frame.bind(
+        "<Configure>",
+        lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+    )
+    canvas.create_window((0, 0), window=scrollable_frame, anchor="n")
+    canvas.configure(yscrollcommand=scrollbar.set)
+
+    # Pack canvas and scrollbar
+    canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.pack(side="right", fill="y")
+
+    # Top Border Indicator (Static)
+    top_border = tk.Frame(border_frame, bg="#44475a", height=3)
+    top_border.place(relx=0, rely=0, relwidth=1)
+
+    # Bottom Border Indicator (Static)
+    bottom_border = tk.Frame(border_frame, bg="#44475a", height=3)
+    bottom_border.place(relx=0, rely=1, relwidth=1, anchor="sw")
+
+
+    # Enable Scrollwheel
+    def _on_mousewheel(event):
+        canvas.yview_scroll(-1 * (event.delta // 120), "units")
+
+    # Bind scroll events for Windows/macOS
+    canvas.bind_all("<MouseWheel>", _on_mousewheel)
+
+    # Bind scroll events for Linux
+    canvas.bind_all("<Button-4>", lambda e: canvas.yview_scroll(-1, "units"))
+    canvas.bind_all("<Button-5>", lambda e: canvas.yview_scroll(1, "units"))
+
+    # Rows for slave accounts
+    rows_frame = tk.Frame(scrollable_frame, bg="#1C1C2E")
+    rows_frame.pack(fill="both", expand=True)
 
     def add_slave_account():
         """Add a dynamic slave account section."""
-        slave_row = tk.Frame(slave_accounts_frame, bg="#1C1C2E")
-        slave_row.pack(fill="x", pady=5, padx=10)
+        # Wrap each row in a frame that will center its content
+        slave_row_wrapper = tk.Frame(rows_frame, bg="#1C1C2E")
+        slave_row_wrapper.pack(fill="x", pady=5)  # Frame to center content
+
+        slave_row = tk.Frame(slave_row_wrapper, bg="#1C1C2E")
+        slave_row.pack(pady=5, anchor="center")  # Centered inside the wrapper
 
         # Username Input
         tk.Label(slave_row, text="Username:", font=("Helvetica", 12), fg="white", bg="#1C1C2E").grid(
@@ -73,41 +126,40 @@ def create_account_page(root, account_frame, strategy_frame):
 
         # Delete Button
         def delete_slave():
-            slave_row.destroy()
-
-        def on_hover(event):
-            delete_button.config(bg="red", fg="white")  # Red background on hover
-
-        def on_leave(event):
-            delete_button.config(bg="#1C1C2E", fg="white")  # Revert to default style
+            slave_row_wrapper.destroy()
+            canvas.configure(scrollregion=canvas.bbox("all"))
 
         delete_button = tk.Button(
             slave_row,
             text="Delete",
-            bg="#1C1C2E",  # Default background
-            fg="white",    # Default text color
+            bg="#1C1C2E",
+            fg="white",
+            activebackground="red",
+            activeforeground="white",
             command=delete_slave
         )
         delete_button.grid(row=0, column=3, rowspan=2, padx=10, pady=5)
 
-        # Bind hover events
-        delete_button.bind("<Enter>", on_hover)
-        delete_button.bind("<Leave>", on_leave)
-
     # Add Slave Account Button
     tk.Button(
-        account_frame,
+        button_frame,
         text="Add Slave Account",
+        font=("Helvetica", 12),
         bg="#1C1C2E",
         fg="white",
+        activebackground="red",
+        activeforeground="white",
         command=add_slave_account
-    ).pack(pady=10)
+    ).pack(pady=(5, 10))
 
     # Back Button
     tk.Button(
-        account_frame,
+        button_frame,
         text="Back",
+        font=("Helvetica", 12),
         bg="#1C1C2E",
         fg="white",
+        activebackground="red",
+        activeforeground="white",
         command=lambda: show_frame(strategy_frame)
-    ).pack(pady=(10, 20))
+    ).pack(pady=(0, 10))
