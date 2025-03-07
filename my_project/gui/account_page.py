@@ -3,101 +3,137 @@ from tkinter import ttk
 from gui.shared_components import show_frame
 
 def create_account_page(root, account_frame, strategy_frame):
-    """Set up the Account Page with dynamic slave accounts."""
+    """Account Page with correct new slave/master values, ticked checkboxes, and buttons for slaves."""
 
-    # Helper functions to reduce label and entry repetition
-    def create_label(parent, text, font_size=12, fg="white", bg="#1C1C2E", **grid_options):
-        """Create and grid a styled label."""
-        return tk.Label(parent, text=text, font=("Helvetica", font_size), fg=fg, bg=bg).grid(**grid_options)
+    # Color Palette
+    BG_COLOR = "#161B22"
+    CARD_BG = "#21262D"
+    TEXT_COLOR = "white"
+    BUTTON_COLOR = "#30363D"
+    GREEN_COLOR = "#2EA043"
+    RED_COLOR = "#D73A49"
 
-    def create_entry(parent, show=None, **grid_options):
-        """Create and grid a styled entry."""
-        return tk.Entry(parent, font=("Helvetica", 12), bg="#2C2C3E", fg="white", show=show, insertbackground="white").grid(**grid_options)
+    account_frame.configure(bg=BG_COLOR)
 
-    # Configure the background
-    account_frame.configure(bg="#1C1C2E")
+    # === Function to Open "Add Account" Modal ===
+    def open_add_account_modal(is_master):
+        """Popup for adding Master or Slave accounts."""
+        modal = tk.Toplevel(account_frame)
+        modal.title(f"Add {'Master' if is_master else 'Slave'} Account")
+        modal.configure(bg=CARD_BG)
+        modal.geometry("400x350")
 
-    # Master Account Section
-    tk.Label(account_frame, text="Master Account", font=("Helvetica", 16), fg="white", bg="#1C1C2E").pack(pady=(20, 10))
-    master_frame = tk.Frame(account_frame, bg="#1C1C2E")
-    master_frame.pack(pady=10)
+        tk.Label(modal, text="Trading Platform*", fg=TEXT_COLOR, bg=CARD_BG).pack(pady=(10, 2), anchor="w", padx=20)
+        platform_var = ttk.Combobox(modal, values=["MT4", "MT5"])
+        platform_var.pack(pady=2, padx=20, fill="x")
 
-    create_label(master_frame, "Username:", row=0, column=0, padx=10, pady=5, sticky="w")
-    create_entry(master_frame, row=0, column=1, padx=10, pady=5)
-    create_label(master_frame, "Password:", row=1, column=0, padx=10, pady=5, sticky="w")
-    create_entry(master_frame, show="*", row=1, column=1, padx=10, pady=5)
-    tk.Label(master_frame, text="Not connected", font=("Helvetica", 12), fg="red", bg="#1C1C2E").grid(
-        row=0, column=2, rowspan=2, padx=10, sticky="e"
-    )
+        tk.Label(modal, text="Login*", fg=TEXT_COLOR, bg=CARD_BG).pack(pady=(10, 2), anchor="w", padx=20)
+        login_entry = tk.Entry(modal, bg=BUTTON_COLOR, fg=TEXT_COLOR)
+        login_entry.pack(pady=2, padx=20, fill="x")
 
-    # Separator
-    ttk.Separator(account_frame, orient="horizontal").pack(fill="x", padx=20, pady=20)
+        tk.Label(modal, text="Password*", fg=TEXT_COLOR, bg=CARD_BG).pack(pady=(10, 2), anchor="w", padx=20)
+        password_entry = tk.Entry(modal, show="*", bg=BUTTON_COLOR, fg=TEXT_COLOR)
+        password_entry.pack(pady=2, padx=20, fill="x")
 
-    # Slave Accounts Section
-    tk.Label(account_frame, text="Slave Accounts", font=("Helvetica", 16), fg="white", bg="#1C1C2E").pack(pady=(0, 10))
-    button_frame = tk.Frame(account_frame, bg="#1C1C2E")
-    button_frame.pack()
+        tk.Label(modal, text="Server*", fg=TEXT_COLOR, bg=CARD_BG).pack(pady=(10, 2), anchor="w", padx=20)
+        server_entry = tk.Entry(modal, bg=BUTTON_COLOR, fg=TEXT_COLOR)
+        server_entry.pack(pady=2, padx=20, fill="x")
 
-    # Scrollable Slave Accounts Area
-    border_frame = tk.Frame(account_frame, bg="#44475a", highlightthickness=2, highlightbackground="#44475a")
-    border_frame.pack(padx=10, pady=10, fill="both", expand=True)
-    canvas = tk.Canvas(border_frame, bg="#1C1C2E", highlightthickness=0)
-    scrollbar = tk.Scrollbar(border_frame, orient="vertical", command=canvas.yview)
-    scrollable_frame = tk.Frame(canvas, bg="#1C1C2E")
+        def submit_account():
+            """Submit account details and add to the list."""
+            platform = platform_var.get()
+            login = login_entry.get()
+            password = password_entry.get()
+            server = server_entry.get()
 
-    canvas.create_window((0, 0), window=scrollable_frame, anchor="n")
-    canvas.configure(yscrollcommand=scrollbar.set)
-    canvas.pack(side="left", fill="both", expand=True)
-    scrollbar.pack(side="right", fill="y")
-    scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+            if platform and login and password and server:
+                modal.destroy()
+                if is_master:
+                    add_master_account(login, server, is_new=True)
+                else:
+                    add_slave_account(login, server, is_new=True)
+            else:
+                tk.Label(modal, text="All fields are required!", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
 
-    # Scrollwheel support
-    def _on_mousewheel(event):
-        canvas.yview_scroll(-1 * (event.delta // 120), "units")
-    canvas.bind_all("<MouseWheel>", _on_mousewheel)
-    canvas.bind_all("<Button-4>", lambda e: canvas.yview_scroll(-1, "units"))
-    canvas.bind_all("<Button-5>", lambda e: canvas.yview_scroll(1, "units"))
+        tk.Button(modal, text="Add", bg=GREEN_COLOR, fg=TEXT_COLOR, command=submit_account).pack(pady=20)
 
-    rows_frame = tk.Frame(scrollable_frame, bg="#1C1C2E")
-    rows_frame.pack(fill="both", expand=True)
+    # === Function to Create Tabs ===
+    def create_tabs(parent):
+        """Creates tab navigation for Masters/Slaves."""
+        tab_frame = tk.Frame(parent, bg=CARD_BG)
+        tab_frame.pack(fill="x", padx=20, pady=5)
 
-    def add_slave_account():
-        """Add a dynamic slave account section."""
-        wrapper = tk.Frame(rows_frame, bg="#1C1C2E")
-        wrapper.pack(fill="x", pady=5)
+        for tab_name in ["Accounts", "Open Positions", "Closed Positions"]:
+            tab_button = tk.Button(tab_frame, text=tab_name, font=("Helvetica", 12, "bold"),
+                                   bg=BUTTON_COLOR, fg=TEXT_COLOR, padx=20, pady=5, bd=0, relief="flat")
+            tab_button.pack(side="left", padx=10, pady=2)
 
-        slave_row = tk.Frame(wrapper, bg="#1C1C2E")
-        slave_row.pack(pady=5, anchor="center")
+    # === Master Accounts Section ===
+    master_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
+    master_card.pack(pady=10, padx=20, fill="x")
 
-        create_label(slave_row, "Username:", row=0, column=0, padx=5, pady=5, sticky="w")
-        create_entry(slave_row, row=0, column=1, padx=5, pady=5)
-        create_label(slave_row, "Password:", row=1, column=0, padx=5, pady=5, sticky="w")
-        create_entry(slave_row, show="*", row=1, column=1, padx=5, pady=5)
+    tk.Label(master_card, text="MASTERS", font=("Helvetica", 14, "bold"), fg=TEXT_COLOR, bg=CARD_BG).pack(anchor="w")
 
-        tk.Label(slave_row, text="Not connected", font=("Helvetica", 12), fg="red", bg="#1C1C2E").grid(
-            row=0, column=2, rowspan=2, padx=10, sticky="e"
+    create_tabs(master_card)
+
+    master_container = tk.Frame(master_card, bg=CARD_BG)
+    master_container.pack(fill="x")
+
+    def add_master_account(login="master - mt5 - 46377", server="CelticMarkets-Server", is_new=False):
+        """Dynamically add Master accounts (Correct Placeholder Values & Ticked Checkbox)."""
+        card = tk.Frame(master_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
+        card.pack(pady=5, padx=10, fill="x")
+
+        balance = "0 / 0" if is_new else "95000.80 / 0.00"
+        equity = "0" if is_new else "95955.23"
+        trades = "0" if is_new else "5"
+
+        text = (
+            f"Account:   {login}     Balance:   {balance}     Equity:   {equity}     Open Trades:   {trades}     Status:   CONNECTED"
         )
+        tk.Label(card, text=text, fg=TEXT_COLOR, bg=BUTTON_COLOR, font=("Helvetica", 12, "bold")).pack(side="left", padx=10)
 
-        tk.Button(
-            slave_row, text="Delete", bg="#1C1C2E", fg="white",
-            activebackground="red", activeforeground="white",
-            command=lambda: [wrapper.destroy(), canvas.configure(scrollregion=canvas.bbox("all"))]
-        ).grid(row=0, column=3, rowspan=2, padx=10, pady=5)
+        switch_var = tk.BooleanVar(value=True)  # Default Ticked
+        ttk.Checkbutton(card, variable=switch_var).pack(side="left", padx=5)
 
-    # Add Slave Account Button
-    tk.Button(
-        button_frame, 
-        text="Add Slave Account", 
-        bg="#1C1C2E", 
-        fg="white",
-        command=add_slave_account
-    ).pack(pady=(5, 10))
+        tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
+        tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
 
-    # Back Button
-    tk.Button(
-        button_frame, 
-        text="Back", 
-        bg="#1C1C2E", 
-        fg="white",
-        command=lambda: show_frame(strategy_frame)
-    ).pack(pady=(0, 10))
+    add_master_account()
+
+    # === Slave Accounts Section ===
+    slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
+    slave_card.pack(pady=10, padx=20, fill="x")
+
+    tk.Label(slave_card, text="SLAVES", font=("Helvetica", 14, "bold"), fg=TEXT_COLOR, bg=CARD_BG).pack(anchor="w")
+
+    create_tabs(slave_card)
+
+    slave_container = tk.Frame(slave_card, bg=CARD_BG)
+    slave_container.pack(fill="x")
+
+    def add_slave_account(login="slave - mt5 - 46352", server="CelticMarkets-Server", is_new=False):
+        """Dynamically add Slave accounts (Correct Placeholder Values & Ticked Checkbox)."""
+        card = tk.Frame(slave_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
+        card.pack(pady=5, padx=10, fill="x")
+
+        balance = "0 / 0" if is_new else "95982.32 / 0.00"
+        equity = "0" if is_new else "95982.32"
+        trades = "0" if is_new else "0"
+
+        text = (
+            f"Account:   {login}     Balance:   {balance}     Equity:   {equity}     Open Trades:   {trades}     Status:   CONNECTED"
+        )
+        tk.Label(card, text=text, fg=TEXT_COLOR, bg=BUTTON_COLOR, font=("Helvetica", 12, "bold")).pack(side="left", padx=10)
+
+        switch_var = tk.BooleanVar(value=True)  # Default Ticked
+        ttk.Checkbutton(card, variable=switch_var).pack(side="left", padx=5)
+
+        tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
+        tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
+
+    add_slave_account()
+
+    # Add Master & Slave Buttons (Inside Box)
+    tk.Button(master_card, text="+ Add Master", bg=BUTTON_COLOR, fg=TEXT_COLOR, command=lambda: open_add_account_modal(True)).pack(pady=10)
+    tk.Button(slave_card, text="+ Add Slave", bg=BUTTON_COLOR, fg=TEXT_COLOR, command=lambda: open_add_account_modal(False)).pack(pady=10)
