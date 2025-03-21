@@ -42,17 +42,20 @@ def create_history_page(root, history_frame, main_frame):
 
         for row in rows:
             symbol = row[0]
-            entry_price = row[1]  # Already rounded in SQL
-            exit_price = row[2]   # Already rounded in SQL
-            profit_loss = row[3]  # Already rounded in SQL
-            timestamp = row[4]    # Formatted timestamp
+            entry_price = row[1]
+            exit_price = row[2]
+            profit_loss = row[3]
+            timestamp = row[4]
 
-            # Insert formatted data into the text widget
             history_text.insert(
                 tk.END,
                 f"Symbol: {symbol}, Entry: {entry_price:.4f}, Exit: {exit_price:.4f}, "
                 f"P/L: {profit_loss:.2f}, Time: {timestamp}\n"
             )
+
+        # Auto-scroll to the bottom
+        history_text.yview_moveto(1.0)
+
 
 
     # Back button

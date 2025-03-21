@@ -1,6 +1,7 @@
 # gui/main_page.py
 import tkinter as tk
 from gui.shared_components import show_frame, center_frame
+from data.trade_execution import TradeExecutionEngine
 
 def create_main_page(root, main_frame, history_frame, strategy_frame, populate_trade_history):
     """Set up the main intro page."""
@@ -40,6 +41,20 @@ def create_main_page(root, main_frame, history_frame, strategy_frame, populate_t
         fg="white"
     )
     strategy_button.pack(pady=10)
+
+    # Initialize Trade Execution Engine
+    trade_engine = TradeExecutionEngine()
+
+    # Add a button to execute trades manually
+    trade_button = tk.Button(
+        main_content,
+        text="Execute Trade",
+        command=lambda: [trade_engine.execute_trade(), populate_trade_history()],
+        bg="#1C1C2E",
+        fg="white"
+    )
+    trade_button.pack(pady=10)
+
 
     quit_button = tk.Button(main_content, text="Quit", command=root.destroy, bg="#1C1C2E", fg="white")
     quit_button.pack(pady=10)

@@ -77,3 +77,13 @@ def get_trade_history():
 
     conn.close()
     return rows
+
+
+def clear_trade_history():
+    """Delete all records from the trades table but keep the table structure."""
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM trades")
+    conn.commit()
+    conn.close()
+    print("Trade history cleared (table preserved).")
