@@ -2,6 +2,7 @@ import duckdb
 import random
 import time
 from data.db_handler import create_connection
+import json
 
 class TradeExecutionEngine:
     def __init__(self):
@@ -14,7 +15,7 @@ class TradeExecutionEngine:
         self.cursor.execute("SELECT additional_indicators FROM strategies LIMIT 1")
         row = self.cursor.fetchone()
         if row and row[0]:
-            return row[0]  # Strategy is stored as JSON
+            return json.loads(row[0])  # Convert JSON string to dictionary
         return None
 
     def generate_price(self):
@@ -60,11 +61,16 @@ class TradeExecutionEngine:
         exit_price = entry_price + round(random.uniform(-0.0050, 0.0050), 4)
         profit_loss = round((exit_price - entry_price) * 10000, 2)  # Pips
 
+        self.cursor.execute("SELECT MAX(id) FROM trades")
+        max_id = self.cursor.fetchone()[0]
+        next_id = 1 if max_id is None else max_id + 1
+
+    
         # Log trade in DuckDB
         self.cursor.execute("""
-            INSERT INTO trades (symbol, entry_price, exit_price, profit_loss, timestamp)
-            VALUES ('EUR/USD', ?, ?, ?, CURRENT_TIMESTAMP)
-        """, (entry_price, exit_price, profit_loss))
+            INSERT INTO trades (id, symbol, entry_price, exit_price, profit_loss, timestamp)
+            VALUES (?, 'EUR/USD', ?, ?, ?, CURRENT_TIMESTAMP)
+        """, (next_id, entry_price, exit_price, profit_loss))
         self.conn.commit()
 
         print(f"Trade Executed: {trade_action} @ {entry_price} -> Exit @ {exit_price} | P/L: {profit_loss} pips")
