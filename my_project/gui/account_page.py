@@ -3,10 +3,31 @@ from tkinter import ttk
 from gui.shared_components import show_frame
 from data.mt5_connector import connect_mt5
 from data.account_storage import save_account, load_accounts, remove_account
+from data.trade_copier import copy_master_trades
+import threading
+
+copier_thread_started = False  # Keeps copier from starting twice
 
 
 def create_account_page(root, account_frame, strategy_frame):
     """Account Page with correct new slave/master values, ticked checkboxes, and buttons for slaves."""
+
+    def start_copier_if_ready():
+        global copier_thread_started
+        accounts = load_accounts()
+        masters = accounts["masters"]
+        slaves = accounts["slaves"]
+
+        if not copier_thread_started and masters and slaves:
+            copier_thread_started = True
+            print("[Copier] Starting copier in background thread...")
+
+            thread = threading.Thread(
+                target=lambda: copy_master_trades(masters[0], slaves),
+                daemon=True
+            )
+            thread.start()
+
 
     # Color Palette
     BG_COLOR = "#161B22"
@@ -73,6 +94,7 @@ def create_account_page(root, account_frame, strategy_frame):
                         "server": server
                     }
                     save_account("masters" if is_master else "slaves", account_data)
+                    start_copier_if_ready()
 
                 else:
                     tk.Label(modal, text=f"Connection failed: {result}", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
@@ -178,6 +200,7 @@ def create_account_page(root, account_frame, strategy_frame):
             equity = f"{result['equity']:.2f}"
             trades = f"{result['positions']}" if 'positions' in result else "0"
             add_master_account(acc["login"], acc["server"], balance, equity, trades)
+            start_copier_if_ready()
 
     for acc in saved["slaves"]:
         success, result = connect_mt5(acc["login"], acc["password"], acc["server"])
@@ -186,6 +209,7 @@ def create_account_page(root, account_frame, strategy_frame):
             equity = f"{result['equity']:.2f}"
             trades = f"{result['positions']}" if 'positions' in result else "0"
             add_slave_account(acc["login"], acc["server"], balance, equity, trades)
+            start_copier_if_ready()
 
     # Back Button (to return to Strategy Page)
     tk.Button(
