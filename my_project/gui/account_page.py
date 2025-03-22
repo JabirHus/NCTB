@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from gui.shared_components import show_frame
+from data.mt5_connector import connect_mt5
 
 def create_account_page(root, account_frame, strategy_frame):
     """Account Page with correct new slave/master values, ticked checkboxes, and buttons for slaves."""
@@ -40,22 +41,43 @@ def create_account_page(root, account_frame, strategy_frame):
         server_entry.pack(pady=2, padx=20, fill="x")
 
         def submit_account():
-            """Submit account details and add to the list."""
             platform = platform_var.get()
             login = login_entry.get()
             password = password_entry.get()
             server = server_entry.get()
 
             if platform and login and password and server:
-                modal.destroy()
-                if is_master:
-                    add_master_account(login, server, is_new=True)
+                if platform != "MT5":
+                    tk.Label(modal, text="Only MT5 supported for now.", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
+                    return
+
+                success, result = connect_mt5(login, password, server)
+
+                if success:
+                    balance = f"{result['balance']:.2f} / {result['margin']:.2f}"
+                    equity = f"{result['equity']:.2f}"
+                    trades = f"{result['positions']}" if 'positions' in result else "0"
+                    modal.destroy()
+
+                    if is_master:
+                        add_master_account(login, server, balance, equity, trades)
+                    else:
+                        add_slave_account(login, server, balance, equity, trades)
                 else:
-                    add_slave_account(login, server, is_new=True)
+                    tk.Label(modal, text=f"Connection failed: {result}", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
             else:
                 tk.Label(modal, text="All fields are required!", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
 
-        tk.Button(modal, text="Add", bg=GREEN_COLOR, fg=TEXT_COLOR, command=submit_account).pack(pady=20)
+        # Validation error messages show above this line if needed
+        tk.Button(
+            modal,
+            text="Add Account",
+            command=submit_account,
+            bg=GREEN_COLOR,
+            fg=TEXT_COLOR
+        ).pack(pady=20)
+
+
 
     # === Function to Create Tabs ===
     def create_tabs(parent):
@@ -79,17 +101,14 @@ def create_account_page(root, account_frame, strategy_frame):
     master_container = tk.Frame(master_card, bg=CARD_BG)
     master_container.pack(fill="x")
 
-    def add_master_account(login="master - mt5 - 46377", server="CelticMarkets-Server", is_new=False):
+    def add_master_account(login, server, balance, equity, trades):
         """Dynamically add Master accounts (Correct Placeholder Values & Ticked Checkbox)."""
         card = tk.Frame(master_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
         card.pack(pady=5, padx=10, fill="x")
 
-        balance = "0 / 0" if is_new else "95000.80 / 0.00"
-        equity = "0" if is_new else "95955.23"
-        trades = "0" if is_new else "5"
-
         text = (
-            f"Account:   {login}     Balance:   {balance}     Equity:   {equity}     Open Trades:   {trades}     Status:   CONNECTED"
+            f"Account:   {login}     Balance:   {balance}     Equity:   {equity}     "
+            f"Open Trades:   {trades}     Status:   CONNECTED"
         )
         tk.Label(card, text=text, fg=TEXT_COLOR, bg=BUTTON_COLOR, font=("Helvetica", 12, "bold")).pack(side="left", padx=10)
 
@@ -98,8 +117,6 @@ def create_account_page(root, account_frame, strategy_frame):
 
         tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
         tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
-
-    add_master_account()
 
     # === Slave Accounts Section ===
     slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
@@ -112,14 +129,10 @@ def create_account_page(root, account_frame, strategy_frame):
     slave_container = tk.Frame(slave_card, bg=CARD_BG)
     slave_container.pack(fill="x")
 
-    def add_slave_account(login="slave - mt5 - 46352", server="CelticMarkets-Server", is_new=False):
+    def add_slave_account(login, server, balance, equity, trades):
         """Dynamically add Slave accounts (Correct Placeholder Values & Ticked Checkbox)."""
         card = tk.Frame(slave_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
         card.pack(pady=5, padx=10, fill="x")
-
-        balance = "0 / 0" if is_new else "95982.32 / 0.00"
-        equity = "0" if is_new else "95982.32"
-        trades = "0" if is_new else "0"
 
         text = (
             f"Account:   {login}     Balance:   {balance}     Equity:   {equity}     Open Trades:   {trades}     Status:   CONNECTED"
@@ -131,8 +144,6 @@ def create_account_page(root, account_frame, strategy_frame):
 
         tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
         tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
-
-    add_slave_account()
 
     # Add Master & Slave Buttons (Inside Box)
     tk.Button(master_card, text="+ Add Master", bg=BUTTON_COLOR, fg=TEXT_COLOR, command=lambda: open_add_account_modal(True)).pack(pady=10)
