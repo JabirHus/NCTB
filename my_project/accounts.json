@@ -1,0 +1,16 @@
+{
+    "masters": [
+        {
+            "login": "10685767",
+            "password": "hD#q4oZ8",
+            "server": "VantageInternational-Demo"
+        }
+    ],
+    "slaves": [
+        {
+            "login": "10686586",
+            "password": "U@AJ#R9g",
+            "server": "VantageInternational-Demo"
+        }
+    ]
+}

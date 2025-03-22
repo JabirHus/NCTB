@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 from gui.shared_components import show_frame
 from data.mt5_connector import connect_mt5
+from data.account_storage import save_account, load_accounts, remove_account
+
 
 def create_account_page(root, account_frame, strategy_frame):
     """Account Page with correct new slave/master values, ticked checkboxes, and buttons for slaves."""
@@ -63,6 +65,15 @@ def create_account_page(root, account_frame, strategy_frame):
                         add_master_account(login, server, balance, equity, trades)
                     else:
                         add_slave_account(login, server, balance, equity, trades)
+
+                    # Save account to storage
+                    account_data = {
+                        "login": login,
+                        "password": password,
+                        "server": server
+                    }
+                    save_account("masters" if is_master else "slaves", account_data)
+
                 else:
                     tk.Label(modal, text=f"Connection failed: {result}", fg=RED_COLOR, bg=CARD_BG).pack(pady=5)
             else:
@@ -116,7 +127,11 @@ def create_account_page(root, account_frame, strategy_frame):
         ttk.Checkbutton(card, variable=switch_var).pack(side="left", padx=5)
 
         tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
-        tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
+        tk.Button(
+            card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5,
+            command=lambda: [card.destroy(), remove_account("masters", login)]
+        ).pack(side="left", padx=5)
+
 
     # === Slave Accounts Section ===
     slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
@@ -143,8 +158,40 @@ def create_account_page(root, account_frame, strategy_frame):
         ttk.Checkbutton(card, variable=switch_var).pack(side="left", padx=5)
 
         tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
-        tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5, command=card.destroy).pack(side="left", padx=5)
+        tk.Button(
+            card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5,
+            command=lambda: [card.destroy(), remove_account("slaves", login)]
+        ).pack(side="left", padx=5)
+
 
     # Add Master & Slave Buttons (Inside Box)
     tk.Button(master_card, text="+ Add Master", bg=BUTTON_COLOR, fg=TEXT_COLOR, command=lambda: open_add_account_modal(True)).pack(pady=10)
     tk.Button(slave_card, text="+ Add Slave", bg=BUTTON_COLOR, fg=TEXT_COLOR, command=lambda: open_add_account_modal(False)).pack(pady=10)
+
+    # Auto-load saved accounts
+    saved = load_accounts()
+
+    for acc in saved["masters"]:
+        success, result = connect_mt5(acc["login"], acc["password"], acc["server"])
+        if success:
+            balance = f"{result['balance']:.2f} / {result['margin']:.2f}"
+            equity = f"{result['equity']:.2f}"
+            trades = f"{result['positions']}" if 'positions' in result else "0"
+            add_master_account(acc["login"], acc["server"], balance, equity, trades)
+
+    for acc in saved["slaves"]:
+        success, result = connect_mt5(acc["login"], acc["password"], acc["server"])
+        if success:
+            balance = f"{result['balance']:.2f} / {result['margin']:.2f}"
+            equity = f"{result['equity']:.2f}"
+            trades = f"{result['positions']}" if 'positions' in result else "0"
+            add_slave_account(acc["login"], acc["server"], balance, equity, trades)
+
+    # Back Button (to return to Strategy Page)
+    tk.Button(
+        account_frame,
+        text="Back",
+        bg=BUTTON_COLOR,
+        fg=TEXT_COLOR,
+        command=lambda: show_frame(strategy_frame)
+    ).pack(pady=20)
