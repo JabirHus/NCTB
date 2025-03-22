@@ -1,46 +1,62 @@
 import time
 import MetaTrader5 as mt5
 from data.account_storage import load_accounts
+import json
+
+last_trade_ids = set()
+
+try:
+    with open("last_trades.json", "r") as f:
+        last_trade_ids = set(json.load(f))
+except FileNotFoundError:
+    last_trade_ids = set()
 
 def copy_master_trades(master, slaves):
     print("[Copier] Starting master-to-slave copier loop...")
 
-    mt5.shutdown()
     if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
         print(f"[Copier ❌] Master initialization failed: {mt5.last_error()}")
         return
 
-    print(f"[Copier ✅] Master {master['login']} connected ✅")
-    last_trade_ids = set()
+    print(f"[Copier ✅] Master {master['login']} connected")
+
+    # Preload existing trades so they’re not copied again
+    current_positions = mt5.positions_get()
+    if current_positions:
+        for pos in current_positions:
+            last_trade_ids.add(pos.ticket)
+
+    print(f"[Copier] Skipping {len(last_trade_ids)} existing master trade(s)")
 
     while True:
         positions = mt5.positions_get()
 
+        new_trades = []
+
         if positions:
             for pos in positions:
                 trade_id = pos.ticket
-                symbol = pos.symbol
-                volume = pos.volume
-                action = "buy" if pos.type == 0 else "sell"
-                price = pos.price_open
+                if trade_id in last_trade_ids:
+                    continue
 
-                if trade_id not in last_trade_ids:
-                    print(f"[Copier] New master trade: ({trade_id}) {symbol} {action.upper()} {volume}")
-                    last_trade_ids.add(trade_id)
+                last_trade_ids.add(trade_id)
+                new_trades.append(pos)
 
-                    for slave in slaves:
-                        copy_trade_to_slave(slave, symbol, volume, price, action)
+        if new_trades:
+            print(f"[Copier] Detected {len(new_trades)} new trade(s)")
+            for pos in new_trades:
+                print(f"[Copier] Copying: ({pos.ticket}) {pos.symbol} {'BUY' if pos.type == 0 else 'SELL'} {pos.volume}")
+                for slave in slaves:
+                    copy_trade_to_slave(slave, pos.symbol, pos.volume, pos.price_open, "buy" if pos.type == 0 else "sell")
 
-                    # Reconnect to Master
-                    mt5.shutdown()
-                    if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
-                        print(f"[Copier ❌] Failed to reconnect to Master after copying: {mt5.last_error()}")
-                        return
+        # ✅ Save last trade IDs to disk (optional)
+        with open("last_trades.json", "w") as f:
+            json.dump(list(last_trade_ids), f)
 
-        time.sleep(3)
+        time.sleep(2)  # global loop pause, NOT per-trade
+
 
 def copy_trade_to_slave(slave, symbol, volume, price, action):
-    mt5.shutdown()
     if not mt5.initialize(login=int(slave["login"]), password=slave["password"], server=slave["server"]):
         print(f"[Copier ❌] Slave {slave['login']} failed to connect: {mt5.last_error()}")
         return
@@ -54,7 +70,6 @@ def copy_trade_to_slave(slave, symbol, volume, price, action):
         print(f"[Copier ⚠️] Could not get symbol info for {symbol} on slave {slave['login']}")
         return
 
-    # Round volume to valid precision and step
     step = info.volume_step
     min_vol = info.volume_min
     fixed_volume = max(min_vol, round(volume / step) * step)
@@ -79,3 +94,6 @@ def copy_trade_to_slave(slave, symbol, volume, price, action):
         print(f"[Copier ❌] Failed for slave {slave['login']} — retcode: {result.retcode}, message: {result.comment}")
     else:
         print(f"[Copier ✅] Trade copied to slave {slave['login']} (ticket {result.order})")
+
+    # 🚨 Optional: shutdown if you want a clean reset per loop, but not ideal for performance
+    mt5.shutdown()
