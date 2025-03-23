@@ -34,11 +34,12 @@ def copy_master_trades(master, slaves):
     previous_master_positions = {p.ticket: p for p in positions}
 
     while True:
-        # 🔄 Always re-authenticate to master before querying
+
         mt5.shutdown()
         if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
             print(f"[Copier ❌] Failed to reinitialize master {master['login']} in loop: {mt5.last_error()}")
             continue
+
 
         positions = mt5.positions_get(login=int(master["login"]))
         if positions is None:
@@ -80,6 +81,7 @@ def copy_master_trades(master, slaves):
 
         previous_master_positions = current_master_positions
         time.sleep(2)
+
 
 
 def copy_trade_to_slave(slave, pos):
