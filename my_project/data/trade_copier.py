@@ -12,6 +12,7 @@ def copy_master_trades(master, slaves):
     print("[Copier] Monitoring master account for new trades...")
 
     while True:
+        time.sleep(1)
         if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
             print(f"[❌ Copier] Failed to initialize master: {mt5.last_error()}")
             time.sleep(10)
