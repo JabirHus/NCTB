@@ -1,7 +1,8 @@
 # gui/main_page.py
 import tkinter as tk
 from gui.shared_components import show_frame, center_frame
-from data.trade_execution import TradeExecutionEngine
+from data.manual_trade_execution import TradeExecutionEngine
+
 
 def create_main_page(root, main_frame, history_frame, strategy_frame, populate_trade_history):
     """Set up the main intro page."""

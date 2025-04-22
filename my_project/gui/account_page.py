@@ -4,12 +4,68 @@ from gui.shared_components import show_frame
 from data.mt5_connector import connect_mt5
 from data.account_storage import save_account, load_accounts, remove_account
 from data.trade_copier import copy_master_trades
+from data.strategy_executor import strategy_loop_for_all
 import threading
 
+executor_thread_started = False
 copier_thread_started = False  # Keeps copier from starting twice
 
 
 def create_account_page(root, account_frame, strategy_frame):
+    # Color Palette
+    BG_COLOR = "#161B22"
+    CARD_BG = "#21262D"
+    TEXT_COLOR = "white"
+    BUTTON_COLOR = "#30363D"
+    GREEN_COLOR = "#2EA043"
+    RED_COLOR = "#D73A49"
+
+    account_frame.configure(bg=BG_COLOR)
+
+    # === Log Display ===
+    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
+    log_frame.pack(pady=10, padx=20, fill='both', expand=True)
+
+    log_label = tk.Label(log_frame, text='Live Logs', font=('Helvetica', 12, 'bold'), fg='white', bg=BG_COLOR)
+    log_label.pack(anchor='w')
+
+    log_text = tk.Text(log_frame, height=10, bg='black', fg='lime', font=('Courier', 9), wrap='word')
+    log_text.pack(fill='both', expand=True)
+
+    def log_to_gui(msg):
+        log_text.insert(tk.END, msg + '\n')
+        log_text.see(tk.END)
+
+    def start_strategy_executor_if_ready():
+        global executor_thread_started
+        accounts = load_accounts()
+        masters = accounts["masters"]
+
+        if not executor_thread_started and masters:
+            executor_thread_started = True
+            master = masters[0]
+            print("[StrategyExecutor] Launching strategy execution thread...")
+            thread = threading.Thread(
+                target=lambda: strategy_loop_for_all(master["login"], master["password"], master["server"], logger=log_to_gui),
+                daemon=True
+            )
+            thread.start()
+
+    def start_copier_if_ready():
+        global copier_thread_started
+        accounts = load_accounts()
+        masters = accounts["masters"]
+        slaves = accounts["slaves"]
+
+        if not copier_thread_started and masters and slaves:
+            copier_thread_started = True
+            print("[Copier] Starting copier in background thread...")
+            thread = threading.Thread(
+                target=lambda: copy_master_trades(masters[0], slaves),
+                daemon=True
+            )
+            thread.start()
+
     """Account Page with correct new slave/master values, ticked checkboxes, and buttons for slaves."""
 
     def start_copier_if_ready():
@@ -155,6 +211,10 @@ def create_account_page(root, account_frame, strategy_frame):
         ).pack(side="left", padx=5)
 
 
+
+    log_text = tk.Text(account_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
+    log_text.pack(pady=10, padx=20, fill="both", expand=True)
+
     # === Slave Accounts Section ===
     slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
     slave_card.pack(pady=10, padx=20, fill="x")
@@ -201,6 +261,7 @@ def create_account_page(root, account_frame, strategy_frame):
             trades = f"{result['positions']}" if 'positions' in result else "0"
             add_master_account(acc["login"], acc["server"], balance, equity, trades)
             start_copier_if_ready()
+            start_strategy_executor_if_ready()
 
     for acc in saved["slaves"]:
         success, result = connect_mt5(acc["login"], acc["password"], acc["server"])
@@ -211,6 +272,22 @@ def create_account_page(root, account_frame, strategy_frame):
             add_slave_account(acc["login"], acc["server"], balance, equity, trades)
             start_copier_if_ready()
 
+    
+    # === Log Display (bottom of account page) ===
+    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
+    log_frame.pack(pady=10, padx=20, fill="both", expand=True)
+
+    log_label = tk.Label(log_frame, text="Live Logs", font=("Helvetica", 12, "bold"), fg="white", bg=BG_COLOR)
+    log_label.pack(anchor="w")
+
+    log_text = tk.Text(log_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
+    log_text.pack(fill="both", expand=True)
+
+    def log_to_gui(message):
+        log_text.insert(tk.END, message + "\n")
+        log_text.see(tk.END)
+
+
     # Back Button (to return to Strategy Page)
     tk.Button(
         account_frame,
@@ -219,3 +296,4 @@ def create_account_page(root, account_frame, strategy_frame):
         fg=TEXT_COLOR,
         command=lambda: show_frame(strategy_frame)
     ).pack(pady=20)
+    # This ensures clean logging integration with no duplicates or globals misused

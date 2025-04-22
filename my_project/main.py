@@ -4,11 +4,12 @@ from gui.shared_components import toggle_fullscreen, show_frame
 from gui.main_page import create_main_page
 from gui.history_page import create_history_page
 from gui.strategy_page import create_strategy_page
-from data.db_handler import create_table, create_strategies_table, insert_sample_trade,drop_strategies_table, clear_trade_history
+from data.db_handler import create_table, create_strategies_table, insert_sample_trade,drop_strategies_table, clear_trade_history, drop_trades_table
 from gui.account_page import create_account_page
 
 # Initialize database tables
 #drop_strategies_table()
+#drop_trades_table()
 #clear_trade_history()
 create_table()
 create_strategies_table()
