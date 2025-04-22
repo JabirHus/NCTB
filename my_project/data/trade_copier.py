@@ -26,7 +26,6 @@ def copy_master_trades(master, slaves):
         for pos in master_positions:
             ticket = pos.ticket
             if ticket not in last_trade_ids:
-                print(f"[Copier] New master trade detected: {pos.symbol}, ticket {ticket}")
                 for slave in slaves:
                     if not mt5.initialize(login=int(slave["login"]), password=slave["password"], server=slave["server"]):
                         print(f"[❌ Copier] Failed to connect to slave {slave['login']}")
@@ -58,4 +57,4 @@ def copy_master_trades(master, slaves):
         with open("last_trades.json", "w") as f:
             json.dump(list(last_trade_ids), f)
 
-        time.sleep(2)
+        time.sleep(2.5)

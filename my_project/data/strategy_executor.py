@@ -7,7 +7,7 @@ import pandas_ta as ta
 from data.db_handler import create_connection
 
 DB_PATH = "trading_bot.db"
-STRATEGY_CHECK_INTERVAL = 10
+STRATEGY_CHECK_INTERVAL = 3
 COOLDOWN_PERIOD = 60
 last_trade_time = {}
 gui_logger = None
@@ -79,7 +79,6 @@ def place_trade(symbol, volume=0.1):
             return False
     digits = info.digits
     volume = max(info.volume_min, round(volume / info.volume_step) * info.volume_step)
-    log(f"[INFO] Adjusted volume for {symbol}: {volume} (min: {info.volume_min}, step: {info.volume_step})")
     price = tick.ask
     if digits == 3:
         sl = price - 0.10  # 10 pips for JPY pairs
@@ -126,10 +125,8 @@ def place_trade(symbol, volume=0.1):
         return False
 
 symbols = [
-    "EURUSD", "GBPUSD", "USDJPY", "USDCHF", "AUDUSD", "NZDUSD", "USDCAD",
-    "EURJPY", "EURGBP", "GBPJPY", "AUDJPY", "NZDJPY", "CADJPY",
-    "USDZAR", "USDTRY", "USDHKD", "USDSGD", "USDSEK", "USDNOK",
-    "EURZAR", "GBPMXN", "AUDSGD", "CHFJPY"
+    "EURUSD", "USDCHF", "AUDUSD", "USDCAD",
+    "EURJPY", "EURGBP"
 ]
 
 import threading
@@ -151,7 +148,6 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
         time.sleep(1)
 
 def strategy_loop(master_login, master_password, master_server, symbol="EURUSD"):
-    #log(f"[LAUNCH] {symbol} strategy loop running")
     if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
         log(f"[❌] MT5 Init failed: {mt5.last_error()}")
         return
@@ -160,29 +156,22 @@ def strategy_loop(master_login, master_password, master_server, symbol="EURUSD")
     if not strategy or not isinstance(strategy, dict) or len(strategy) == 0:
         log(f"[⚠] No strategy for {symbol}")
         return
-        
 
     evaluator = StrategyEvaluator(strategy)
 
     while True:
         df = get_symbol_data(symbol)
-        if df is not None:
-            if evaluator.evaluate(df):
-                if evaluator.evaluate(df):
-                    if evaluator.evaluate(df):
-                        now = time.time()
-                        if symbol not in last_trade_time or (now - last_trade_time[symbol]) > COOLDOWN_PERIOD:
-                            if place_trade(symbol):
-                                log(f"[✅] Trade placed on {symbol}")
-                                last_trade_time[symbol] = now
-                            else:
-                                    log(f"[❌] Trade placement failed for {symbol}")
-                    else:
-                        log(f"[⏳] Cooldown in place for {symbol}")
+        if df is not None and evaluator.evaluate(df):  # Check if the strategy evaluates
+            now = time.time()
+            if symbol not in last_trade_time or (now - last_trade_time[symbol]) > COOLDOWN_PERIOD:
+                if place_trade(symbol):
+                    log(f"[✅] Trade placed on {symbol}")
+                    last_trade_time[symbol] = now
                 else:
-                    pass#log(f"[🟡] Strategy not met for {symbol}")
+                    log(f"[❌] Trade placement failed for {symbol}")
             else:
-                pass#log(f"[🟡] Strategy not met for {symbol}")
+                log(f"[⏳] Cooldown in place for {symbol}")
         else:
+            # Only log strategy failures when needed
             pass#log(f"[🟡] Strategy not met for {symbol}")
         time.sleep(STRATEGY_CHECK_INTERVAL)

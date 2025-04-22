@@ -22,16 +22,6 @@ def create_account_page(root, account_frame, strategy_frame):
 
     account_frame.configure(bg=BG_COLOR)
 
-    # === Log Display ===
-    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
-    log_frame.pack(pady=10, padx=20, fill='both', expand=True)
-
-    log_label = tk.Label(log_frame, text='Live Logs', font=('Helvetica', 12, 'bold'), fg='white', bg=BG_COLOR)
-    log_label.pack(anchor='w')
-
-    log_text = tk.Text(log_frame, height=10, bg='black', fg='lime', font=('Courier', 9), wrap='word')
-    log_text.pack(fill='both', expand=True)
-
     def log_to_gui(msg):
         log_text.insert(tk.END, msg + '\n')
         log_text.see(tk.END)
@@ -213,7 +203,6 @@ def create_account_page(root, account_frame, strategy_frame):
 
 
     log_text = tk.Text(account_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
-    log_text.pack(pady=10, padx=20, fill="both", expand=True)
 
     # === Slave Accounts Section ===
     slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
@@ -277,11 +266,7 @@ def create_account_page(root, account_frame, strategy_frame):
     log_frame = tk.Frame(account_frame, bg=BG_COLOR)
     log_frame.pack(pady=10, padx=20, fill="both", expand=True)
 
-    log_label = tk.Label(log_frame, text="Live Logs", font=("Helvetica", 12, "bold"), fg="white", bg=BG_COLOR)
-    log_label.pack(anchor="w")
-
     log_text = tk.Text(log_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
-    log_text.pack(fill="both", expand=True)
 
     def log_to_gui(message):
         log_text.insert(tk.END, message + "\n")
@@ -297,3 +282,14 @@ def create_account_page(root, account_frame, strategy_frame):
         command=lambda: show_frame(strategy_frame)
     ).pack(pady=20)
     # This ensures clean logging integration with no duplicates or globals misused
+
+    # === Log Display ===
+    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
+    log_frame.pack(pady=10, padx=20, fill='both', expand=True)
+
+    log_text = tk.Text(log_frame, height=10, bg='black', fg='lime', font=('Courier', 9), wrap='word')
+    log_scrollbar = tk.Scrollbar(log_frame)
+    log_text.config(yscrollcommand=log_scrollbar.set)
+    log_scrollbar.config(command=log_text.yview)
+    log_text.pack(side="left", fill="both", expand=True)
+    log_scrollbar.pack(side="right", fill="y")
