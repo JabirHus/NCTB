@@ -151,23 +151,6 @@ def place_trade(symbol, volume=0.1):
             log(f"[❌] Trade failed: {result.retcode}")
             return False
 
-def monitor_closures():
-    last_checked = datetime.now()
-    while True:
-        time.sleep(3)
-        deals = mt5.history_deals_get(last_checked, datetime.now())
-        if deals:
-            for d in deals:
-                if d.entry == mt5.DEAL_ENTRY_OUT:
-                    reason = d.comment.lower() if d.comment else ""
-                    if "sl" in reason:
-                        log(f"[🛑] SL hit on {d.symbol} @ {d.price}")
-                    elif "tp" in reason:
-                        log(f"[✅] TP hit on {d.symbol} @ {d.price}")
-                    else:
-                        log(f"[😊] Trade manually closed on {d.symbol} @ {d.price}")
-                    active_trades.discard(d.symbol)
-        last_checked = datetime.now()
 
 def strategy_loop_for_all(master_login, master_password, master_server, logger=None):
     global gui_logger
@@ -177,8 +160,6 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
         log(f"[❌] MT5 Init failed: {mt5.last_error()}")
         return
 
-    threading.Thread(target=monitor_closures, daemon=True).start()
-
     for symbol in symbols:
         threading.Thread(
             target=strategy_loop,
@@ -186,6 +167,7 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
             daemon=True
         ).start()
         time.sleep(1)
+
 
 def strategy_loop(master_login, master_password, master_server, symbol="EURUSD"):
     if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):

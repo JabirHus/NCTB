@@ -39,6 +39,7 @@ def copy_master_trades(master, slaves):
 
         master_positions = mt5.positions_get()
         current_master_tickets = set(pos.ticket for pos in master_positions) if master_positions else set()
+        new_copy_logs = []
 
         for pos in master_positions or []:
             ticket = pos.ticket
@@ -69,7 +70,7 @@ def copy_master_trades(master, slaves):
 
                 result = mt5.order_send(request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
-                    log(f"[Copier] ✅ Trade copied to slave {slave['login']} (ticket {result.order})")
+                    new_copy_logs.append(f"[Copier] ✅ Trade copied to slave {slave['login']} (ticket {result.order})")
                     slave_trade_map.setdefault(ticket, {})[slave['login']] = {
                         "ticket": result.order,
                         "symbol": pos.symbol,
@@ -77,11 +78,12 @@ def copy_master_trades(master, slaves):
                         "type": pos.type,
                         "comment": pos.comment
                     }
-                else:
-                    log(f"[❌ Copier] Failed to copy to slave {slave['login']}: {mt5.last_error()}")
 
             copied_this_session.add(ticket)
             last_trade_ids.add(ticket)
+
+        for msg in new_copy_logs:
+            log(msg)
 
         closed_tickets = set(slave_trade_map.keys()) - current_master_tickets
         for ticket in closed_tickets:
@@ -121,7 +123,14 @@ def copy_master_trades(master, slaves):
                         icon = "😊 Manual"
                     log(f"[Copier] {icon} close on slave {login} (ticket {slave_trade['ticket']})")
                 else:
-                    log(f"[❌ Copier] Failed to close trade {slave_trade['ticket']} on slave {login}: {mt5.last_error()}")
+                    time.sleep(1)
+                    retry_result = mt5.order_send(close_request)
+                    if retry_result and retry_result.retcode == mt5.TRADE_RETCODE_DONE:
+                        log(f"[Copier] 🔁 Retry succeeded: trade closed on slave {login} (ticket {slave_trade['ticket']})")
+                    else:
+                        code = retry_result.retcode if retry_result else result.retcode if result else 'N/A'
+                        msg = mt5.last_error()
+                        log(f"[❌ Copier] Failed to close trade {slave_trade['ticket']} on slave {login} after retry: ({code}, '{msg}')")
 
             slave_trade_map.pop(ticket, None)
 
