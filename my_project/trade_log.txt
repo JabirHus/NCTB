@@ -140,3 +140,18 @@
 [2025-04-22 19:50:00] [Copier] 🔻 Trade closed on slave 10686586 (ticket 237757252)
 [2025-04-22 19:50:10] [Copier] 🔻 Trade closed on slave 10686586 (ticket 237757063)
 [2025-04-22 19:50:10] [Copier] 🔻 Trade closed on slave 10686586 (ticket 237757050)
+[2025-04-22 20:01:47] [Copier] Monitoring master account for new trades...
+[2025-04-22 20:01:51] [✅] Trade placed on USDCAD
+[2025-04-22 20:01:53] [Copier] ✅ Trade copied to slave 10686586 (ticket 237770019)
+[2025-04-22 20:01:55] [Copier] ✅ Trade copied to slave 10686586 (ticket 237770037)
+[2025-04-22 20:01:55] [✅] Trade placed on EURJPY
+[2025-04-22 20:02:09] [Copier] ✅ Trade copied to slave 10686586 (ticket 237770400)
+[2025-04-22 20:02:09] [✅] Trade placed on EURGBP
+[2025-04-22 20:02:31] [Copier] 😊 Manual close on slave 10686586 (ticket 237770400)
+[2025-04-22 20:05:17] [Copier] 😊 Manual close on slave 10686586 (ticket 237770037)
+[2025-04-22 20:05:27] [Copier] 😊 Manual close on slave 10686586 (ticket 237770019)
+[2025-04-22 20:06:28] [Copier] Monitoring master account for new trades...
+[2025-04-22 20:06:34] [Copier] ✅ Trade copied to slave 10686586 (ticket 237774564)
+[2025-04-22 20:06:35] [✅] Trade placed on EURJPY
+[2025-04-22 20:08:13] [✅] Trade placed on USDCAD
+[2025-04-22 20:08:17] [Copier] ✅ Trade copied to slave 10686586 (ticket 237776429)
