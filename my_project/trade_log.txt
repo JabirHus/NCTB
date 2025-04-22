@@ -1,0 +1,73 @@
+[2025-04-22 18:37:57] [LOG] Trade recorded in history: EURUSD @ 1.1440299999999999
+[2025-04-22 18:37:57] [✅] Trade placed on EURUSD
+[2025-04-22 18:37:58] [LOG] Trade recorded in history: USDCHF @ 0.81754
+[2025-04-22 18:37:58] [✅] Trade placed on USDCHF
+[2025-04-22 18:38:02] [LOG] Trade recorded in history: USDCHF @ 0.81754
+[2025-04-22 18:38:02] [✅] Trade placed on USDCHF
+[2025-04-22 18:38:04] [LOG] Trade recorded in history: EURJPY @ 161.605
+[2025-04-22 18:38:04] [✅] Trade placed on EURJPY
+[2025-04-22 18:38:05] [LOG] Trade recorded in history: EURGBP @ 0.85716
+[2025-04-22 18:38:05] [✅] Trade placed on EURGBP
+[2025-04-22 18:38:07] [LOG] Trade recorded in history: EURJPY @ 161.607
+[2025-04-22 18:38:07] [✅] Trade placed on EURJPY
+[2025-04-22 18:38:21] [LOG] Trade recorded in history: USDCAD @ 1.38134
+[2025-04-22 18:38:21] [✅] Trade placed on USDCAD
+[2025-04-22 18:39:08] [LOG] Trade recorded in history: AUDUSD @ 0.63837
+[2025-04-22 18:39:08] [✅] Trade placed on AUDUSD
+[2025-04-22 18:48:04] [LOG] Trade recorded in history: EURJPY @ 161.523
+[2025-04-22 18:48:04] [✅] Trade placed on EURJPY
+[2025-04-22 18:53:02] [LOG] Trade recorded in history: USDCHF @ 0.81672
+[2025-04-22 18:53:02] [✅] Trade placed on USDCHF
+[2025-04-22 19:03:41] [LOG] Trade recorded in history: EURUSD @ 1.14426
+[2025-04-22 19:03:41] [✅] Trade placed on EURUSD
+[2025-04-22 19:03:42] [LOG] Trade recorded in history: USDCHF @ 0.81753
+[2025-04-22 19:03:42] [✅] Trade placed on USDCHF
+[2025-04-22 19:03:48] [LOG] Trade recorded in history: EURUSD @ 1.14432
+[2025-04-22 19:03:48] [✅] Trade placed on EURUSD
+[2025-04-22 19:04:14] [LOG] Trade recorded in history: AUDUSD @ 0.63817
+[2025-04-22 19:04:14] [✅] Trade placed on AUDUSD
+[2025-04-22 19:04:44] [LOG] Trade recorded in history: EURGBP @ 0.85755
+[2025-04-22 19:04:44] [✅] Trade placed on EURGBP
+[2025-04-22 19:08:24] [LOG] Trade recorded in history: EURUSD @ 1.14406
+[2025-04-22 19:08:24] [✅] Trade placed on EURUSD
+[2025-04-22 19:08:25] [LOG] Trade recorded in history: USDCHF @ 0.81771
+[2025-04-22 19:08:25] [✅] Trade placed on USDCHF
+[2025-04-22 19:08:33] [LOG] Trade recorded in history: EURGBP @ 0.85736
+[2025-04-22 19:08:33] [✅] Trade placed on EURGBP
+[2025-04-22 19:08:47] [LOG] Trade recorded in history: EURJPY @ 161.55
+[2025-04-22 19:08:47] [✅] Trade placed on EURJPY
+[2025-04-22 19:09:38] [LOG] Trade recorded in history: USDCAD @ 1.38182
+[2025-04-22 19:09:38] [✅] Trade placed on USDCAD
+[2025-04-22 19:09:38] [LOG] Trade recorded in history: AUDUSD @ 0.63847
+[2025-04-22 19:09:38] [✅] Trade placed on AUDUSD
+[2025-04-22 19:12:04] [LOG] Trade recorded in history: EURUSD @ 1.14396
+[2025-04-22 19:12:04] [✅] Trade placed on EURUSD
+[2025-04-22 19:12:05] [LOG] Trade recorded in history: USDCHF @ 0.81792
+[2025-04-22 19:12:05] [✅] Trade placed on USDCHF
+[2025-04-22 19:12:10] [LOG] Trade recorded in history: USDCAD @ 1.38158
+[2025-04-22 19:12:10] [LOG] Trade recorded in history: AUDUSD @ 0.6385
+[2025-04-22 19:12:11] [✅] Trade placed on USDCAD
+[2025-04-22 19:12:11] [✅] Trade placed on AUDUSD
+[2025-04-22 19:12:13] [LOG] Trade recorded in history: EURJPY @ 161.599
+[2025-04-22 19:12:13] [✅] Trade placed on EURJPY
+[2025-04-22 19:12:15] [LOG] Trade recorded in history: EURGBP @ 0.85728
+[2025-04-22 19:12:15] [✅] Trade placed on EURGBP
+[2025-04-22 19:12:38] [LOG] Trade recorded in history: EURJPY @ 161.597
+[2025-04-22 19:12:38] [✅] Trade placed on EURJPY
+[2025-04-22 19:15:27] [LOG] Trade recorded in history: EURUSD @ 1.14401
+[2025-04-22 19:15:27] [✅] Trade placed on EURUSD
+[2025-04-22 19:15:28] [LOG] Trade recorded in history: USDCHF @ 0.81796
+[2025-04-22 19:15:28] [✅] Trade placed on USDCHF
+[2025-04-22 19:15:32] [LOG] Trade recorded in history: AUDUSD @ 0.63858
+[2025-04-22 19:15:33] [✅] Trade placed on AUDUSD
+[2025-04-22 19:15:33] [LOG] Trade recorded in history: USDCAD @ 1.38132
+[2025-04-22 19:15:33] [✅] Trade placed on USDCAD
+[2025-04-22 19:15:34] [LOG] Trade recorded in history: EURJPY @ 161.611
+[2025-04-22 19:15:34] [✅] Trade placed on EURJPY
+[2025-04-22 19:15:35] [LOG] Trade recorded in history: EURGBP @ 0.85737
+[2025-04-22 19:15:35] [✅] Trade placed on EURGBP
+[2025-04-22 19:20:17] [✅] Trade placed on EURUSD
+[2025-04-22 19:20:18] [✅] Trade placed on USDCHF
+[2025-04-22 19:20:22] [✅] Trade placed on USDCAD
+[2025-04-22 19:20:24] [✅] Trade placed on EURJPY
+[2025-04-22 19:20:24] [✅] Trade placed on EURGBP

@@ -57,4 +57,4 @@ def copy_master_trades(master, slaves):
         with open("last_trades.json", "w") as f:
             json.dump(list(last_trade_ids), f)
 
-        time.sleep(2.5)
+        time.sleep(3)
