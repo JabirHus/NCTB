@@ -18,7 +18,7 @@ log_lock = threading.Lock()
 
 symbols = [
     "EURUSD", "USDCHF", "AUDUSD", "USDCAD",
-    "EURJPY", "EURGBP"
+    "EURJPY", "EURGBP", "GBPNZD"
 ]
 
 symbol_locks = {s: threading.Lock() for s in symbols}
@@ -53,18 +53,23 @@ def get_symbol_data(symbol, timeframe=mt5.TIMEFRAME_M1, count=100):
     return df
 
 class StrategyEvaluator:
-    def __init__(self, strategy):
+    def __init__(self, strategy, symbol_name=""):
         self.strategy = strategy
+        self.symbol = symbol_name
 
     def evaluate(self, df):
+        directions = []
         for ind, config in self.strategy.items():
             if not config.get("var", 0):
                 continue
-            if ind == "RSI" and not self.evaluate_rsi(df, config):
-                return False
-            if ind == "MACD" and not self.evaluate_macd(df, config):
-                return False
-        return True
+            dir = None
+            if ind == "RSI":
+                dir = self.evaluate_rsi(df, config)
+            elif ind == "MACD":
+                dir = self.evaluate_macd(df, config)
+            if dir in ("BUY", "SELL"):
+                directions.append(dir)
+        return directions[0] if directions else None
 
     def evaluate_rsi(self, df, config):
         period = int(config["sub_indicators"]["Period"]["value"])
@@ -72,7 +77,12 @@ class StrategyEvaluator:
         oversold = int(config["sub_indicators"]["Oversold"]["value"])
         df.ta.rsi(length=period, append=True)
         rsi_val = df[f"RSI_{period}"].iloc[-1]
-        return rsi_val < undersold or rsi_val > oversold
+        log(f"[RSI Debug] {self.symbol} RSI={rsi_val:.2f} (Thresholds: <{undersold}=BUY, >{oversold}=SELL)")
+        if rsi_val < undersold:
+            return "BUY"
+        elif rsi_val > oversold:
+            return "SELL"
+        return None
 
     def evaluate_macd(self, df, config):
         fast = int(config["sub_indicators"]["Fast EMA"]["value"])
@@ -81,11 +91,17 @@ class StrategyEvaluator:
         df.ta.macd(fast=fast, slow=slow, signal=signal, append=True)
         macd = df[f"MACD_{fast}_{slow}_{signal}"].iloc[-1]
         signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
-        return macd > signal_line
+        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → {'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}")
+        signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
+        if macd > signal_line:
+            return "BUY"
+        elif macd < signal_line:
+            return "SELL"
+        return None
 
-def place_trade(symbol, volume=0.1):
+def place_trade(symbol, volume=0.1, direction_str="BUY"):
     with symbol_locks[symbol]:
-        direction = mt5.ORDER_TYPE_BUY
+        direction = mt5.ORDER_TYPE_BUY if direction_str == "BUY" else mt5.ORDER_TYPE_SELL
 
         if symbol in active_trades:
             return False
@@ -103,14 +119,14 @@ def place_trade(symbol, volume=0.1):
 
         digits = info.digits
         volume = max(info.volume_min, round(volume / info.volume_step) * info.volume_step)
-        price = tick.ask
+        price = tick.ask if direction == mt5.ORDER_TYPE_BUY else tick.bid
 
         if digits == 3:
-            sl = price - 0.10
-            tp = price + 0.20
+            sl = price - 0.10 if direction == mt5.ORDER_TYPE_BUY else price + 0.10
+            tp = price + 0.20 if direction == mt5.ORDER_TYPE_BUY else price - 0.20
         else:
-            sl = price - 0.0010
-            tp = price + 0.0020
+            sl = price - 0.0010 if direction == mt5.ORDER_TYPE_BUY else price + 0.0010
+            tp = price + 0.0020 if direction == mt5.ORDER_TYPE_BUY else price - 0.0020
 
         request = {
             "action": mt5.TRADE_ACTION_DEAL,
@@ -143,14 +159,12 @@ def place_trade(symbol, volume=0.1):
                     (symbol, price, 0.0, 0.0)
                 )
                 conn.close()
-                #log(f"[LOG] Trade recorded in history: {symbol} @ {price}")
             except Exception as e:
                 log(f"[❌ DB] Failed to log trade for {symbol}: {e}")
             return True
         else:
             log(f"[❌] Trade failed: {result.retcode}")
             return False
-
 
 def strategy_loop_for_all(master_login, master_password, master_server, logger=None):
     global gui_logger
@@ -168,7 +182,6 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
         ).start()
         time.sleep(1)
 
-
 def strategy_loop(master_login, master_password, master_server, symbol="EURUSD"):
     if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
         log(f"[❌] MT5 Init failed: {mt5.last_error()}")
@@ -179,11 +192,12 @@ def strategy_loop(master_login, master_password, master_server, symbol="EURUSD")
         log(f"[⚠] No strategy for {symbol}")
         return
 
-    evaluator = StrategyEvaluator(strategy)
+    evaluator = StrategyEvaluator(strategy, symbol)
 
     while True:
         df = get_symbol_data(symbol)
-        if df is not None and evaluator.evaluate(df):
-            if place_trade(symbol):
-                log(f"[✅] Trade placed on {symbol}")
+        if df is not None:
+            direction = evaluator.evaluate(df)
+            if direction and place_trade(symbol, direction_str=direction):
+                log(f"[✅] {direction} trade placed on {symbol}")
         time.sleep(STRATEGY_CHECK_INTERVAL)

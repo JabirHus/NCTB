@@ -213,3 +213,374 @@
 [2025-04-22 21:00:54] [Copier] ✅ Trade copied to slave 10686586 (ticket 237830113)
 [2025-04-22 21:00:54] [✅] Trade placed on USDCHF
 [2025-04-22 21:01:38] [❌ Copier] Failed to close trade 237826692 on slave 10686586 after retry: (10013, '(1, 'Success')')
+[2025-04-30 00:07:25] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:07:29] [Copier] ✅ Trade copied to slave 10686586 (ticket 246414154)
+[2025-04-30 00:07:30] [✅] Trade placed on EURUSD
+[2025-04-30 00:07:31] [✅] Trade placed on USDCHF
+[2025-04-30 00:07:33] [✅] Trade placed on USDCAD
+[2025-04-30 00:07:35] [Copier] ✅ Trade copied to slave 10686586 (ticket 246414627)
+[2025-04-30 00:07:35] [Copier] ✅ Trade copied to slave 10686586 (ticket 246414640)
+[2025-04-30 00:07:35] [✅] Trade placed on EURJPY
+[2025-04-30 00:07:35] [Copier] ✅ Trade copied to slave 10686586 (ticket 246414655)
+[2025-04-30 00:07:45] [Copier] ✅ Trade copied to slave 10686586 (ticket 246415035)
+[2025-04-30 00:07:45] [✅] Trade placed on AUDUSD
+[2025-04-30 00:10:30] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:10:33] [Copier] ✅ Trade copied to slave 10686586 (ticket 246417272)
+[2025-04-30 00:10:33] [✅] Trade placed on EURUSD
+lave 10686586 (ticket 246417275)
+[2025-04-30 00:10:34] [✅] Trade placed on USDCHF
+[2025-04-30 00:10:35] [✅] Trade placed on AUDUSD
+[2025-04-30 00:10:36] [✅] Trade placed on USDCAD
+[2025-04-30 00:10:37] [✅] Trade placed on EURJPY
+[2025-04-30 00:10:39] [Copier] ✅ Trade copied to slave 10686586 (ticket 246417391)
+[2025-04-30 00:10:39] [Copier] ✅ Trade copied to slave 10686586 (ticket 246417394)
+[2025-04-30 00:10:39] [Copier] ✅ Trade copied to slave 10686586 (ticket 246417397)
+[2025-04-30 00:12:13] [Copier] ✅ Trade copied to slave 10686586 (ticket 246419263)
+[2025-04-30 00:12:13] [✅] Trade placed on GBPNZD
+slave 10686586 (ticket 246417394)
+[2025-04-30 00:12:13] [Copier] 😊 Manual close on slave 10686586 (ticket 246417397)
+[2025-04-30 00:12:13] [Copier] 😊 Manual close on slave 10686586 (ticket 246417272)
+[2025-04-30 00:12:14] [Copier] 😊 Manual close on slave 10686586 (ticket 246417391)
+[2025-04-30 00:12:14] [Copier] 😊 Manual close on slave 10686586 (ticket 246417275)
+[2025-04-30 00:12:35] [Copier] 😊 Manual close on slave 10686586 (ticket 246419263)
+[2025-04-30 00:16:14] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:19:18] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:19:25] [Copier] ✅ Trade copied to slave 10686586 (ticket 246426361)
+[2025-04-30 00:19:25] [✅] BUY trade placed on EURJPY
+[2025-04-30 00:19:28] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:19:31] [Copier] ✅ Trade copied to slave 10686586 (ticket 246426573)
+[2025-04-30 00:19:45] [Copier] 😊 Manual close on slave 10686586 (ticket 246426361)
+[2025-04-30 00:19:45] [Copier] 😊 Manual close on slave 10686586 (ticket 246426573)
+[2025-04-30 00:26:35] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:26:37] [RSI Debug] RSI=40.45 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:38] [RSI Debug] RSI=57.54 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:39] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:40] [RSI Debug] RSI=51.42 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:41] [RSI Debug] RSI=45.20 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:41] [RSI Debug] RSI=40.03 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:42] [RSI Debug] RSI=58.59 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:42] [RSI Debug] RSI=35.82 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:43] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:43] [RSI Debug] RSI=23.38 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:44] [✅] BUY trade placed on EURGBP
+[2025-04-30 00:26:44] [RSI Debug] RSI=51.42 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:45] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:26:47] [Copier] ✅ Trade copied to slave 10686586 (ticket 246431053)
+[2025-04-30 00:26:47] [Copier] ✅ Trade copied to slave 10686586 (ticket 246431054)
+[2025-04-30 00:26:47] [RSI Debug] RSI=40.03 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:47] [RSI Debug] RSI=58.59 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:47] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:48] [RSI Debug] RSI=35.82 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:48] [RSI Debug] RSI=51.42 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:49] [RSI Debug] RSI=25.95 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:51] [RSI Debug] RSI=46.85 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:52] [RSI Debug] RSI=40.03 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:52] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:52] [RSI Debug] RSI=35.82 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:52] [RSI Debug] RSI=58.59 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:52] [RSI Debug] RSI=50.65 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:53] [RSI Debug] RSI=26.73 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=40.88 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=56.99 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=35.82 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=43.08 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:56] [RSI Debug] RSI=47.16 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:26:57] [RSI Debug] RSI=24.34 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=38.82 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=58.07 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=38.73 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=33.68 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:00] [RSI Debug] RSI=47.17 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:01] [RSI Debug] RSI=25.94 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:01] [✅] BUY trade placed on EURUSD
+[2025-04-30 00:27:01] [✅] BUY trade placed on EURJPY
+[2025-04-30 00:27:05] [Copier] ✅ Trade copied to slave 10686586 (ticket 246431192)
+[2025-04-30 00:27:05] [RSI Debug] RSI=33.68 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [Copier] ✅ Trade copied to slave 10686586 (ticket 246431193)
+[2025-04-30 00:27:05] [RSI Debug] RSI=26.78 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [RSI Debug] RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [RSI Debug] RSI=38.81 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [RSI Debug] RSI=58.13 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [RSI Debug] RSI=47.17 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:27:05] [RSI Debug] RSI=38.44 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:54] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:29:54] [RSI Debug] RSI=40.11 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:55] [RSI Debug] RSI=53.35 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:56] [RSI Debug] RSI=51.88 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:57] [RSI Debug] RSI=55.40 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:58] [RSI Debug] RSI=43.98 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:58] [RSI Debug] RSI=40.11 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:59] [RSI Debug] RSI=53.35 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:29:59] [RSI Debug] RSI=31.29 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:00] [RSI Debug] RSI=51.87 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:00] [RSI Debug] RSI=24.77 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:00] [✅] BUY trade placed on EURGBP
+[2025-04-30 00:30:01] [RSI Debug] RSI=55.40 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:01] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:30:02] [RSI Debug] RSI=48.34 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:02] [RSI Debug] RSI=40.11 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:03] [RSI Debug] RSI=54.00 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:04] [Copier] ✅ Trade copied to slave 10686586 (ticket 246433217)
+[2025-04-30 00:30:04] [RSI Debug] RSI=51.87 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:04] [Copier] ✅ Trade copied to slave 10686586 (ticket 246433219)
+[2025-04-30 00:30:04] [RSI Debug] RSI=32.76 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:05] [RSI Debug] RSI=55.40 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:05] [RSI Debug] RSI=29.28 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:06] [RSI Debug] RSI=48.70 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:06] [RSI Debug] RSI=40.11 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:07] [RSI Debug] RSI=54.00 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:08] [RSI Debug] RSI=51.87 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:09] [RSI Debug] RSI=32.76 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:09] [RSI Debug] RSI=55.40 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:09] [RSI Debug] RSI=28.89 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:10] [RSI Debug] RSI=49.06 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:10] [RSI Debug] RSI=40.11 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:11] [RSI Debug] RSI=54.00 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:13] [RSI Debug] RSI=56.17 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:13] [RSI Debug] RSI=34.18 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:13] [RSI Debug] RSI=53.71 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:13] [RSI Debug] RSI=28.89 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:14] [RSI Debug] RSI=52.09 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:30:14] [RSI Debug] RSI=42.97 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:34] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:32:34] [RSI Debug] EURUSD RSI=44.54 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:35] [RSI Debug] USDCHF RSI=46.91 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:36] [RSI Debug] AUDUSD RSI=52.92 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:37] [RSI Debug] USDCAD RSI=52.37 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:38] [RSI Debug] EURJPY RSI=44.65 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:38] [RSI Debug] EURUSD RSI=45.28 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:39] [RSI Debug] USDCHF RSI=45.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:39] [RSI Debug] EURGBP RSI=42.21 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:40] [RSI Debug] AUDUSD RSI=52.92 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:40] [RSI Debug] GBPNZD RSI=22.56 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:41] [RSI Debug] USDCAD RSI=52.37 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:41] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:32:42] [RSI Debug] EURJPY RSI=43.86 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:42] [RSI Debug] EURUSD RSI=45.28 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:44] [Copier] ✅ Trade copied to slave 10686586 (ticket 246434415)
+[2025-04-30 00:32:43] [RSI Debug] USDCHF RSI=45.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:44] [RSI Debug] AUDUSD RSI=52.92 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:44] [RSI Debug] EURGBP RSI=43.10 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:45] [RSI Debug] USDCAD RSI=52.37 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:45] [RSI Debug] GBPNZD RSI=22.56 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:46] [RSI Debug] EURJPY RSI=46.15 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:46] [RSI Debug] EURUSD RSI=45.28 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] USDCAD RSI=53.23 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] AUDUSD RSI=52.92 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] USDCHF RSI=46.20 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] EURGBP RSI=42.21 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] GBPNZD RSI=23.34 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] EURJPY RSI=45.79 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:32:50] [RSI Debug] EURUSD RSI=44.54 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:02] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:37:02] [RSI Debug] EURUSD RSI=53.04 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:03] [RSI Debug] USDCHF RSI=49.90 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:04] [RSI Debug] AUDUSD RSI=55.88 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:05] [RSI Debug] USDCAD RSI=44.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:06] [RSI Debug] EURJPY RSI=56.15 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:07] [RSI Debug] EURUSD RSI=47.64 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:07] [RSI Debug] USDCHF RSI=52.78 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:07] [RSI Debug] EURGBP RSI=46.13 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:08] [RSI Debug] AUDUSD RSI=55.88 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:08] [RSI Debug] GBPNZD RSI=25.84 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:09] [RSI Debug] USDCAD RSI=44.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:10] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:37:10] [RSI Debug] EURJPY RSI=56.50 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:11] [RSI Debug] EURUSD RSI=48.25 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:13] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437065)
+[2025-04-30 00:37:13] [RSI Debug] AUDUSD RSI=55.88 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:13] [RSI Debug] EURGBP RSI=46.13 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:13] [RSI Debug] USDCHF RSI=52.09 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:13] [RSI Debug] USDCAD RSI=44.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:14] [RSI Debug] GBPNZD RSI=27.05 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:14] [RSI Debug] EURJPY RSI=56.50 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:15] [RSI Debug] EURUSD RSI=48.25 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:17] [RSI Debug] AUDUSD RSI=57.02 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:18] [RSI Debug] USDCAD RSI=44.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:18] [RSI Debug] EURGBP RSI=46.13 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:18] [RSI Debug] USDCHF RSI=52.09 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:18] [RSI Debug] GBPNZD RSI=31.22 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:18] [RSI Debug] EURJPY RSI=53.23 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:19] [RSI Debug] EURUSD RSI=49.53 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] GBPNZD RSI=30.83 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] AUDUSD RSI=59.46 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] USDCAD RSI=44.47 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] EURGBP RSI=44.98 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] USDCHF RSI=52.09 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:22] [RSI Debug] EURJPY RSI=53.85 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:37:23] [RSI Debug] EURUSD RSI=50.19 (Thresholds: <40=BUY, >60=SELL)
+[2025-04-30 00:38:09] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:38:11] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437624)
+[2025-04-30 00:38:13] [✅] BUY trade placed on EURUSD
+[2025-04-30 00:38:13] [✅] SELL trade placed on USDCHF
+[2025-04-30 00:38:14] [✅] BUY trade placed on AUDUSD
+[2025-04-30 00:38:14] [✅] SELL trade placed on USDCAD
+[2025-04-30 00:38:15] [✅] BUY trade placed on EURJPY
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437721)
+[2025-04-30 00:38:18] [✅] BUY trade placed on EURGBP
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437722)
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437723)
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437724)
+[2025-04-30 00:38:18] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437725)
+[2025-04-30 00:38:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246437726)
+[2025-04-30 00:41:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246437725)
+[2025-04-30 00:41:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246437726)
+[2025-04-30 00:41:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246437723)
+[2025-04-30 00:41:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246437721)
+[2025-04-30 00:41:54] [Copier] 😊 Manual close on slave 10686586 (ticket 246437722)
+[2025-04-30 00:41:54] [Copier] 😊 Manual close on slave 10686586 (ticket 246437624)
+[2025-04-30 00:41:54] [Copier] 😊 Manual close on slave 10686586 (ticket 246437724)
+[2025-04-30 00:42:20] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:42:20] [MACD Debug] EURUSD MACD=0.00004, Signal=0.00001 → BUY
+[2025-04-30 00:42:22] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440824)
+[2025-04-30 00:42:21] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:42:23] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:42:23] [✅] BUY trade placed on EURUSD
+[2025-04-30 00:42:24] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:42:24] [✅] SELL trade placed on USDCHF
+[2025-04-30 00:42:24] [✅] BUY trade placed on AUDUSD
+[2025-04-30 00:42:25] [MACD Debug] EURJPY MACD=0.00815, Signal=0.00020 → BUY
+[2025-04-30 00:42:25] [✅] SELL trade placed on USDCAD
+[2025-04-30 00:42:26] [MACD Debug] EURGBP MACD=-0.00001, Signal=-0.00002 → BUY
+[2025-04-30 00:42:26] [✅] BUY trade placed on EURJPY
+[2025-04-30 00:42:30] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440901)
+[2025-04-30 00:42:28] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:42:30] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440917)
+[2025-04-30 00:42:30] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440941)
+[2025-04-30 00:42:30] [✅] BUY trade placed on EURGBP
+[2025-04-30 00:42:30] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440955)
+[2025-04-30 00:42:30] [Copier] ✅ Trade copied to slave 10686586 (ticket 246440957)
+[2025-04-30 00:42:30] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:42:30] [MACD Debug] EURUSD MACD=0.00004, Signal=0.00001 → BUY
+[2025-04-30 00:42:30] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:42:30] [MACD Debug] GBPNZD MACD=-0.00033, Signal=-0.00039 → BUY
+[2025-04-30 00:42:30] [MACD Debug] EURJPY MACD=0.00815, Signal=0.00020 → BUY
+[2025-04-30 00:42:31] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:42:36] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441019)
+[2025-04-30 00:42:36] [MACD Debug] EURJPY MACD=0.00823, Signal=0.00022 → BUY
+[2025-04-30 00:42:36] [MACD Debug] GBPNZD MACD=-0.00033, Signal=-0.00039 → BUY
+[2025-04-30 00:42:36] [MACD Debug] EURGBP MACD=-0.00001, Signal=-0.00002 → BUY
+[2025-04-30 00:42:36] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:42:36] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:42:36] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:42:36] [MACD Debug] EURUSD MACD=0.00004, Signal=0.00001 → BUY
+[2025-04-30 00:42:40] [MACD Debug] EURGBP MACD=-0.00001, Signal=-0.00002 → BUY
+[2025-04-30 00:42:41] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:42:41] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:42:41] [MACD Debug] EURJPY MACD=0.00831, Signal=0.00024 → BUY
+[2025-04-30 00:42:41] [MACD Debug] EURUSD MACD=0.00004, Signal=0.00001 → BUY
+[2025-04-30 00:42:41] [MACD Debug] GBPNZD MACD=-0.00032, Signal=-0.00038 → BUY
+[2025-04-30 00:42:41] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:42:46] [Copier] 😊 Manual close on slave 10686586 (ticket 246440901)
+[2025-04-30 00:42:45] [MACD Debug] EURGBP MACD=-0.00001, Signal=-0.00002 → BUY
+[2025-04-30 00:42:46] [Copier] 😊 Manual close on slave 10686586 (ticket 246440824)
+[2025-04-30 00:42:46] [Copier] 😊 Manual close on slave 10686586 (ticket 246440917)
+[2025-04-30 00:42:46] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:42:46] [Copier] 😊 Manual close on slave 10686586 (ticket 246440957)
+[2025-04-30 00:42:46] [MACD Debug] EURJPY MACD=0.00847, Signal=0.00027 → BUY
+[2025-04-30 00:42:46] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:42:46] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:42:46] [MACD Debug] EURUSD MACD=0.00004, Signal=0.00001 → BUY
+[2025-04-30 00:42:46] [MACD Debug] GBPNZD MACD=-0.00032, Signal=-0.00038 → BUY
+[2025-04-30 00:42:47] [❌ Copier] Failed to close trade 246440941 on slave 10686586 after retry: (10013, '(1, 'Success')')
+[2025-04-30 00:42:47] [Copier] 😊 Manual close on slave 10686586 (ticket 246441019)
+[2025-04-30 00:42:48] [Copier] 😊 Manual close on slave 10686586 (ticket 246440955)
+[2025-04-30 00:43:12] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:43:12] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:15] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441449)
+[2025-04-30 00:43:15] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:43:15] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:15] [✅] BUY trade placed on EURUSD
+[2025-04-30 00:43:16] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:16] [✅] SELL trade placed on USDCHF
+[2025-04-30 00:43:16] [✅] BUY trade placed on AUDUSD
+[2025-04-30 00:43:17] [MACD Debug] EURJPY MACD=0.01073, Signal=0.00231 → BUY
+[2025-04-30 00:43:17] [✅] SELL trade placed on USDCAD
+[2025-04-30 00:43:18] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:18] [✅] BUY trade placed on EURJPY
+[2025-04-30 00:43:19] [MACD Debug] GBPNZD MACD=-0.00027, Signal=-0.00036 → BUY
+[2025-04-30 00:43:19] [✅] BUY trade placed on EURGBP
+[2025-04-30 00:43:20] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441488)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441489)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441492)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441493)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441495)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441496)
+[2025-04-30 00:43:21] [Copier] ✅ Trade copied to slave 10686586 (ticket 246441498)
+[2025-04-30 00:43:20] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:43:20] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:21] [✅] BUY trade placed on GBPNZD
+[2025-04-30 00:43:21] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:22] [MACD Debug] EURJPY MACD=0.01081, Signal=0.00233 → BUY
+[2025-04-30 00:43:23] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:25] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:25] [MACD Debug] GBPNZD MACD=-0.00027, Signal=-0.00036 → BUY
+[2025-04-30 00:43:26] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:26] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:26] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:26] [MACD Debug] EURJPY MACD=0.01089, Signal=0.00234 → BUY
+[2025-04-30 00:43:27] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:30] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:30] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:30] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:30] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:30] [MACD Debug] GBPNZD MACD=-0.00027, Signal=-0.00036 → BUY
+[2025-04-30 00:43:30] [MACD Debug] EURJPY MACD=0.01057, Signal=0.00228 → BUY
+[2025-04-30 00:43:31] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:34] [MACD Debug] USDCHF MACD=-0.00003, Signal=-0.00002 → SELL
+[2025-04-30 00:43:34] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:34] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:34] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:34] [MACD Debug] GBPNZD MACD=-0.00027, Signal=-0.00036 → BUY
+[2025-04-30 00:43:34] [MACD Debug] EURJPY MACD=0.01057, Signal=0.00228 → BUY
+[2025-04-30 00:43:35] [MACD Debug] EURGBP MACD=0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:38] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:38] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:38] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:38] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:38] [MACD Debug] GBPNZD MACD=-0.00028, Signal=-0.00036 → BUY
+[2025-04-30 00:43:38] [MACD Debug] EURJPY MACD=0.01089, Signal=0.00234 → BUY
+[2025-04-30 00:43:39] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:42] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:42] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:42] [MACD Debug] GBPNZD MACD=-0.00028, Signal=-0.00036 → BUY
+[2025-04-30 00:43:42] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:42] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:42] [MACD Debug] EURJPY MACD=0.01073, Signal=0.00231 → BUY
+[2025-04-30 00:43:43] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:46] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:46] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:46] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:46] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:46] [MACD Debug] GBPNZD MACD=-0.00028, Signal=-0.00036 → BUY
+[2025-04-30 00:43:46] [MACD Debug] EURJPY MACD=0.01073, Signal=0.00231 → BUY
+[2025-04-30 00:43:47] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:51] [Copier] 😊 Manual close on slave 10686586 (ticket 246441498)
+[2025-04-30 00:43:51] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:51] [Copier] 😊 Manual close on slave 10686586 (ticket 246441488)
+[2025-04-30 00:43:51] [Copier] 😊 Manual close on slave 10686586 (ticket 246441489)
+[2025-04-30 00:43:51] [MACD Debug] EURJPY MACD=0.01073, Signal=0.00231 → BUY
+[2025-04-30 00:43:51] [Copier] 😊 Manual close on slave 10686586 (ticket 246441492)
+[2025-04-30 00:43:51] [Copier] 😊 Manual close on slave 10686586 (ticket 246441493)
+[2025-04-30 00:43:51] [MACD Debug] GBPNZD MACD=-0.00028, Signal=-0.00036 → BUY
+[2025-04-30 00:43:51] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:51] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:51] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:51] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:43:53] [❌ Copier] Failed to close trade 246441449 on slave 10686586 after retry: (10013, '(1, 'Success')')
+[2025-04-30 00:43:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246441495)
+[2025-04-30 00:43:53] [Copier] 😊 Manual close on slave 10686586 (ticket 246441496)
+[2025-04-30 00:43:55] [MACD Debug] USDCAD MACD=-0.00004, Signal=-0.00003 → SELL
+[2025-04-30 00:43:55] [MACD Debug] EURJPY MACD=0.01113, Signal=0.00239 → BUY
+[2025-04-30 00:43:56] [MACD Debug] EURUSD MACD=0.00005, Signal=0.00002 → BUY
+[2025-04-30 00:43:56] [MACD Debug] GBPNZD MACD=-0.00027, Signal=-0.00036 → BUY
+[2025-04-30 00:43:56] [MACD Debug] USDCHF MACD=-0.00004, Signal=-0.00002 → SELL
+[2025-04-30 00:43:56] [MACD Debug] AUDUSD MACD=0.00005, Signal=0.00004 → BUY
+[2025-04-30 00:43:56] [MACD Debug] EURGBP MACD=-0.00000, Signal=-0.00002 → BUY
+[2025-04-30 00:44:22] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:48:59] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:49:29] [Copier] Monitoring master account for new trades...
