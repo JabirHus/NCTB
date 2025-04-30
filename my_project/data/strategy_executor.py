@@ -67,6 +67,10 @@ class StrategyEvaluator:
                 dir = self.evaluate_rsi(df, config)
             elif ind == "MACD":
                 dir = self.evaluate_macd(df, config)
+            elif ind == "Bollinger Bands":
+                dir = self.evaluate_bollinger(df, config)
+            elif ind == "Stochastic Oscillator":
+                dir = self.evaluate_stochastic(df, config)
             if dir in ("BUY", "SELL"):
                 directions.append(dir)
         return directions[0] if directions else None
@@ -92,10 +96,40 @@ class StrategyEvaluator:
         macd = df[f"MACD_{fast}_{slow}_{signal}"].iloc[-1]
         signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
         log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → {'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}")
-        signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
         if macd > signal_line:
             return "BUY"
         elif macd < signal_line:
+            return "SELL"
+        return None
+
+    def evaluate_bollinger(self, df, config):
+        period = int(config["sub_indicators"]["Period"]["value"])
+        deviation = int(config["sub_indicators"]["Deviation"]["value"])
+        shift = int(config["sub_indicators"]["Shift"]["value"])
+        df.ta.bbands(length=period, std=deviation, append=True)
+        close = df["close"].iloc[-1]
+        upper = df[f"BBU_{period}_{deviation}.0"].iloc[-1]
+        lower = df[f"BBL_{period}_{deviation}.0"].iloc[-1]
+        log(f"[BB Debug] {self.symbol} Close={close:.5f}, Upper={upper:.5f}, Lower={lower:.5f}")
+        if close < lower:
+            return "BUY"
+        elif close > upper:
+            return "SELL"
+        return None
+
+    def evaluate_stochastic(self, df, config):
+        k_period = int(config["sub_indicators"]["%K Period"]["value"])
+        d_period = int(config["sub_indicators"]["%D Period"]["value"])
+        slowing = int(config["sub_indicators"]["Slowing"]["value"])
+        df.ta.stoch(k=k_period, d=d_period, smooth_k=slowing, append=True)
+        k_col = f"STOCHk_{k_period}_{d_period}_{slowing}"
+        d_col = f"STOCHd_{k_period}_{d_period}_{slowing}"
+        k_val = df[k_col].iloc[-1]
+        d_val = df[d_col].iloc[-1]
+        log(f"[Stoch Debug] {self.symbol} %K={k_val:.2f}, %D={d_val:.2f} → {'BUY' if k_val < 20 else 'SELL' if k_val > 80 else 'NO TRADE'}")
+        if k_val < 20:
+            return "BUY"
+        elif k_val > 80:
             return "SELL"
         return None
 

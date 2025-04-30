@@ -584,3 +584,397 @@ slave 10686586 (ticket 246417394)
 [2025-04-30 00:44:22] [Copier] Monitoring master account for new trades...
 [2025-04-30 00:48:59] [Copier] Monitoring master account for new trades...
 [2025-04-30 00:49:29] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:52:52] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:52:52] [BB Debug] EURUSD Close=1.13860, Upper=1.13937, Lower=1.13862
+[2025-04-30 00:52:54] [Copier] ✅ Trade copied to slave 10686586 (ticket 246447245)
+[2025-04-30 00:52:55] [BB Debug] AUDUSD Close=0.63836, Upper=0.63860, Lower=0.63834
+[2025-04-30 00:52:55] [✅] BUY trade placed on EURUSD
+[2025-04-30 00:52:56] [BB Debug] USDCAD Close=1.38278, Upper=1.38294, Lower=1.38258
+[2025-04-30 00:52:57] [BB Debug] EURJPY Close=161.94000, Upper=162.00090, Lower=161.92600
+[2025-04-30 00:52:58] [BB Debug] EURGBP Close=0.84916, Upper=0.84948, Lower=0.84915
+[2025-04-30 00:52:59] [BB Debug] USDCHF Close=0.82378, Upper=0.82380, Lower=0.82339
+[2025-04-30 00:52:59] [BB Debug] AUDUSD Close=0.63837, Upper=0.63860, Lower=0.63834
+[2025-04-30 00:52:59] [BB Debug] EURUSD Close=1.13861, Upper=1.13937, Lower=1.13863
+[2025-04-30 00:52:59] [BB Debug] GBPNZD Close=2.25892, Upper=2.25931, Lower=2.25770
+[2025-04-30 00:53:00] [BB Debug] USDCAD Close=1.38278, Upper=1.38294, Lower=1.38258
+[2025-04-30 00:53:01] [BB Debug] EURJPY Close=161.94200, Upper=162.00069, Lower=161.92651
+[2025-04-30 00:53:02] [BB Debug] EURGBP Close=0.84917, Upper=0.84948, Lower=0.84913
+[2025-04-30 00:53:03] [BB Debug] USDCHF Close=0.82379, Upper=0.82383, Lower=0.82338
+[2025-04-30 00:53:03] [BB Debug] EURUSD Close=1.13861, Upper=1.13938, Lower=1.13857
+[2025-04-30 00:53:03] [BB Debug] AUDUSD Close=0.63836, Upper=0.63860, Lower=0.63833
+[2025-04-30 00:53:03] [BB Debug] GBPNZD Close=2.25892, Upper=2.25936, Lower=2.25772
+[2025-04-30 00:53:04] [BB Debug] USDCAD Close=1.38280, Upper=1.38293, Lower=1.38259
+[2025-04-30 00:53:05] [BB Debug] EURJPY Close=161.94500, Upper=162.00051, Lower=161.92699
+[2025-04-30 00:53:06] [BB Debug] EURGBP Close=0.84917, Upper=0.84948, Lower=0.84913
+[2025-04-30 00:53:07] [BB Debug] USDCHF Close=0.82377, Upper=0.82383, Lower=0.82338
+[2025-04-30 00:53:07] [BB Debug] EURUSD Close=1.13861, Upper=1.13938, Lower=1.13857
+[2025-04-30 00:53:07] [BB Debug] GBPNZD Close=2.25878, Upper=2.25934, Lower=2.25772
+[2025-04-30 00:53:07] [BB Debug] AUDUSD Close=0.63838, Upper=0.63860, Lower=0.63834
+[2025-04-30 00:53:08] [BB Debug] USDCAD Close=1.38280, Upper=1.38293, Lower=1.38259
+[2025-04-30 00:53:09] [BB Debug] EURJPY Close=161.94800, Upper=162.00037, Lower=161.92743
+[2025-04-30 00:53:10] [BB Debug] EURGBP Close=0.84917, Upper=0.84948, Lower=0.84913
+[2025-04-30 00:53:11] [BB Debug] USDCHF Close=0.82376, Upper=0.82383, Lower=0.82338
+[2025-04-30 00:53:11] [BB Debug] GBPNZD Close=2.25882, Upper=2.25935, Lower=2.25772
+[2025-04-30 00:53:11] [BB Debug] EURUSD Close=1.13861, Upper=1.13938, Lower=1.13857
+[2025-04-30 00:53:11] [BB Debug] AUDUSD Close=0.63839, Upper=0.63859, Lower=0.63834
+[2025-04-30 00:53:12] [BB Debug] USDCAD Close=1.38280, Upper=1.38293, Lower=1.38259
+[2025-04-30 00:53:13] [BB Debug] EURJPY Close=161.93900, Upper=162.00091, Lower=161.92599
+[2025-04-30 00:53:14] [BB Debug] EURGBP Close=0.84918, Upper=0.84948, Lower=0.84913
+[2025-04-30 00:53:15] [BB Debug] USDCHF Close=0.82376, Upper=0.82383, Lower=0.82338
+[2025-04-30 00:53:15] [BB Debug] GBPNZD Close=2.25882, Upper=2.25935, Lower=2.25772
+[2025-04-30 00:53:15] [BB Debug] AUDUSD Close=0.63839, Upper=0.63859, Lower=0.63834
+[2025-04-30 00:53:15] [BB Debug] EURUSD Close=1.13861, Upper=1.13938, Lower=1.13857
+[2025-04-30 00:53:16] [BB Debug] USDCAD Close=1.38279, Upper=1.38293, Lower=1.38259
+[2025-04-30 00:53:17] [BB Debug] EURJPY Close=161.94800, Upper=162.00037, Lower=161.92743
+[2025-04-30 00:53:18] [BB Debug] EURGBP Close=0.84917, Upper=0.84948, Lower=0.84913
+[2025-04-30 00:53:19] [BB Debug] USDCHF Close=0.82380, Upper=0.82383, Lower=0.82338
+[2025-04-30 00:53:19] [BB Debug] AUDUSD Close=0.63839, Upper=0.63859, Lower=0.63834
+[2025-04-30 00:53:19] [BB Debug] GBPNZD Close=2.25871, Upper=2.25933, Lower=2.25772
+[2025-04-30 00:53:19] [BB Debug] EURUSD Close=1.13861, Upper=1.13938, Lower=1.13857
+[2025-04-30 00:53:20] [BB Debug] USDCAD Close=1.38279, Upper=1.38293, Lower=1.38259
+[2025-04-30 00:54:19] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:54:19] [BB Debug] EURUSD Close=1.13858, Upper=1.13941, Lower=1.13850
+[2025-04-30 00:54:20] [BB Debug] USDCHF Close=0.82381, Upper=0.82387, Lower=0.82337
+[2025-04-30 00:54:21] [BB Debug] AUDUSD Close=0.63836, Upper=0.63860, Lower=0.63832
+[2025-04-30 00:54:22] [BB Debug] USDCAD Close=1.38281, Upper=1.38294, Lower=1.38259
+[2025-04-30 00:54:23] [BB Debug] EURJPY Close=161.96600, Upper=161.99896, Lower=161.93234
+[2025-04-30 00:54:23] [BB Debug] EURUSD Close=1.13861, Upper=1.13940, Lower=1.13851
+[2025-04-30 00:54:24] [BB Debug] USDCHF Close=0.82377, Upper=0.82386, Lower=0.82338
+[2025-04-30 00:54:24] [BB Debug] EURGBP Close=0.84918, Upper=0.84948, Lower=0.84911
+[2025-04-30 00:54:25] [BB Debug] AUDUSD Close=0.63838, Upper=0.63860, Lower=0.63833
+[2025-04-30 00:54:25] [BB Debug] GBPNZD Close=2.25873, Upper=2.25936, Lower=2.25778
+[2025-04-30 00:54:26] [BB Debug] USDCAD Close=1.38279, Upper=1.38294, Lower=1.38259
+[2025-04-30 00:54:27] [BB Debug] EURJPY Close=161.97000, Upper=161.99921, Lower=161.93249
+[2025-04-30 00:54:27] [BB Debug] EURUSD Close=1.13862, Upper=1.13940, Lower=1.13851
+[2025-04-30 00:54:28] [BB Debug] USDCHF Close=0.82377, Upper=0.82386, Lower=0.82338
+[2025-04-30 00:54:28] [BB Debug] EURGBP Close=0.84918, Upper=0.84948, Lower=0.84911
+[2025-04-30 00:54:29] [BB Debug] AUDUSD Close=0.63837, Upper=0.63860, Lower=0.63833
+[2025-04-30 00:54:29] [BB Debug] GBPNZD Close=2.25877, Upper=2.25936, Lower=2.25778
+[2025-04-30 00:54:30] [BB Debug] USDCAD Close=1.38279, Upper=1.38294, Lower=1.38259
+[2025-04-30 00:54:31] [BB Debug] EURJPY Close=161.97000, Upper=161.99921, Lower=161.93249
+[2025-04-30 00:54:31] [BB Debug] EURUSD Close=1.13863, Upper=1.13940, Lower=1.13851
+[2025-04-30 00:54:32] [BB Debug] USDCHF Close=0.82377, Upper=0.82386, Lower=0.82338
+[2025-04-30 00:54:32] [BB Debug] EURGBP Close=0.84918, Upper=0.84948, Lower=0.84911
+[2025-04-30 00:54:33] [BB Debug] AUDUSD Close=0.63837, Upper=0.63860, Lower=0.63833
+[2025-04-30 00:54:33] [BB Debug] GBPNZD Close=2.25883, Upper=2.25937, Lower=2.25778
+[2025-04-30 00:54:34] [BB Debug] USDCAD Close=1.38280, Upper=1.38294, Lower=1.38259
+[2025-04-30 00:54:35] [BB Debug] EURJPY Close=161.96800, Upper=161.99907, Lower=161.93243
+[2025-04-30 00:54:35] [BB Debug] EURUSD Close=1.13863, Upper=1.13940, Lower=1.13851
+[2025-04-30 00:54:36] [BB Debug] USDCHF Close=0.82377, Upper=0.82386, Lower=0.82338
+[2025-04-30 00:54:36] [BB Debug] EURGBP Close=0.84919, Upper=0.84948, Lower=0.84911
+[2025-04-30 00:54:37] [BB Debug] AUDUSD Close=0.63838, Upper=0.63860, Lower=0.63833
+[2025-04-30 00:54:37] [BB Debug] GBPNZD Close=2.25880, Upper=2.25936, Lower=2.25778
+[2025-04-30 00:58:17] [Copier] Monitoring master account for new trades...
+[2025-04-30 00:59:43] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:00:02] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:02:03] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:02:03] [Stoch Debug] EURUSD %K=74.31, %D=76.63 → NO TRADE
+[2025-04-30 01:02:04] [Stoch Debug] USDCHF %K=30.80, %D=26.80 → NO TRADE
+[2025-04-30 01:02:05] [Stoch Debug] AUDUSD %K=80.20, %D=83.97 → SELL
+[2025-04-30 01:02:06] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:06] [✅] SELL trade placed on AUDUSD
+[2025-04-30 01:02:07] [Stoch Debug] EURJPY %K=18.10, %D=28.88 → BUY
+[2025-04-30 01:02:07] [Stoch Debug] EURUSD %K=71.28, %D=75.62 → NO TRADE
+[2025-04-30 01:02:10] [Copier] ✅ Trade copied to slave 10686586 (ticket 246451907)
+[2025-04-30 01:02:10] [Copier] ✅ Trade copied to slave 10686586 (ticket 246451908)
+[2025-04-30 01:02:10] [Stoch Debug] USDCHF %K=30.80, %D=26.80 → NO TRADE
+[2025-04-30 01:02:10] [✅] BUY trade placed on EURJPY
+[2025-04-30 01:02:10] [Stoch Debug] EURGBP %K=81.14, %D=80.42 → SELL
+[2025-04-30 01:02:10] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:10] [Stoch Debug] AUDUSD %K=80.20, %D=83.97 → SELL
+[2025-04-30 01:02:11] [Stoch Debug] GBPNZD %K=27.39, %D=24.22 → NO TRADE
+[2025-04-30 01:02:11] [✅] SELL trade placed on EURGBP
+[2025-04-30 01:02:11] [Stoch Debug] EURUSD %K=71.28, %D=75.62 → NO TRADE
+[2025-04-30 01:02:15] [Copier] ✅ Trade copied to slave 10686586 (ticket 246452025)
+[2025-04-30 01:02:15] [Stoch Debug] EURJPY %K=22.96, %D=30.50 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] EURUSD %K=68.25, %D=74.61 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] AUDUSD %K=77.98, %D=83.23 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] USDCAD %K=36.27, %D=27.42 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] GBPNZD %K=27.39, %D=24.22 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] EURGBP %K=79.38, %D=79.84 → NO TRADE
+[2025-04-30 01:02:15] [Stoch Debug] USDCHF %K=43.55, %D=31.05 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] EURGBP %K=86.40, %D=82.17 → SELL
+[2025-04-30 01:02:20] [Stoch Debug] EURJPY %K=25.87, %D=31.47 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] AUDUSD %K=79.09, %D=83.60 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] USDCHF %K=39.63, %D=29.74 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] EURUSD %K=68.25, %D=74.61 → NO TRADE
+[2025-04-30 01:02:20] [Stoch Debug] GBPNZD %K=28.71, %D=24.66 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] USDCHF %K=41.59, %D=30.40 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] EURJPY %K=25.22, %D=31.25 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] EURGBP %K=84.65, %D=81.59 → SELL
+[2025-04-30 01:02:24] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] GBPNZD %K=29.37, %D=24.88 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] AUDUSD %K=77.98, %D=83.23 → NO TRADE
+[2025-04-30 01:02:24] [Stoch Debug] EURUSD %K=66.73, %D=74.10 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] USDCHF %K=37.66, %D=29.09 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] EURJPY %K=24.58, %D=31.03 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] EURGBP %K=88.16, %D=82.76 → SELL
+[2025-04-30 01:02:28] [Stoch Debug] USDCAD %K=36.27, %D=27.42 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] EURUSD %K=72.04, %D=75.87 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] AUDUSD %K=74.65, %D=82.12 → NO TRADE
+[2025-04-30 01:02:28] [Stoch Debug] GBPNZD %K=33.00, %D=26.09 → NO TRADE
+[2025-04-30 01:02:32] [Stoch Debug] USDCHF %K=36.68, %D=28.76 → NO TRADE
+[2025-04-30 01:02:32] [Stoch Debug] EURGBP %K=86.71, %D=82.28 → SELL
+[2025-04-30 01:02:32] [Stoch Debug] EURJPY %K=21.66, %D=30.06 → NO TRADE
+[2025-04-30 01:02:32] [Stoch Debug] AUDUSD %K=77.98, %D=83.23 → NO TRADE
+[2025-04-30 01:02:32] [Stoch Debug] USDCAD %K=33.80, %D=26.59 → NO TRADE
+[2025-04-30 01:02:33] [Stoch Debug] GBPNZD %K=30.36, %D=25.21 → NO TRADE
+[2025-04-30 01:02:33] [Stoch Debug] EURUSD %K=74.31, %D=76.63 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] EURGBP %K=85.26, %D=81.79 → SELL
+[2025-04-30 01:02:37] [Stoch Debug] AUDUSD %K=73.54, %D=81.75 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] USDCAD %K=37.50, %D=27.83 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] GBPNZD %K=34.65, %D=26.64 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] USDCHF %K=37.66, %D=29.09 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] EURJPY %K=20.69, %D=29.74 → NO TRADE
+[2025-04-30 01:02:37] [Stoch Debug] EURUSD %K=73.55, %D=76.37 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] EURGBP %K=85.26, %D=81.79 → SELL
+[2025-04-30 01:02:41] [Stoch Debug] AUDUSD %K=73.54, %D=81.75 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] EURJPY %K=21.02, %D=29.85 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] GBPNZD %K=35.97, %D=27.08 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] USDCHF %K=37.66, %D=29.09 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:41] [Stoch Debug] EURUSD %K=72.79, %D=76.12 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] USDCHF %K=38.65, %D=29.42 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] USDCAD %K=35.03, %D=27.01 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] EURGBP %K=86.71, %D=82.28 → SELL
+[2025-04-30 01:02:45] [Stoch Debug] EURJPY %K=21.02, %D=29.85 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] AUDUSD %K=73.54, %D=81.75 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] GBPNZD %K=31.68, %D=25.65 → NO TRADE
+[2025-04-30 01:02:45] [Stoch Debug] EURUSD %K=74.31, %D=76.63 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] EURGBP %K=83.81, %D=81.31 → SELL
+[2025-04-30 01:02:49] [Stoch Debug] USDCAD %K=33.80, %D=26.59 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] USDCHF %K=35.70, %D=28.44 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] EURJPY %K=26.52, %D=31.68 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] AUDUSD %K=75.76, %D=82.49 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] GBPNZD %K=32.01, %D=25.76 → NO TRADE
+[2025-04-30 01:02:49] [Stoch Debug] EURUSD %K=76.58, %D=77.38 → NO TRADE
+[2025-04-30 01:02:53] [Stoch Debug] USDCAD %K=25.15, %D=23.71 → NO TRADE
+[2025-04-30 01:02:53] [Stoch Debug] EURGBP %K=82.36, %D=80.83 → SELL
+[2025-04-30 01:02:53] [Stoch Debug] USDCHF %K=30.80, %D=26.80 → NO TRADE
+[2025-04-30 01:02:53] [Stoch Debug] EURJPY %K=24.58, %D=31.03 → NO TRADE
+[2025-04-30 01:02:53] [Stoch Debug] AUDUSD %K=84.65, %D=85.45 → SELL
+[2025-04-30 01:02:53] [Stoch Debug] GBPNZD %K=28.38, %D=24.55 → NO TRADE
+[2025-04-30 01:02:53] [Stoch Debug] EURUSD %K=80.37, %D=78.65 → SELL
+[2025-04-30 01:02:54] [✅] SELL trade placed on EURUSD
+[2025-04-30 01:02:57] [Copier] ✅ Trade copied to slave 10686586 (ticket 246452611)
+[2025-04-30 01:02:57] [Stoch Debug] EURJPY %K=26.19, %D=31.57 → NO TRADE
+[2025-04-30 01:02:57] [Stoch Debug] EURGBP %K=82.36, %D=80.83 → SELL
+[2025-04-30 01:02:57] [Stoch Debug] USDCHF %K=31.78, %D=27.13 → NO TRADE
+[2025-04-30 01:02:57] [Stoch Debug] GBPNZD %K=27.72, %D=24.33 → NO TRADE
+[2025-04-30 01:02:57] [Stoch Debug] AUDUSD %K=84.65, %D=85.45 → SELL
+[2025-04-30 01:02:57] [Stoch Debug] USDCAD %K=26.39, %D=24.13 → NO TRADE
+[2025-04-30 01:02:58] [Stoch Debug] EURUSD %K=80.37, %D=78.65 → SELL
+[2025-04-30 01:03:02] [Stoch Debug] EURJPY %K=24.70, %D=23.86 → NO TRADE
+[2025-04-30 01:03:02] [Stoch Debug] EURGBP %K=90.75, %D=85.09 → SELL
+[2025-04-30 01:03:03] [Stoch Debug] USDCAD %K=12.35, %D=21.81 → BUY
+[2025-04-30 01:03:03] [Stoch Debug] USDCHF %K=19.47, %D=26.58 → BUY
+[2025-04-30 01:03:03] [Stoch Debug] EURUSD %K=93.58, %D=83.32 → SELL
+[2025-04-30 01:03:03] [Stoch Debug] AUDUSD %K=90.94, %D=86.44 → SELL
+[2025-04-30 01:03:03] [Stoch Debug] GBPNZD %K=34.72, %D=28.02 → NO TRADE
+[2025-04-30 01:03:04] [✅] BUY trade placed on USDCAD
+[2025-04-30 01:03:04] [✅] BUY trade placed on USDCHF
+[2025-04-30 01:03:08] [Copier] ✅ Trade copied to slave 10686586 (ticket 246452749)
+[2025-04-30 01:03:08] [Stoch Debug] EURJPY %K=24.70, %D=23.86 → NO TRADE
+[2025-04-30 01:03:08] [Copier] ✅ Trade copied to slave 10686586 (ticket 246452751)
+[2025-04-30 01:03:08] [Stoch Debug] EURUSD %K=90.17, %D=82.19 → SELL
+[2025-04-30 01:03:08] [Stoch Debug] AUDUSD %K=79.83, %D=82.74 → NO TRADE
+[2025-04-30 01:03:08] [Stoch Debug] GBPNZD %K=36.45, %D=28.59 → NO TRADE
+[2025-04-30 01:03:08] [Stoch Debug] EURGBP %K=92.34, %D=85.62 → SELL
+[2025-04-30 01:03:08] [Stoch Debug] USDCAD %K=17.28, %D=23.46 → BUY
+[2025-04-30 01:03:08] [Stoch Debug] USDCHF %K=20.45, %D=26.90 → NO TRADE
+[2025-04-30 01:03:13] [Stoch Debug] GBPNZD %K=37.60, %D=28.98 → NO TRADE
+[2025-04-30 01:03:13] [Stoch Debug] EURJPY %K=27.29, %D=24.72 → NO TRADE
+[2025-04-30 01:03:13] [Stoch Debug] AUDUSD %K=79.83, %D=82.74 → NO TRADE
+[2025-04-30 01:03:13] [Stoch Debug] USDCAD %K=14.81, %D=22.63 → BUY
+[2025-04-30 01:03:13] [Stoch Debug] EURGBP %K=90.75, %D=85.09 → SELL
+[2025-04-30 01:03:13] [Stoch Debug] USDCHF %K=24.37, %D=28.21 → NO TRADE
+[2025-04-30 01:03:13] [Stoch Debug] EURUSD %K=90.17, %D=82.19 → SELL
+[2025-04-30 01:03:17] [Stoch Debug] GBPNZD %K=39.89, %D=29.74 → NO TRADE
+[2025-04-30 01:03:17] [Stoch Debug] EURGBP %K=92.34, %D=85.62 → SELL
+[2025-04-30 01:03:17] [Stoch Debug] EURJPY %K=26.32, %D=24.40 → NO TRADE
+[2025-04-30 01:03:17] [Stoch Debug] AUDUSD %K=79.83, %D=82.74 → NO TRADE
+[2025-04-30 01:03:17] [Stoch Debug] USDCAD %K=14.81, %D=22.63 → BUY
+[2025-04-30 01:03:17] [Stoch Debug] USDCHF %K=21.43, %D=27.23 → NO TRADE
+[2025-04-30 01:03:17] [Stoch Debug] EURUSD %K=89.49, %D=81.96 → SELL
+[2025-04-30 01:03:21] [Stoch Debug] GBPNZD %K=38.74, %D=29.36 → NO TRADE
+[2025-04-30 01:03:21] [Stoch Debug] EURUSD %K=90.17, %D=82.19 → SELL
+[2025-04-30 01:03:21] [Stoch Debug] EURGBP %K=92.34, %D=85.62 → SELL
+[2025-04-30 01:03:21] [Stoch Debug] EURJPY %K=28.91, %D=25.26 → NO TRADE
+[2025-04-30 01:03:21] [Stoch Debug] AUDUSD %K=79.83, %D=82.74 → NO TRADE
+[2025-04-30 01:03:21] [Stoch Debug] USDCHF %K=23.39, %D=27.88 → NO TRADE
+[2025-04-30 01:03:21] [Stoch Debug] USDCAD %K=12.35, %D=21.81 → BUY
+[2025-04-30 01:03:25] [Stoch Debug] GBPNZD %K=37.60, %D=28.98 → NO TRADE
+[2025-04-30 01:03:25] [Stoch Debug] EURUSD %K=88.13, %D=81.51 → SELL
+[2025-04-30 01:03:25] [Stoch Debug] AUDUSD %K=79.83, %D=82.74 → NO TRADE
+[2025-04-30 01:03:25] [Stoch Debug] USDCHF %K=24.37, %D=28.21 → NO TRADE
+[2025-04-30 01:03:25] [Stoch Debug] USDCAD %K=12.35, %D=21.81 → BUY
+[2025-04-30 01:03:25] [Stoch Debug] EURGBP %K=87.58, %D=84.03 → SELL
+[2025-04-30 01:03:25] [Stoch Debug] EURJPY %K=28.26, %D=25.05 → NO TRADE
+[2025-04-30 01:03:29] [Stoch Debug] EURUSD %K=87.45, %D=81.28 → SELL
+[2025-04-30 01:03:29] [Stoch Debug] EURJPY %K=27.93, %D=24.94 → NO TRADE
+[2025-04-30 01:03:29] [Stoch Debug] AUDUSD %K=81.68, %D=83.36 → SELL
+[2025-04-30 01:03:29] [Stoch Debug] EURGBP %K=85.99, %D=83.51 → SELL
+[2025-04-30 01:03:29] [Stoch Debug] GBPNZD %K=37.60, %D=28.98 → NO TRADE
+[2025-04-30 01:03:29] [Stoch Debug] USDCAD %K=12.35, %D=21.81 → BUY
+[2025-04-30 01:03:29] [Stoch Debug] USDCHF %K=24.37, %D=28.21 → NO TRADE
+[2025-04-30 01:03:33] [Stoch Debug] EURUSD %K=84.73, %D=80.38 → SELL
+[2025-04-30 01:03:33] [Stoch Debug] EURGBP %K=84.40, %D=82.98 → SELL
+[2025-04-30 01:03:33] [Stoch Debug] EURJPY %K=25.99, %D=24.29 → NO TRADE
+[2025-04-30 01:03:33] [Stoch Debug] AUDUSD %K=74.28, %D=80.89 → NO TRADE
+[2025-04-30 01:03:33] [Stoch Debug] USDCHF %K=30.25, %D=30.17 → NO TRADE
+[2025-04-30 01:03:33] [Stoch Debug] GBPNZD %K=39.89, %D=29.74 → NO TRADE
+[2025-04-30 01:03:33] [Stoch Debug] USDCAD %K=20.99, %D=24.69 → NO TRADE
+[2025-04-30 01:03:37] [Copier] 😊 Manual close on slave 10686586 (ticket 246452025)
+[2025-04-30 01:03:37] [Stoch Debug] EURGBP %K=85.99, %D=83.51 → SELL
+[2025-04-30 01:03:38] [Copier] 😊 Manual close on slave 10686586 (ticket 246452749)
+[2025-04-30 01:03:37] [Stoch Debug] EURUSD %K=87.45, %D=81.28 → SELL
+[2025-04-30 01:03:38] [Copier] 😊 Manual close on slave 10686586 (ticket 246452751)
+[2025-04-30 01:03:38] [Copier] 😊 Manual close on slave 10686586 (ticket 246451907)
+[2025-04-30 01:03:37] [Stoch Debug] EURJPY %K=24.05, %D=23.64 → NO TRADE
+[2025-04-30 01:03:38] [Copier] 😊 Manual close on slave 10686586 (ticket 246451908)
+[2025-04-30 01:03:38] [Copier] 😊 Manual close on slave 10686586 (ticket 246452611)
+[2025-04-30 01:03:38] [Stoch Debug] USDCAD %K=22.22, %D=25.10 → NO TRADE
+[2025-04-30 01:03:38] [Stoch Debug] USDCHF %K=28.29, %D=29.52 → NO TRADE
+[2025-04-30 01:03:38] [Stoch Debug] AUDUSD %K=76.13, %D=81.50 → NO TRADE
+[2025-04-30 01:03:38] [Stoch Debug] GBPNZD %K=46.22, %D=31.85 → NO TRADE
+[2025-04-30 01:03:42] [Stoch Debug] EURGBP %K=81.23, %D=81.92 → SELL
+[2025-04-30 01:03:42] [Stoch Debug] EURUSD %K=85.41, %D=80.60 → SELL
+[2025-04-30 01:03:42] [Stoch Debug] EURJPY %K=22.43, %D=23.10 → NO TRADE
+[2025-04-30 01:03:43] [Stoch Debug] USDCHF %K=28.29, %D=29.52 → NO TRADE
+[2025-04-30 01:03:43] [Stoch Debug] GBPNZD %K=47.37, %D=32.23 → NO TRADE
+[2025-04-30 01:03:43] [Stoch Debug] AUDUSD %K=76.13, %D=81.50 → NO TRADE
+[2025-04-30 01:03:43] [Stoch Debug] USDCAD %K=23.46, %D=25.51 → NO TRADE
+[2025-04-30 01:03:46] [Stoch Debug] EURGBP %K=87.58, %D=84.03 → SELL
+[2025-04-30 01:03:46] [Stoch Debug] EURUSD %K=87.45, %D=81.28 → SELL
+[2025-04-30 01:03:46] [Stoch Debug] EURJPY %K=19.84, %D=22.24 → BUY
+[2025-04-30 01:04:08] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:04:08] [Stoch Debug] EURUSD %K=90.42, %D=86.74 → SELL
+[2025-04-30 01:04:10] [Copier] ✅ Trade copied to slave 10686586 (ticket 246454246)
+[2025-04-30 01:04:11] [Stoch Debug] USDCHF %K=12.61, %D=19.98 → BUY
+[2025-04-30 01:04:11] [✅] SELL trade placed on EURUSD
+[2025-04-30 01:04:11] [Stoch Debug] AUDUSD %K=75.86, %D=80.36 → NO TRADE
+[2025-04-30 01:04:12] [Stoch Debug] USDCAD %K=24.69, %D=24.43 → NO TRADE
+[2025-04-30 01:04:12] [✅] BUY trade placed on USDCHF
+[2025-04-30 01:04:13] [Stoch Debug] EURJPY %K=19.66, %D=20.17 → BUY
+[2025-04-30 01:04:14] [Stoch Debug] EURGBP %K=84.40, %D=87.33 → SELL
+[2025-04-30 01:04:14] [✅] BUY trade placed on EURJPY
+[2025-04-30 01:04:16] [Stoch Debug] AUDUSD %K=75.86, %D=80.36 → NO TRADE
+[2025-04-30 01:04:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246454476)
+[2025-04-30 01:04:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246454496)
+[2025-04-30 01:04:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246454504)
+[2025-04-30 01:04:18] [Stoch Debug] USDCAD %K=19.75, %D=22.79 → BUY
+[2025-04-30 01:04:18] [✅] SELL trade placed on EURGBP
+[2025-04-30 01:04:18] [Stoch Debug] EURUSD %K=89.06, %D=86.29 → SELL
+[2025-04-30 01:04:18] [Stoch Debug] GBPNZD %K=71.48, %D=47.87 → NO TRADE
+[2025-04-30 01:04:18] [Stoch Debug] EURJPY %K=25.63, %D=22.16 → NO TRADE
+[2025-04-30 01:04:18] [Stoch Debug] USDCHF %K=12.61, %D=19.98 → BUY
+[2025-04-30 01:04:19] [✅] BUY trade placed on USDCAD
+[2025-04-30 01:04:24] [Copier] ✅ Trade copied to slave 10686586 (ticket 246454888)
+[2025-04-30 01:04:24] [Stoch Debug] AUDUSD %K=81.74, %D=82.32 → SELL
+[2025-04-30 01:04:24] [Stoch Debug] GBPNZD %K=70.09, %D=47.41 → NO TRADE
+[2025-04-30 01:04:24] [Stoch Debug] EURUSD %K=89.06, %D=86.29 → SELL
+[2025-04-30 01:04:24] [Stoch Debug] USDCAD %K=18.52, %D=22.38 → BUY
+[2025-04-30 01:04:24] [Stoch Debug] EURGBP %K=82.82, %D=86.80 → SELL
+[2025-04-30 01:04:24] [Stoch Debug] EURJPY %K=22.15, %D=21.00 → NO TRADE
+[2025-04-30 01:04:24] [Stoch Debug] USDCHF %K=12.61, %D=19.98 → BUY
+[2025-04-30 01:04:25] [✅] SELL trade placed on AUDUSD
+[2025-04-30 01:04:29] [Stoch Debug] EURGBP %K=82.82, %D=86.80 → SELL
+[2025-04-30 01:04:29] [Stoch Debug] USDCHF %K=14.13, %D=20.49 → BUY
+[2025-04-30 01:04:29] [Stoch Debug] USDCAD %K=16.05, %D=21.55 → BUY
+[2025-04-30 01:04:29] [Stoch Debug] EURJPY %K=20.16, %D=20.34 → NO TRADE
+[2025-04-30 01:04:29] [Stoch Debug] EURUSD %K=88.37, %D=86.06 → SELL
+[2025-04-30 01:04:29] [Stoch Debug] GBPNZD %K=71.48, %D=47.87 → NO TRADE
+[2025-04-30 01:04:29] [Stoch Debug] AUDUSD %K=83.70, %D=82.97 → SELL
+[2025-04-30 01:04:33] [Stoch Debug] EURGBP %K=81.23, %D=86.28 → SELL
+[2025-04-30 01:04:33] [Stoch Debug] EURJPY %K=22.64, %D=21.17 → NO TRADE
+[2025-04-30 01:04:33] [Stoch Debug] USDCHF %K=19.43, %D=22.25 → BUY
+[2025-04-30 01:04:33] [Stoch Debug] USDCAD %K=17.28, %D=21.97 → BUY
+[2025-04-30 01:04:33] [Stoch Debug] GBPNZD %K=71.02, %D=47.72 → NO TRADE
+[2025-04-30 01:04:33] [Stoch Debug] EURUSD %K=87.69, %D=85.83 → SELL
+[2025-04-30 01:04:33] [Stoch Debug] AUDUSD %K=82.19, %D=82.47 → SELL
+[2025-04-30 01:06:09] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:07:19] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:09:02] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:14:24] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:14:41] [Copier] Monitoring master account for new trades...
+[2025-04-30 01:14:41] [Stoch Debug] EURUSD %K=77.67, %D=69.06 → NO TRADE
+[2025-04-30 01:14:42] [Stoch Debug] USDCHF %K=32.48, %D=43.02 → NO TRADE
+[2025-04-30 01:14:43] [Stoch Debug] AUDUSD %K=42.63, %D=24.03 → NO TRADE
+[2025-04-30 01:14:44] [Stoch Debug] USDCAD %K=75.29, %D=77.38 → NO TRADE
+[2025-04-30 01:14:45] [Stoch Debug] EURJPY %K=72.32, %D=74.93 → NO TRADE
+[2025-04-30 01:14:45] [Stoch Debug] EURUSD %K=78.30, %D=69.27 → NO TRADE
+[2025-04-30 01:14:46] [Stoch Debug] USDCHF %K=31.64, %D=42.74 → NO TRADE
+[2025-04-30 01:14:46] [Stoch Debug] EURGBP %K=90.25, %D=95.31 → SELL
+[2025-04-30 01:14:47] [Stoch Debug] AUDUSD %K=42.63, %D=24.03 → NO TRADE
+[2025-04-30 01:14:47] [Stoch Debug] GBPNZD %K=59.20, %D=73.37 → NO TRADE
+[2025-04-30 01:14:48] [✅] SELL trade placed on EURGBP
+[2025-04-30 01:14:48] [Stoch Debug] USDCAD %K=77.67, %D=78.18 → NO TRADE
+[2025-04-30 01:14:49] [Stoch Debug] EURJPY %K=62.94, %D=71.80 → NO TRADE
+[2025-04-30 01:14:49] [Stoch Debug] EURUSD %K=78.93, %D=69.47 → NO TRADE
+[2025-04-30 01:14:52] [Copier] ✅ Trade copied to slave 10686586 (ticket 246466376)
+[2025-04-30 01:14:52] [Stoch Debug] USDCHF %K=29.98, %D=42.18 → NO TRADE
+[2025-04-30 01:14:52] [Stoch Debug] AUDUSD %K=44.71, %D=24.72 → NO TRADE
+[2025-04-30 01:14:52] [Stoch Debug] GBPNZD %K=60.92, %D=73.95 → NO TRADE
+[2025-04-30 01:14:52] [Stoch Debug] EURGBP %K=91.20, %D=95.63 → SELL
+[2025-04-30 01:14:52] [Stoch Debug] USDCAD %K=75.29, %D=77.38 → NO TRADE
+[2025-04-30 01:14:53] [Stoch Debug] EURJPY %K=61.38, %D=71.28 → NO TRADE
+[2025-04-30 01:14:54] [Stoch Debug] EURUSD %K=79.56, %D=69.68 → NO TRADE
+[2025-04-30 01:14:57] [Stoch Debug] USDCHF %K=29.14, %D=41.90 → NO TRADE
+[2025-04-30 01:14:57] [Stoch Debug] AUDUSD %K=44.71, %D=24.72 → NO TRADE
+[2025-04-30 01:14:57] [Stoch Debug] USDCAD %K=75.61, %D=77.49 → NO TRADE
+[2025-04-30 01:14:57] [Stoch Debug] GBPNZD %K=62.07, %D=74.33 → NO TRADE
+[2025-04-30 01:14:57] [Stoch Debug] EURGBP %K=90.25, %D=95.31 → SELL
+[2025-04-30 01:14:57] [Stoch Debug] EURJPY %K=61.90, %D=71.46 → NO TRADE
+[2025-04-30 01:14:58] [Stoch Debug] EURUSD %K=79.56, %D=69.68 → NO TRADE
+[2025-04-30 01:15:01] [Stoch Debug] USDCAD %K=74.01, %D=74.85 → NO TRADE
+[2025-04-30 01:15:01] [Stoch Debug] USDCHF %K=27.15, %D=31.77 → NO TRADE
+[2025-04-30 01:15:01] [Stoch Debug] EURGBP %K=85.93, %D=91.03 → SELL
+[2025-04-30 01:15:01] [Stoch Debug] AUDUSD %K=62.50, %D=39.56 → NO TRADE
+[2025-04-30 01:15:01] [Stoch Debug] GBPNZD %K=57.70, %D=66.55 → NO TRADE
+[2025-04-30 01:15:01] [Stoch Debug] EURJPY %K=55.00, %D=63.88 → NO TRADE
+[2025-04-30 01:15:02] [Stoch Debug] EURUSD %K=76.28, %D=76.68 → NO TRADE
+[2025-04-30 01:15:05] [Stoch Debug] EURGBP %K=83.70, %D=90.29 → SELL
+[2025-04-30 01:15:05] [Stoch Debug] GBPNZD %K=51.27, %D=64.41 → NO TRADE
+[2025-04-30 01:15:05] [Stoch Debug] USDCAD %K=76.39, %D=75.64 → NO TRADE
+[2025-04-30 01:15:05] [Stoch Debug] AUDUSD %K=64.83, %D=40.34 → NO TRADE
+[2025-04-30 01:15:05] [Stoch Debug] USDCHF %K=29.01, %D=32.38 → NO TRADE
+[2025-04-30 01:15:05] [Stoch Debug] EURJPY %K=53.44, %D=63.36 → NO TRADE
+[2025-04-30 01:15:06] [Stoch Debug] EURUSD %K=73.11, %D=75.62 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] EURGBP %K=79.26, %D=88.81 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] GBPNZD %K=49.52, %D=63.82 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] USDCHF %K=31.78, %D=33.31 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] AUDUSD %K=64.83, %D=40.34 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] USDCAD %K=78.77, %D=76.43 → NO TRADE
+[2025-04-30 01:15:09] [Stoch Debug] EURJPY %K=46.15, %D=60.93 → NO TRADE
+[2025-04-30 01:15:10] [Stoch Debug] EURUSD %K=66.76, %D=73.51 → NO TRADE
+[2025-04-30 01:15:13] [Stoch Debug] AUDUSD %K=64.83, %D=40.34 → NO TRADE
+[2025-04-30 01:15:13] [Stoch Debug] GBPNZD %K=48.93, %D=63.63 → NO TRADE
+[2025-04-30 01:15:13] [Stoch Debug] USDCAD %K=83.53, %D=78.02 → SELL
+[2025-04-30 01:15:13] [Stoch Debug] EURGBP %K=71.48, %D=86.21 → NO TRADE
+[2025-04-30 01:15:13] [Stoch Debug] USDCHF %K=34.56, %D=34.24 → NO TRADE
+[2025-04-30 01:15:13] [Stoch Debug] EURJPY %K=42.41, %D=59.69 → NO TRADE
+[2025-04-30 01:15:14] [Stoch Debug] EURUSD %K=61.20, %D=71.66 → NO TRADE
+[2025-04-30 01:15:14] [✅] SELL trade placed on USDCAD
+[2025-04-30 01:15:18] [Copier] ✅ Trade copied to slave 10686586 (ticket 246467442)
+[2025-04-30 01:15:18] [Stoch Debug] GBPNZD %K=54.19, %D=65.38 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] AUDUSD %K=64.83, %D=40.34 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] EURJPY %K=43.92, %D=60.19 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] USDCHF %K=34.56, %D=34.24 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] EURUSD %K=55.65, %D=69.80 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] EURGBP %K=69.26, %D=85.47 → NO TRADE
+[2025-04-30 01:15:18] [Stoch Debug] USDCAD %K=83.53, %D=78.02 → SELL
+[2025-04-30 01:15:23] [Stoch Debug] GBPNZD %K=44.25, %D=62.07 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] EURJPY %K=52.00, %D=62.88 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] EURGBP %K=73.70, %D=86.95 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] EURUSD %K=58.82, %D=70.86 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] AUDUSD %K=62.87, %D=39.68 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] USDCAD %K=78.27, %D=76.27 → NO TRADE
+[2025-04-30 01:15:23] [Stoch Debug] USDCHF %K=38.27, %D=35.47 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] EURJPY %K=49.48, %D=62.04 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] GBPNZD %K=46.19, %D=62.71 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] EURUSD %K=55.65, %D=69.80 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] EURGBP %K=72.59, %D=86.58 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] USDCAD %K=81.78, %D=77.44 → SELL
+[2025-04-30 01:15:27] [Stoch Debug] USDCHF %K=38.27, %D=35.47 → NO TRADE
+[2025-04-30 01:15:27] [Stoch Debug] AUDUSD %K=61.73, %D=39.30 → NO TRADE
