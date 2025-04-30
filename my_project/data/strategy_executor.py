@@ -1,3 +1,4 @@
+
 import MetaTrader5 as mt5
 import time
 import json
@@ -72,9 +73,16 @@ class StrategyEvaluator:
                 dir = self.evaluate_stochastic(df, config)
             elif ind == "Moving Average":
                 dir = self.evaluate_moving_average(df, config)
-            if dir in ("BUY", "SELL"):
-                directions.append(dir)
-        return directions[0] if directions else None
+
+            if dir not in ("BUY", "SELL"):
+                log(f"[Multi-Indicator] {ind} returned no signal → skipping")
+                return None
+            directions.append(dir)
+
+        if all(d == directions[0] for d in directions):
+            return directions[0]
+        log(f"[Multi-Indicator] Conflict between indicators: {directions}")
+        return None
 
     def evaluate_rsi(self, df, config):
         period = int(config["sub_indicators"]["Period"]["value"])
