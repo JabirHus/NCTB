@@ -273,7 +273,43 @@ def create_account_page(root, account_frame, strategy_frame):
         log_text.see(tk.END)
 
 
-    # Back Button (to return to Strategy Page)
+    
+    # === Monitor Manually Opened Trades ===
+    def monitor_manual_trades():
+        import MetaTrader5 as mt5
+        import time
+        from datetime import datetime
+
+        logged_tickets = set()
+
+        while True:
+            accounts = load_accounts()
+            masters = accounts.get("masters", [])
+            if not masters:
+                time.sleep(5)
+                continue
+
+            master = masters[0]
+            if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
+                log_to_gui("[❌] Failed to initialize MT5 for manual trade monitor.")
+                time.sleep(5)
+                continue
+
+            positions = mt5.positions_get()
+            if positions:
+                for pos in positions:
+                    if pos.comment and pos.comment.startswith("Trade-"):
+                        continue  # Ignore trades placed by the bot
+
+                    if pos.ticket not in logged_tickets:
+                        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        log_to_gui(f"[{timestamp}] [🟢 Manual] Trade opened: {pos.symbol} {('BUY' if pos.type == 0 else 'SELL')} at {pos.price_open}")
+                        logged_tickets.add(pos.ticket)
+
+            time.sleep(4)
+
+
+# Back Button (to return to Strategy Page)
     tk.Button(
         account_frame,
         text="Back",
@@ -282,6 +318,9 @@ def create_account_page(root, account_frame, strategy_frame):
         command=lambda: show_frame(strategy_frame)
     ).pack(pady=20)
     # This ensures clean logging integration with no duplicates or globals misused
+
+    threading.Thread(target=monitor_manual_trades, daemon=True).start()
+
 
     # === Log Display ===
     log_frame = tk.Frame(account_frame, bg=BG_COLOR)
