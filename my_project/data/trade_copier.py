@@ -127,7 +127,7 @@ def copy_master_trades(master, slaves, logger=None):
                         icon = "🛑 SL"
                     else:
                         icon = "😊 Manual"
-                    log(f"[Copier] {icon} close on slave {login} (ticket {slave_trade['ticket']})")
+                    log(f"{icon} close on {slave_trade['symbol']} (ticket {slave_trade['ticket']}) [close on slave {login}]")
                 else:
                     time.sleep(1)
                     retry_result = mt5.order_send(close_request)
