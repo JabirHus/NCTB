@@ -51,7 +51,7 @@ def create_account_page(root, account_frame, strategy_frame):
             copier_thread_started = True
             print("[Copier] Starting copier in background thread...")
             thread = threading.Thread(
-                target=lambda: copy_master_trades(masters[0], slaves),
+                target=lambda: copy_master_trades(masters[0], slaves, logger=log_to_gui),
                 daemon=True
             )
             thread.start()
@@ -69,7 +69,7 @@ def create_account_page(root, account_frame, strategy_frame):
             print("[Copier] Starting copier in background thread...")
 
             thread = threading.Thread(
-                target=lambda: copy_master_trades(masters[0], slaves),
+                target=lambda: copy_master_trades(masters[0], slaves, logger=log_to_gui),
                 daemon=True
             )
             thread.start()

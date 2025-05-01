@@ -7,18 +7,24 @@ import threading
 
 log_lock = threading.Lock()
 
+gui_logger = None
+
 def log(message):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     full_msg = f"[{timestamp}] {message}"
     with log_lock:
         print(full_msg)
+    if gui_logger and ("trade copied" in message or "close on slave" in message):
+        gui_logger(full_msg)
         try:
             with open("trade_log.txt", "a", encoding="utf-8") as f:
                 f.write(full_msg + "\n")
         except Exception as e:
             print(f"[Logger Error] Failed to write to log file: {e}")
 
-def copy_master_trades(master, slaves):
+def copy_master_trades(master, slaves, logger=None):
+    global gui_logger
+    gui_logger = logger
     try:
         with open("last_trades.json", "r") as f:
             last_trade_ids = set(json.load(f))

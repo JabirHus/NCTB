@@ -29,7 +29,8 @@ def log(message):
     with log_lock:
         print(full_msg)
         if gui_logger:
-            gui_logger(full_msg)
+            if "[✅]" in message or "closed:" in message:
+                gui_logger(full_msg)
         try:
             with open("trade_log.txt", "a", encoding="utf-8") as f:
                 f.write(full_msg + "\n")
