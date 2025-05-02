@@ -72,12 +72,14 @@ def create_account_page(root, account_frame, strategy_frame):
             )
             thread.start()
 
+    
     def monitor_manual_trades():
         import MetaTrader5 as mt5
         import time
         from datetime import datetime
 
-        logged_tickets = set()
+        previous_tickets = set()
+        logged_manuals = set()
 
         while True:
             accounts = load_accounts()
@@ -93,16 +95,28 @@ def create_account_page(root, account_frame, strategy_frame):
                 continue
 
             positions = mt5.positions_get()
+            current_tickets = set()
             if positions:
                 for pos in positions:
-                    if pos.comment and pos.comment.startswith("Trade-"):
-                        continue
-                    if pos.ticket not in logged_tickets:
+                    current_tickets.add(pos.ticket)
+
+                    # Log new manual trades only once
+                    if not pos.comment.startswith("Trade-") and pos.ticket not in logged_manuals:
                         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         log_to_gui(f"[{timestamp}] [🟢 Manual] Trade opened: {pos.symbol} {('BUY' if pos.type == 0 else 'SELL')} at {pos.price_open}")
-                        logged_tickets.add(pos.ticket)
+                        logged_manuals.add(pos.ticket)
 
+            # Detect closed trades by comparing sets
+            closed_tickets = previous_tickets - current_tickets
+            for closed_ticket in closed_tickets:
+                if master["login"] in trade_counter:
+                    trade_counter[master["login"]] = max(0, trade_counter[master["login"]] - 1)
+                    update_trade_count(master["login"], trade_counter[master["login"]])
+                    log_to_gui(f"[🔻] Trade closed: {closed_ticket} → Open count updated")
+
+            previous_tickets = current_tickets
             time.sleep(4)
+
 
     def open_add_account_modal(is_master):
         modal = tk.Toplevel(account_frame)
@@ -174,24 +188,6 @@ def create_account_page(root, account_frame, strategy_frame):
     master_container = tk.Frame(master_card, bg=CARD_BG)
     master_container.pack(fill="x")
 
-    
-    slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
-    slave_card.pack(pady=10, padx=20, fill="x")
-    tk.Label(slave_card, text="SLAVES", font=("Helvetica", 14, "bold"), fg=TEXT_COLOR, bg=CARD_BG).pack(anchor="w")
-    create_tabs(slave_card)
-    slave_container = tk.Frame(slave_card, bg=CARD_BG)
-    slave_container.pack(fill="x")
-
-    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
-    log_frame.pack(pady=10, padx=20, fill="both", expand=True)
-    global log_text
-    log_text = tk.Text(log_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
-    log_scrollbar = tk.Scrollbar(log_frame)
-    log_text.config(yscrollcommand=log_scrollbar.set)
-    log_scrollbar.config(command=log_text.yview)
-    log_text.pack(side="left", fill="both", expand=True)
-    log_scrollbar.pack(side="right", fill="y")
-
     def add_master_account(login, server, balance, equity, trades):
         card = tk.Frame(master_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
         card.pack(pady=5, padx=10, fill="x")
@@ -206,8 +202,24 @@ def create_account_page(root, account_frame, strategy_frame):
         ttk.Checkbutton(card, variable=tk.BooleanVar(value=True)).pack(side="left", padx=5)
         tk.Button(card, text="Copy Settings", bg=GREEN_COLOR, fg=TEXT_COLOR, padx=5).pack(side="left", padx=5)
         tk.Button(card, text="🗑️", bg=RED_COLOR, fg=TEXT_COLOR, padx=5,
-                command=lambda: [card.destroy(), remove_account("masters", login)]).pack(side="left", padx=5)
+                  command=lambda: [card.destroy(), remove_account("masters", login)]).pack(side="left", padx=5)
 
+    log_frame = tk.Frame(account_frame, bg=BG_COLOR)
+    log_frame.pack(pady=10, padx=20, fill="both", expand=True)
+    global log_text
+    log_text = tk.Text(log_frame, height=10, bg="black", fg="lime", font=("Courier", 9), wrap="word")
+    log_scrollbar = tk.Scrollbar(log_frame)
+    log_text.config(yscrollcommand=log_scrollbar.set)
+    log_scrollbar.config(command=log_text.yview)
+    log_text.pack(side="left", fill="both", expand=True)
+    log_scrollbar.pack(side="right", fill="y")
+
+    slave_card = tk.Frame(account_frame, bg=CARD_BG, padx=15, pady=10, bd=2, relief="ridge")
+    slave_card.pack(pady=10, padx=20, fill="x")
+    tk.Label(slave_card, text="SLAVES", font=("Helvetica", 14, "bold"), fg=TEXT_COLOR, bg=CARD_BG).pack(anchor="w")
+    create_tabs(slave_card)
+    slave_container = tk.Frame(slave_card, bg=CARD_BG)
+    slave_container.pack(fill="x")
 
     def add_slave_account(login, server, balance, equity, trades):
         card = tk.Frame(slave_container, bg=BUTTON_COLOR, padx=10, pady=10, bd=2, relief="ridge")
