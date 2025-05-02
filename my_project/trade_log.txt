@@ -22281,3 +22281,948 @@ ave 10686586]
 [2025-05-02 01:44:06] [MA Debug] EURUSD Close=1.12750, SMA(10)=1.12773 → SELL
 [2025-05-02 01:44:06] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
 [2025-05-02 01:44:06] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:16:50] [RSI Debug] EURUSD RSI=61.88 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:50] [MA Debug] EURUSD Close=1.13366, SMA(10)=1.13329 → BUY
+[2025-05-02 17:16:50] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:51] [RSI Debug] USDCHF RSI=48.26 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:51] [MA Debug] USDCHF Close=0.82650, SMA(10)=0.82666 → SELL
+[2025-05-02 17:16:51] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:16:52] [RSI Debug] AUDUSD RSI=64.09 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:52] [MA Debug] AUDUSD Close=0.64538, SMA(10)=0.64506 → BUY
+[2025-05-02 17:16:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:53] [RSI Debug] USDCAD RSI=41.18 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:53] [MA Debug] USDCAD Close=1.37856, SMA(10)=1.37871 → SELL
+[2025-05-02 17:16:53] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:16:54] [RSI Debug] EURUSD RSI=62.04 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:54] [RSI Debug] EURJPY RSI=57.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:54] [MA Debug] EURUSD Close=1.13367, SMA(10)=1.13329 → BUY
+[2025-05-02 17:16:54] [MA Debug] EURJPY Close=163.85800, SMA(10)=163.84710 → BUY
+[2025-05-02 17:16:54] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:54] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:55] [RSI Debug] USDCHF RSI=48.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:55] [MA Debug] USDCHF Close=0.82651, SMA(10)=0.82666 → SELL
+[2025-05-02 17:16:55] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:16:55] [RSI Debug] EURGBP RSI=50.55 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:55] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:16:56] [RSI Debug] AUDUSD RSI=63.50 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:56] [MA Debug] AUDUSD Close=0.64535, SMA(10)=0.64506 → BUY
+[2025-05-02 17:16:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:56] [RSI Debug] GBPNZD RSI=48.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:56] [MA Debug] GBPNZD Close=2.23038, SMA(10)=2.23017 → BUY
+[2025-05-02 17:16:57] [RSI Debug] USDCAD RSI=41.37 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:57] [MA Debug] USDCAD Close=1.37857, SMA(10)=1.37871 → SELL
+[2025-05-02 17:16:57] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:16:57] [✅] BUY trade placed on GBPNZD
+[2025-05-02 17:16:58] [RSI Debug] EURUSD RSI=61.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:58] [RSI Debug] EURJPY RSI=57.21 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:16:58] [MA Debug] EURUSD Close=1.13364, SMA(10)=1.13329 → BUY
+[2025-05-02 17:16:58] [MA Debug] EURJPY Close=163.85900, SMA(10)=163.84720 → BUY
+[2025-05-02 17:16:58] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:16:58] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:00] [RSI Debug] AUDUSD RSI=63.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:00] [RSI Debug] EURGBP RSI=50.55 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:00] [RSI Debug] USDCHF RSI=49.12 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:00] [MA Debug] AUDUSD Close=0.64538, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:00] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:00] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:01] [RSI Debug] USDCAD RSI=41.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:01] [MA Debug] USDCAD Close=1.37857, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:01] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:01] [RSI Debug] GBPNZD RSI=48.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:01] [MA Debug] GBPNZD Close=2.23037, SMA(10)=2.23014 → BUY
+[2025-05-02 17:17:03] [RSI Debug] EURJPY RSI=59.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:03] [RSI Debug] EURUSD RSI=60.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:03] [MA Debug] EURJPY Close=163.87100, SMA(10)=163.84880 → BUY
+[2025-05-02 17:17:03] [MA Debug] EURUSD Close=1.13363, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:03] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:03] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:04] [RSI Debug] EURGBP RSI=50.50 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:04] [RSI Debug] AUDUSD RSI=61.15 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:04] [RSI Debug] USDCHF RSI=49.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:04] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:04] [MA Debug] AUDUSD Close=0.64531, SMA(10)=0.64512 → BUY
+[2025-05-02 17:17:04] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:05] [RSI Debug] USDCAD RSI=41.85 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:05] [MA Debug] USDCAD Close=1.37858, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:05] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:05] [RSI Debug] GBPNZD RSI=48.76 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:05] [MA Debug] GBPNZD Close=2.23041, SMA(10)=2.23014 → BUY
+[2025-05-02 17:17:07] [RSI Debug] EURUSD RSI=61.26 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:07] [RSI Debug] EURJPY RSI=58.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:07] [MA Debug] EURUSD Close=1.13366, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:07] [MA Debug] EURJPY Close=163.86500, SMA(10)=163.84820 → BUY
+[2025-05-02 17:17:07] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:07] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:08] [RSI Debug] EURGBP RSI=51.69 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:08] [RSI Debug] USDCHF RSI=48.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:08] [RSI Debug] AUDUSD RSI=61.15 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:08] [MA Debug] EURGBP Close=0.85294, SMA(10)=0.85302 → SELL
+[2025-05-02 17:17:08] [MA Debug] USDCHF Close=0.82652, SMA(10)=0.82658 → SELL
+[2025-05-02 17:17:08] [MA Debug] AUDUSD Close=0.64531, SMA(10)=0.64512 → BUY
+[2025-05-02 17:17:09] [RSI Debug] USDCAD RSI=41.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:09] [RSI Debug] GBPNZD RSI=48.89 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:10] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:10] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:10] [MA Debug] USDCAD Close=1.37857, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:10] [MA Debug] GBPNZD Close=2.23042, SMA(10)=2.23014 → BUY
+[2025-05-02 17:17:10] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:11] [✅] SELL trade placed on EURGBP
+[2025-05-02 17:17:12] [RSI Debug] EURJPY RSI=59.05 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:12] [RSI Debug] EURUSD RSI=62.87 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:12] [MA Debug] EURJPY Close=163.86800, SMA(10)=163.84850 → BUY
+[2025-05-02 17:17:12] [MA Debug] EURUSD Close=1.13372, SMA(10)=1.13341 → BUY
+[2025-05-02 17:17:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:14] [RSI Debug] GBPNZD RSI=47.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:14] [RSI Debug] AUDUSD RSI=64.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:14] [RSI Debug] USDCAD RSI=40.79 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:14] [RSI Debug] USDCHF RSI=48.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:14] [MA Debug] GBPNZD Close=2.23032, SMA(10)=2.23013 → BUY
+[2025-05-02 17:17:14] [MA Debug] AUDUSD Close=0.64540, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:14] [MA Debug] USDCAD Close=1.37854, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:14] [MA Debug] USDCHF Close=0.82652, SMA(10)=0.82658 → SELL
+[2025-05-02 17:17:14] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:14] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:14] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:15] [RSI Debug] EURGBP RSI=49.71 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:15] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:16] [RSI Debug] EURJPY RSI=58.89 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:16] [RSI Debug] EURUSD RSI=61.26 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:16] [MA Debug] EURJPY Close=163.86700, SMA(10)=163.84840 → BUY
+[2025-05-02 17:17:16] [MA Debug] EURUSD Close=1.13366, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:16] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:16] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:18] [RSI Debug] GBPNZD RSI=47.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:18] [RSI Debug] USDCAD RSI=40.79 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:18] [RSI Debug] USDCHF RSI=49.66 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:18] [RSI Debug] AUDUSD RSI=65.27 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:18] [MA Debug] GBPNZD Close=2.23032, SMA(10)=2.23013 → BUY
+[2025-05-02 17:17:18] [MA Debug] USDCAD Close=1.37854, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:18] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:18] [MA Debug] AUDUSD Close=0.64544, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:18] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:18] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:19] [RSI Debug] EURGBP RSI=49.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:19] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:20] [RSI Debug] EURJPY RSI=59.05 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:20] [RSI Debug] EURUSD RSI=61.26 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:20] [MA Debug] EURJPY Close=163.86800, SMA(10)=163.84850 → BUY
+[2025-05-02 17:17:20] [MA Debug] EURUSD Close=1.13366, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:20] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:20] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:22] [RSI Debug] USDCAD RSI=41.28 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:22] [RSI Debug] USDCHF RSI=49.89 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:22] [RSI Debug] GBPNZD RSI=48.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:22] [RSI Debug] AUDUSD RSI=64.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:22] [MA Debug] USDCAD Close=1.37856, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:22] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:22] [MA Debug] GBPNZD Close=2.23039, SMA(10)=2.23014 → BUY
+[2025-05-02 17:17:22] [MA Debug] AUDUSD Close=0.64541, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:23] [RSI Debug] EURGBP RSI=49.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:24] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:24] 😊 Manual close on AUDJPY (ticket 250549625) [close on slave 10686586]
+[2025-05-02 17:17:24] 😊 Manual close on GBPNZD (ticket 250549407) [close on slave 10686586]
+[2025-05-02 17:17:24] 😊 Manual close on EURGBP (ticket 250549627) [close on slave 10686586]
+[2025-05-02 17:17:24] [RSI Debug] EURJPY RSI=59.05 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:24] [RSI Debug] EURUSD RSI=61.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:26] [MA Debug] EURJPY Close=163.86800, SMA(10)=163.84850 → BUY
+[2025-05-02 17:17:26] [MA Debug] EURUSD Close=1.13367, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:26] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:26] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:26] [RSI Debug] USDCHF RSI=49.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:26] [RSI Debug] AUDUSD RSI=64.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:26] [RSI Debug] USDCAD RSI=41.28 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:26] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:26] [RSI Debug] GBPNZD RSI=50.06 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:26] [MA Debug] AUDUSD Close=0.64540, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:26] [MA Debug] USDCAD Close=1.37856, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:26] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:26] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:26] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:28] [RSI Debug] EURGBP RSI=49.71 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:28] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:30] [RSI Debug] EURJPY RSI=60.46 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [RSI Debug] EURUSD RSI=61.83 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [MA Debug] EURJPY Close=163.87700, SMA(10)=163.84940 → BUY
+[2025-05-02 17:17:30] [MA Debug] EURUSD Close=1.13368, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:30] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:30] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:30] [RSI Debug] GBPNZD RSI=50.06 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [RSI Debug] USDCHF RSI=48.97 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [RSI Debug] USDCAD RSI=41.28 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [RSI Debug] AUDUSD RSI=64.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:30] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:30] [MA Debug] USDCHF Close=0.82653, SMA(10)=0.82658 → SELL
+[2025-05-02 17:17:30] [MA Debug] USDCAD Close=1.37856, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:30] [MA Debug] AUDUSD Close=0.64541, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:30] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:30] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:30] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:32] [RSI Debug] EURGBP RSI=50.10 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:32] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:34] [RSI Debug] EURJPY RSI=60.61 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [RSI Debug] EURUSD RSI=61.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [MA Debug] EURJPY Close=163.87800, SMA(10)=163.84950 → BUY
+[2025-05-02 17:17:34] [MA Debug] EURUSD Close=1.13367, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:34] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:34] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:34] [RSI Debug] USDCHF RSI=49.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [RSI Debug] USDCAD RSI=41.28 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [RSI Debug] AUDUSD RSI=63.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [RSI Debug] GBPNZD RSI=50.31 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:34] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:34] [MA Debug] USDCAD Close=1.37856, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:34] [MA Debug] AUDUSD Close=0.64538, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:34] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:34] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:34] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:36] [RSI Debug] EURGBP RSI=50.10 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:36] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:38] [RSI Debug] EURJPY RSI=60.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [RSI Debug] EURUSD RSI=61.83 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [MA Debug] EURJPY Close=163.87400, SMA(10)=163.84910 → BUY
+[2025-05-02 17:17:38] [MA Debug] EURUSD Close=1.13368, SMA(10)=1.13340 → BUY
+[2025-05-02 17:17:38] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:38] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:38] [RSI Debug] USDCHF RSI=48.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [RSI Debug] GBPNZD RSI=50.44 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [RSI Debug] AUDUSD RSI=63.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [RSI Debug] USDCAD RSI=41.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:38] [MA Debug] USDCHF Close=0.82652, SMA(10)=0.82658 → SELL
+[2025-05-02 17:17:38] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:38] [MA Debug] AUDUSD Close=0.64539, SMA(10)=0.64513 → BUY
+[2025-05-02 17:17:38] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:38] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:38] [MA Debug] USDCAD Close=1.37857, SMA(10)=1.37865 → SELL
+[2025-05-02 17:17:38] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:40] [RSI Debug] EURGBP RSI=49.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:40] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:42] [RSI Debug] EURUSD RSI=58.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [RSI Debug] EURJPY RSI=58.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [MA Debug] EURUSD Close=1.13355, SMA(10)=1.13339 → BUY
+[2025-05-02 17:17:42] [MA Debug] EURJPY Close=163.86500, SMA(10)=163.84820 → BUY
+[2025-05-02 17:17:42] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:42] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:42] [RSI Debug] USDCHF RSI=49.66 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [RSI Debug] GBPNZD RSI=49.55 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [RSI Debug] USDCAD RSI=44.29 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [RSI Debug] AUDUSD RSI=62.51 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:42] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:42] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:17:42] [MA Debug] USDCAD Close=1.37867, SMA(10)=1.37866 → BUY
+[2025-05-02 17:17:42] [MA Debug] AUDUSD Close=0.64535, SMA(10)=0.64512 → BUY
+[2025-05-02 17:17:42] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:43] [✅] BUY trade placed on USDCAD
+[2025-05-02 17:17:44] [RSI Debug] EURGBP RSI=48.59 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:44] [MA Debug] EURGBP Close=0.85286, SMA(10)=0.85301 → SELL
+[2025-05-02 17:17:44] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:47] [RSI Debug] AUDUSD RSI=61.15 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [RSI Debug] USDCHF RSI=51.62 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [RSI Debug] EURUSD RSI=53.85 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [RSI Debug] EURJPY RSI=57.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [RSI Debug] GBPNZD RSI=46.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [MA Debug] AUDUSD Close=0.64531, SMA(10)=0.64512 → BUY
+[2025-05-02 17:17:47] [MA Debug] USDCHF Close=0.82665, SMA(10)=0.82659 → BUY
+[2025-05-02 17:17:47] [MA Debug] EURUSD Close=1.13336, SMA(10)=1.13337 → SELL
+[2025-05-02 17:17:47] [MA Debug] EURJPY Close=163.86100, SMA(10)=163.84780 → BUY
+[2025-05-02 17:17:47] [MA Debug] GBPNZD Close=2.23023, SMA(10)=2.23013 → BUY
+[2025-05-02 17:17:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:47] [RSI Debug] USDCAD RSI=44.29 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:47] [MA Debug] USDCAD Close=1.37867, SMA(10)=1.37866 → BUY
+[2025-05-02 17:17:48] [RSI Debug] EURGBP RSI=48.96 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:48] [MA Debug] EURGBP Close=0.85287, SMA(10)=0.85301 → SELL
+[2025-05-02 17:17:48] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:49] [✅] SELL trade placed on EURUSD
+[2025-05-02 17:17:52] [RSI Debug] USDCHF RSI=53.24 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [RSI Debug] USDCAD RSI=46.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [RSI Debug] GBPNZD RSI=47.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [RSI Debug] EURGBP RSI=47.16 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [RSI Debug] EURJPY RSI=57.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [RSI Debug] AUDUSD RSI=58.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:52] [MA Debug] USDCHF Close=0.82673, SMA(10)=0.82660 → BUY
+[2025-05-02 17:17:52] [MA Debug] USDCAD Close=1.37876, SMA(10)=1.37867 → BUY
+[2025-05-02 17:17:52] [MA Debug] GBPNZD Close=2.23029, SMA(10)=2.23013 → BUY
+[2025-05-02 17:17:52] [MA Debug] EURGBP Close=0.85282, SMA(10)=0.85301 → SELL
+[2025-05-02 17:17:52] [MA Debug] EURJPY Close=163.86000, SMA(10)=163.84770 → BUY
+[2025-05-02 17:17:52] [MA Debug] AUDUSD Close=0.64524, SMA(10)=0.64511 → BUY
+[2025-05-02 17:17:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:52] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:53] [RSI Debug] EURUSD RSI=51.56 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:53] [MA Debug] EURUSD Close=1.13325, SMA(10)=1.13336 → SELL
+[2025-05-02 17:17:56] [RSI Debug] USDCHF RSI=52.84 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [RSI Debug] GBPNZD RSI=48.63 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [RSI Debug] USDCAD RSI=46.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [RSI Debug] EURGBP RSI=47.16 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [RSI Debug] AUDUSD RSI=58.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [RSI Debug] EURJPY RSI=55.59 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:56] [MA Debug] USDCHF Close=0.82671, SMA(10)=0.82659 → BUY
+[2025-05-02 17:17:56] [MA Debug] GBPNZD Close=2.23040, SMA(10)=2.23014 → BUY
+[2025-05-02 17:17:56] [MA Debug] USDCAD Close=1.37876, SMA(10)=1.37867 → BUY
+[2025-05-02 17:17:56] [MA Debug] EURGBP Close=0.85282, SMA(10)=0.85301 → SELL
+[2025-05-02 17:17:56] [MA Debug] AUDUSD Close=0.64524, SMA(10)=0.64511 → BUY
+[2025-05-02 17:17:56] [MA Debug] EURJPY Close=163.85200, SMA(10)=163.84690 → BUY
+[2025-05-02 17:17:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:56] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:17:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:17:57] [RSI Debug] EURUSD RSI=52.58 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:17:57] [MA Debug] EURUSD Close=1.13330, SMA(10)=1.13337 → SELL
+[2025-05-02 17:18:00] [RSI Debug] GBPNZD RSI=48.89 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [RSI Debug] EURGBP RSI=47.98 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [RSI Debug] USDCHF RSI=52.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [RSI Debug] AUDUSD RSI=58.23 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [RSI Debug] USDCAD RSI=47.04 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [RSI Debug] EURJPY RSI=55.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:00] [MA Debug] GBPNZD Close=2.23042, SMA(10)=2.23015 → BUY
+[2025-05-02 17:18:00] [MA Debug] EURGBP Close=0.85284, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:00] [MA Debug] USDCHF Close=0.82669, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:00] [MA Debug] AUDUSD Close=0.64522, SMA(10)=0.64517 → BUY
+[2025-05-02 17:18:00] [MA Debug] USDCAD Close=1.37878, SMA(10)=1.37862 → BUY
+[2025-05-02 17:18:00] [MA Debug] EURJPY Close=163.85300, SMA(10)=163.84550 → BUY
+[2025-05-02 17:18:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:00] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:01] [RSI Debug] EURUSD RSI=51.27 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:01] [MA Debug] EURUSD Close=1.13324, SMA(10)=1.13342 → SELL
+[2025-05-02 17:18:04] [RSI Debug] GBPNZD RSI=51.21 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [RSI Debug] AUDUSD RSI=53.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [RSI Debug] EURGBP RSI=46.06 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [RSI Debug] EURJPY RSI=53.48 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [RSI Debug] USDCHF RSI=53.69 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:04] [MA Debug] GBPNZD Close=2.23059, SMA(10)=2.23017 → BUY
+[2025-05-02 17:18:04] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64515 → SELL
+[2025-05-02 17:18:04] [MA Debug] EURGBP Close=0.85279, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:04] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:04] [MA Debug] EURJPY Close=163.84200, SMA(10)=163.84440 → SELL
+[2025-05-02 17:18:04] [MA Debug] USDCHF Close=0.82675, SMA(10)=0.82656 → BUY
+[2025-05-02 17:18:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:04] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:06] [RSI Debug] EURUSD RSI=49.04 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:06] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:06] [✅] SELL trade placed on EURJPY
+[2025-05-02 17:18:06] [✅] SELL trade placed on AUDUSD
+[2025-05-02 17:18:09] [RSI Debug] GBPNZD RSI=47.56 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:09] [RSI Debug] EURGBP RSI=45.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:09] [RSI Debug] USDCHF RSI=54.90 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:09] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:09] [MA Debug] GBPNZD Close=2.23032, SMA(10)=2.23014 → BUY
+[2025-05-02 17:18:09] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:09] [MA Debug] USDCHF Close=0.82681, SMA(10)=0.82656 → BUY
+[2025-05-02 17:18:09] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:09] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:09] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:10] [RSI Debug] AUDUSD RSI=54.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:10] [RSI Debug] EURUSD RSI=47.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:10] [RSI Debug] EURJPY RSI=52.66 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:10] [MA Debug] AUDUSD Close=0.64508, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:10] [MA Debug] EURUSD Close=1.13304, SMA(10)=1.13340 → SELL
+[2025-05-02 17:18:10] [MA Debug] EURJPY Close=163.83800, SMA(10)=163.84400 → SELL
+[2025-05-02 17:18:10] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:13] [RSI Debug] GBPNZD RSI=49.46 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:13] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:13] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:13] [RSI Debug] USDCHF RSI=54.90 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:13] [RSI Debug] EURGBP RSI=45.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:13] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:13] [MA Debug] USDCHF Close=0.82681, SMA(10)=0.82656 → BUY
+[2025-05-02 17:18:13] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:13] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:13] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:14] [RSI Debug] AUDUSD RSI=54.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:14] [RSI Debug] EURJPY RSI=51.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:14] [RSI Debug] EURUSD RSI=47.72 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:14] [MA Debug] AUDUSD Close=0.64508, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:14] [MA Debug] EURJPY Close=163.83300, SMA(10)=163.84350 → SELL
+[2025-05-02 17:18:14] [MA Debug] EURUSD Close=1.13306, SMA(10)=1.13340 → SELL
+[2025-05-02 17:18:14] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:17] [RSI Debug] GBPNZD RSI=48.62 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:17] [MA Debug] GBPNZD Close=2.23040, SMA(10)=2.23015 → BUY
+[2025-05-02 17:18:17] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:17] [RSI Debug] USDCHF RSI=55.09 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:17] [RSI Debug] EURGBP RSI=45.71 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:17] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:17] [MA Debug] USDCHF Close=0.82682, SMA(10)=0.82657 → BUY
+[2025-05-02 17:18:17] [MA Debug] EURGBP Close=0.85278, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:17] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:17] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:18] [RSI Debug] AUDUSD RSI=54.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:18] [RSI Debug] EURUSD RSI=46.64 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:18] [RSI Debug] EURJPY RSI=54.97 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:18] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:18] [MA Debug] EURUSD Close=1.13300, SMA(10)=1.13339 → SELL
+[2025-05-02 17:18:18] [MA Debug] EURJPY Close=163.84900, SMA(10)=163.84510 → BUY
+[2025-05-02 17:18:18] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:18] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:21] [RSI Debug] GBPNZD RSI=47.69 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:21] [MA Debug] GBPNZD Close=2.23033, SMA(10)=2.23014 → BUY
+[2025-05-02 17:18:21] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:21] [RSI Debug] USDCHF RSI=55.09 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:21] [RSI Debug] EURGBP RSI=46.06 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:21] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:21] [MA Debug] USDCHF Close=0.82682, SMA(10)=0.82657 → BUY
+[2025-05-02 17:18:21] [MA Debug] EURGBP Close=0.85279, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:21] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:21] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:22] [RSI Debug] AUDUSD RSI=54.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:22] [RSI Debug] EURUSD RSI=46.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:22] [RSI Debug] EURJPY RSI=54.75 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:22] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:22] [MA Debug] EURUSD Close=1.13299, SMA(10)=1.13339 → SELL
+[2025-05-02 17:18:22] [MA Debug] EURJPY Close=163.84800, SMA(10)=163.84500 → BUY
+[2025-05-02 17:18:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:25] [RSI Debug] GBPNZD RSI=47.56 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:25] [MA Debug] GBPNZD Close=2.23032, SMA(10)=2.23014 → BUY
+[2025-05-02 17:18:25] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:25] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:25] [RSI Debug] EURGBP RSI=47.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:25] [RSI Debug] USDCHF RSI=53.07 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:25] [MA Debug] EURGBP Close=0.85283, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:25] [MA Debug] USDCHF Close=0.82672, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:25] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:25] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:26] [RSI Debug] AUDUSD RSI=54.58 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:26] [RSI Debug] EURUSD RSI=49.04 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:26] [RSI Debug] EURJPY RSI=54.11 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:26] [MA Debug] AUDUSD Close=0.64510, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:26] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:26] [MA Debug] EURJPY Close=163.84500, SMA(10)=163.84470 → BUY
+[2025-05-02 17:18:26] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:29] [RSI Debug] GBPNZD RSI=46.30 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:29] [MA Debug] GBPNZD Close=2.23022, SMA(10)=2.23013 → BUY
+[2025-05-02 17:18:29] [RSI Debug] USDCAD RSI=50.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:29] [RSI Debug] EURGBP RSI=45.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:29] [RSI Debug] USDCHF RSI=54.31 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:29] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:29] [MA Debug] EURGBP Close=0.85276, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:29] [MA Debug] USDCHF Close=0.82678, SMA(10)=0.82656 → BUY
+[2025-05-02 17:18:29] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:29] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:30] [RSI Debug] AUDUSD RSI=54.58 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:30] [RSI Debug] EURJPY RSI=53.07 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:30] [RSI Debug] EURUSD RSI=46.82 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:30] [MA Debug] AUDUSD Close=0.64510, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:30] [MA Debug] EURJPY Close=163.84000, SMA(10)=163.84420 → SELL
+[2025-05-02 17:18:30] [MA Debug] EURUSD Close=1.13301, SMA(10)=1.13339 → SELL
+[2025-05-02 17:18:30] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:33] [RSI Debug] GBPNZD RSI=48.08 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:33] [MA Debug] GBPNZD Close=2.23036, SMA(10)=2.23015 → BUY
+[2025-05-02 17:18:33] [RSI Debug] USDCAD RSI=49.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:33] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:33] [RSI Debug] USDCHF RSI=53.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:33] [RSI Debug] EURGBP RSI=45.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:33] [MA Debug] USDCHF Close=0.82674, SMA(10)=0.82656 → BUY
+[2025-05-02 17:18:33] [MA Debug] EURGBP Close=0.85276, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:33] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:33] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:34] [RSI Debug] AUDUSD RSI=56.65 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:34] [RSI Debug] EURUSD RSI=49.24 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:34] [RSI Debug] EURJPY RSI=54.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:34] [MA Debug] AUDUSD Close=0.64517, SMA(10)=0.64516 → BUY
+[2025-05-02 17:18:34] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:34] [MA Debug] EURJPY Close=163.84700, SMA(10)=163.84490 → BUY
+[2025-05-02 17:18:34] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:34] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:38] [RSI Debug] EURJPY RSI=52.87 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:38] [RSI Debug] USDCAD RSI=48.76 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:38] [RSI Debug] EURUSD RSI=50.64 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:39] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:38] [RSI Debug] GBPNZD RSI=48.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:38] [RSI Debug] EURGBP RSI=45.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:38] [MA Debug] EURJPY Close=163.83900, SMA(10)=163.84410 → SELL
+[2025-05-02 17:18:38] [RSI Debug] AUDUSD RSI=56.96 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:39] [MA Debug] USDCAD Close=1.37885, SMA(10)=1.37863 → BUY
+[2025-05-02 17:18:38] [RSI Debug] USDCHF RSI=52.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:39] [MA Debug] GBPNZD Close=2.23037, SMA(10)=2.23015 → BUY
+[2025-05-02 17:18:39] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:39] [MA Debug] AUDUSD Close=0.64518, SMA(10)=0.64517 → BUY
+[2025-05-02 17:18:39] [MA Debug] USDCHF Close=0.82669, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:39] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:39] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:39] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:43] [RSI Debug] EURUSD RSI=50.64 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [RSI Debug] EURJPY RSI=54.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [RSI Debug] USDCAD RSI=48.52 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [RSI Debug] AUDUSD RSI=57.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [RSI Debug] GBPNZD RSI=47.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [RSI Debug] USDCHF RSI=51.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:43] [RSI Debug] EURGBP RSI=45.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:43] [MA Debug] EURJPY Close=163.84600, SMA(10)=163.84480 → BUY
+[2025-05-02 17:18:43] [MA Debug] USDCAD Close=1.37884, SMA(10)=1.37863 → BUY
+[2025-05-02 17:18:43] [MA Debug] AUDUSD Close=0.64521, SMA(10)=0.64517 → BUY
+[2025-05-02 17:18:43] [MA Debug] GBPNZD Close=2.23031, SMA(10)=2.23014 → BUY
+[2025-05-02 17:18:43] [MA Debug] USDCHF Close=0.82667, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:43] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:43] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:43] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:43] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:43] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:47] [RSI Debug] EURUSD RSI=49.63 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] USDCHF RSI=51.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] AUDUSD RSI=58.56 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] USDCAD RSI=48.52 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] EURGBP RSI=45.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] EURJPY RSI=56.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [RSI Debug] GBPNZD RSI=47.17 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:47] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:47] [MA Debug] USDCHF Close=0.82667, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:47] [MA Debug] AUDUSD Close=0.64523, SMA(10)=0.64517 → BUY
+[2025-05-02 17:18:47] [MA Debug] USDCAD Close=1.37884, SMA(10)=1.37863 → BUY
+[2025-05-02 17:18:47] [MA Debug] EURGBP Close=0.85276, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:47] [MA Debug] EURJPY Close=163.85800, SMA(10)=163.84600 → BUY
+[2025-05-02 17:18:47] [MA Debug] GBPNZD Close=2.23029, SMA(10)=2.23014 → BUY
+[2025-05-02 17:18:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:47] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:50] 😊 Manual close on AUDUSD (ticket 250551104) [close on slave 10686586]
+[2025-05-02 17:18:50] 😊 Manual close on AUDNZD (ticket 250552294) [close on slave 10686586]
+[2025-05-02 17:18:51] 😊 Manual close on EURJPY (ticket 250551107) [close on slave 10686586]
+[2025-05-02 17:18:51] 😊 Manual close on EURUSD (ticket 250550629) [close on slave 10686586]
+[2025-05-02 17:18:51] 😊 Manual close on USDCAD (ticket 250550494) [close on slave 10686586]
+[2025-05-02 17:18:52] [RSI Debug] EURJPY RSI=55.15 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] USDCHF RSI=51.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] AUDUSD RSI=56.05 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] GBPNZD RSI=48.62 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] EURUSD RSI=48.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] USDCAD RSI=51.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [RSI Debug] EURGBP RSI=44.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:52] [MA Debug] EURJPY Close=163.85000, SMA(10)=163.84520 → BUY
+[2025-05-02 17:18:52] [MA Debug] USDCHF Close=0.82667, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:52] [MA Debug] AUDUSD Close=0.64515, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:52] [MA Debug] GBPNZD Close=2.23040, SMA(10)=2.23015 → BUY
+[2025-05-02 17:18:52] [MA Debug] EURUSD Close=1.13310, SMA(10)=1.13340 → SELL
+[2025-05-02 17:18:52] [MA Debug] USDCAD Close=1.37895, SMA(10)=1.37864 → BUY
+[2025-05-02 17:18:52] [MA Debug] EURGBP Close=0.85275, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:52] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:52] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:18:56] [RSI Debug] GBPNZD RSI=49.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [RSI Debug] AUDUSD RSI=56.05 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [RSI Debug] USDCHF RSI=51.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [RSI Debug] EURJPY RSI=54.11 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [RSI Debug] USDCAD RSI=51.02 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [RSI Debug] EURUSD RSI=49.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:56] [RSI Debug] EURGBP RSI=45.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:18:56] [MA Debug] AUDUSD Close=0.64515, SMA(10)=0.64516 → SELL
+[2025-05-02 17:18:56] [MA Debug] USDCHF Close=0.82667, SMA(10)=0.82655 → BUY
+[2025-05-02 17:18:56] [MA Debug] EURJPY Close=163.84500, SMA(10)=163.84470 → BUY
+[2025-05-02 17:18:56] [MA Debug] USDCAD Close=1.37895, SMA(10)=1.37864 → BUY
+[2025-05-02 17:18:56] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:18:56] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85298 → SELL
+[2025-05-02 17:18:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:18:56] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:47] [RSI Debug] EURUSD RSI=44.53 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:47] [MA Debug] EURUSD Close=1.13291, SMA(10)=1.13336 → SELL
+[2025-05-02 17:20:47] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:48] [RSI Debug] USDCHF RSI=56.81 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:48] [MA Debug] USDCHF Close=0.82690, SMA(10)=0.82661 → BUY
+[2025-05-02 17:20:48] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:49] [RSI Debug] AUDUSD RSI=54.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:49] [MA Debug] AUDUSD Close=0.64511, SMA(10)=0.64522 → SELL
+[2025-05-02 17:20:50] [RSI Debug] USDCAD RSI=52.17 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:50] [MA Debug] USDCAD Close=1.37900, SMA(10)=1.37867 → BUY
+[2025-05-02 17:20:50] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:50] [✅] SELL trade placed on AUDUSD
+[2025-05-02 17:20:52] [RSI Debug] EURUSD RSI=44.72 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:53] [RSI Debug] USDCHF RSI=57.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:53] [RSI Debug] EURJPY RSI=56.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:53] [MA Debug] EURUSD Close=1.13292, SMA(10)=1.13336 → SELL
+[2025-05-02 17:20:53] [MA Debug] USDCHF Close=0.82691, SMA(10)=0.82661 → BUY
+[2025-05-02 17:20:53] [MA Debug] EURJPY Close=163.86500, SMA(10)=163.85220 → BUY
+[2025-05-02 17:20:53] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:53] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:53] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:54] [RSI Debug] EURGBP RSI=46.57 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:54] [MA Debug] EURGBP Close=0.85280, SMA(10)=0.85291 → SELL
+[2025-05-02 17:20:54] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:54] [RSI Debug] USDCAD RSI=52.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:54] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37867 → BUY
+[2025-05-02 17:20:54] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:54] [RSI Debug] AUDUSD RSI=54.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:54] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64522 → SELL
+[2025-05-02 17:20:55] [RSI Debug] GBPNZD RSI=43.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:55] [MA Debug] GBPNZD Close=2.23003, SMA(10)=2.23012 → SELL
+[2025-05-02 17:20:55] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:57] [RSI Debug] USDCHF RSI=57.21 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:57] [RSI Debug] EURJPY RSI=56.36 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:57] [RSI Debug] EURUSD RSI=44.72 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:57] [MA Debug] USDCHF Close=0.82692, SMA(10)=0.82661 → BUY
+[2025-05-02 17:20:57] [MA Debug] EURJPY Close=163.86500, SMA(10)=163.85220 → BUY
+[2025-05-02 17:20:57] [MA Debug] EURUSD Close=1.13292, SMA(10)=1.13336 → SELL
+[2025-05-02 17:20:57] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:57] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:57] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:58] [RSI Debug] EURGBP RSI=45.81 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:58] [MA Debug] EURGBP Close=0.85278, SMA(10)=0.85291 → SELL
+[2025-05-02 17:20:58] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:20:58] [RSI Debug] USDCAD RSI=52.17 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:58] [MA Debug] USDCAD Close=1.37900, SMA(10)=1.37867 → BUY
+[2025-05-02 17:20:58] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:20:58] [RSI Debug] AUDUSD RSI=53.69 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:58] [MA Debug] AUDUSD Close=0.64508, SMA(10)=0.64521 → SELL
+[2025-05-02 17:20:59] [RSI Debug] GBPNZD RSI=43.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:20:59] [MA Debug] GBPNZD Close=2.23001, SMA(10)=2.23011 → SELL
+[2025-05-02 17:20:59] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:01] [RSI Debug] USDCHF RSI=58.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:01] [RSI Debug] EURUSD RSI=43.55 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:01] [RSI Debug] EURJPY RSI=55.72 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:01] [MA Debug] USDCHF Close=0.82698, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:01] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:01] [MA Debug] EURJPY Close=163.86200, SMA(10)=163.85530 → BUY
+[2025-05-02 17:21:01] [MA Debug] EURUSD Close=1.13286, SMA(10)=1.13333 → SELL
+[2025-05-02 17:21:01] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:01] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:02] [RSI Debug] EURGBP RSI=45.38 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:02] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:02] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:02] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:02] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:02] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:02] [RSI Debug] AUDUSD RSI=54.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:02] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:03] [RSI Debug] GBPNZD RSI=44.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:03] [MA Debug] GBPNZD Close=2.23006, SMA(10)=2.23010 → SELL
+[2025-05-02 17:21:03] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:05] [RSI Debug] USDCHF RSI=58.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:05] [RSI Debug] EURUSD RSI=43.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:05] [RSI Debug] EURJPY RSI=56.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:05] [MA Debug] USDCHF Close=0.82697, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:05] [MA Debug] EURUSD Close=1.13287, SMA(10)=1.13333 → SELL
+[2025-05-02 17:21:05] [MA Debug] EURJPY Close=163.86500, SMA(10)=163.85560 → BUY
+[2025-05-02 17:21:05] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:05] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:05] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:06] [RSI Debug] EURGBP RSI=45.38 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:06] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:06] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:06] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:06] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:06] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:06] [RSI Debug] AUDUSD RSI=52.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:06] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:07] [RSI Debug] GBPNZD RSI=46.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:07] [MA Debug] GBPNZD Close=2.23020, SMA(10)=2.23011 → BUY
+[2025-05-02 17:21:08] [✅] BUY trade placed on GBPNZD
+[2025-05-02 17:21:09] [RSI Debug] USDCHF RSI=58.60 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:09] [RSI Debug] EURJPY RSI=55.08 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:09] [RSI Debug] EURUSD RSI=42.98 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:09] [MA Debug] USDCHF Close=0.82699, SMA(10)=0.82666 → BUY
+[2025-05-02 17:21:09] [MA Debug] EURJPY Close=163.85900, SMA(10)=163.85500 → BUY
+[2025-05-02 17:21:09] [MA Debug] EURUSD Close=1.13283, SMA(10)=1.13333 → SELL
+[2025-05-02 17:21:09] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:09] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:09] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:10] [RSI Debug] EURGBP RSI=45.38 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:10] [MA Debug] EURGBP Close=0.85277, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:10] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:10] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:10] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:10] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:10] [RSI Debug] AUDUSD RSI=52.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:10] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:12] [RSI Debug] GBPNZD RSI=42.55 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:12] [MA Debug] GBPNZD Close=2.22994, SMA(10)=2.23008 → SELL
+[2025-05-02 17:21:12] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:13] [RSI Debug] USDCHF RSI=57.24 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:13] [RSI Debug] EURUSD RSI=46.18 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:13] [RSI Debug] EURJPY RSI=55.51 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:13] [MA Debug] USDCHF Close=0.82693, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:13] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:13] [MA Debug] EURJPY Close=163.86100, SMA(10)=163.85520 → BUY
+[2025-05-02 17:21:13] [MA Debug] EURUSD Close=1.13298, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:13] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:13] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:14] [RSI Debug] EURGBP RSI=47.12 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:14] [MA Debug] EURGBP Close=0.85281, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:14] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:14] [RSI Debug] USDCAD RSI=52.17 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:14] [MA Debug] USDCAD Close=1.37900, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:14] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:14] [RSI Debug] AUDUSD RSI=54.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:14] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:17] [RSI Debug] GBPNZD RSI=43.20 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:17] [MA Debug] GBPNZD Close=2.22999, SMA(10)=2.23009 → SELL
+[2025-05-02 17:21:17] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:17] 😊 Manual close on AUDUSD (ticket 250555229) [close on slave 10686586]
+[2025-05-02 17:21:18] [RSI Debug] EURJPY RSI=56.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [MA Debug] EURJPY Close=163.86600, SMA(10)=163.85570 → BUY
+[2025-05-02 17:21:18] [RSI Debug] USDCHF RSI=56.96 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [RSI Debug] EURUSD RSI=46.65 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:18] [MA Debug] USDCHF Close=0.82692, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:18] [MA Debug] EURUSD Close=1.13300, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:18] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:18] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:18] [RSI Debug] EURGBP RSI=48.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [MA Debug] EURGBP Close=0.85284, SMA(10)=0.85290 → SELL
+[2025-05-02 17:21:18] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:18] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:18] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:18] [RSI Debug] AUDUSD RSI=54.31 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:18] [MA Debug] AUDUSD Close=0.64510, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:21] [RSI Debug] GBPNZD RSI=44.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:21] [MA Debug] GBPNZD Close=2.23006, SMA(10)=2.23010 → SELL
+[2025-05-02 17:21:21] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:22] [RSI Debug] EURJPY RSI=55.72 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [RSI Debug] EURUSD RSI=46.18 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [RSI Debug] USDCHF RSI=56.96 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [MA Debug] EURJPY Close=163.86200, SMA(10)=163.85530 → BUY
+[2025-05-02 17:21:22] [MA Debug] EURUSD Close=1.13298, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:22] [MA Debug] USDCHF Close=0.82692, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:22] [RSI Debug] EURGBP RSI=47.58 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [MA Debug] EURGBP Close=0.85282, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:22] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:22] [RSI Debug] AUDUSD RSI=54.01 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:22] [MA Debug] AUDUSD Close=0.64509, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:25] [RSI Debug] GBPNZD RSI=43.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:25] [MA Debug] GBPNZD Close=2.23001, SMA(10)=2.23009 → SELL
+[2025-05-02 17:21:25] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:32] [RSI Debug] EURUSD RSI=45.94 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:32] [MA Debug] EURUSD Close=1.13297, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:32] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:33] [RSI Debug] USDCHF RSI=58.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:33] [MA Debug] USDCHF Close=0.82698, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:33] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:34] [RSI Debug] AUDUSD RSI=52.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:34] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:35] [RSI Debug] USDCAD RSI=52.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:35] [MA Debug] USDCAD Close=1.37902, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:35] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:35] [✅] SELL trade placed on AUDUSD
+[2025-05-02 17:21:37] [RSI Debug] EURUSD RSI=47.78 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:37] [RSI Debug] USDCHF RSI=58.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:37] [RSI Debug] EURJPY RSI=58.11 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:37] [MA Debug] EURUSD Close=1.13305, SMA(10)=1.13335 → SELL
+[2025-05-02 17:21:37] [MA Debug] USDCHF Close=0.82696, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:37] [MA Debug] EURJPY Close=163.87600, SMA(10)=163.85670 → BUY
+[2025-05-02 17:21:37] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:37] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:37] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:38] [RSI Debug] EURGBP RSI=50.17 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:38] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:21:39] [RSI Debug] USDCAD RSI=52.43 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:39] [MA Debug] USDCAD Close=1.37901, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:39] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:39] [RSI Debug] AUDUSD RSI=52.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:39] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:39] [RSI Debug] GBPNZD RSI=46.70 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:39] [MA Debug] GBPNZD Close=2.23021, SMA(10)=2.23011 → BUY
+[2025-05-02 17:21:41] [✅] BUY trade placed on GBPNZD
+[2025-05-02 17:21:42] [RSI Debug] EURJPY RSI=56.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:42] [RSI Debug] EURUSD RSI=47.10 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:42] [RSI Debug] USDCHF RSI=58.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:42] [MA Debug] EURJPY Close=163.86900, SMA(10)=163.85600 → BUY
+[2025-05-02 17:21:42] [MA Debug] EURUSD Close=1.13302, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:42] [MA Debug] USDCHF Close=0.82696, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:42] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:42] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:42] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:42] [RSI Debug] EURGBP RSI=49.33 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:42] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:21:43] [RSI Debug] USDCAD RSI=52.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:43] [MA Debug] USDCAD Close=1.37902, SMA(10)=1.37870 → BUY
+[2025-05-02 17:21:43] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:43] [RSI Debug] AUDUSD RSI=52.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:43] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:45] [RSI Debug] GBPNZD RSI=46.06 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:45] [MA Debug] GBPNZD Close=2.23017, SMA(10)=2.23011 → BUY
+[2025-05-02 17:21:46] [RSI Debug] USDCHF RSI=59.38 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:46] [RSI Debug] EURJPY RSI=57.64 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:46] [RSI Debug] EURUSD RSI=43.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:46] [RSI Debug] EURGBP RSI=47.12 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:46] [MA Debug] USDCHF Close=0.82703, SMA(10)=0.82666 → BUY
+[2025-05-02 17:21:46] [MA Debug] EURJPY Close=163.87300, SMA(10)=163.85640 → BUY
+[2025-05-02 17:21:46] [MA Debug] EURUSD Close=1.13288, SMA(10)=1.13333 → SELL
+[2025-05-02 17:21:46] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:46] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:46] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:46] [MA Debug] EURGBP Close=0.85281, SMA(10)=0.85289 → SELL
+[2025-05-02 17:21:46] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:47] [RSI Debug] USDCAD RSI=54.85 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:47] [MA Debug] USDCAD Close=1.37911, SMA(10)=1.37871 → BUY
+[2025-05-02 17:21:47] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:47] [RSI Debug] AUDUSD RSI=52.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:47] [MA Debug] AUDUSD Close=0.64503, SMA(10)=0.64522 → SELL
+[2025-05-02 17:21:50] [RSI Debug] GBPNZD RSI=44.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:50] [MA Debug] GBPNZD Close=2.23010, SMA(10)=2.23010 → SELL
+[2025-05-02 17:21:50] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:52] [RSI Debug] EURJPY RSI=57.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [RSI Debug] USDCAD RSI=55.08 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [RSI Debug] USDCHF RSI=59.19 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [RSI Debug] AUDUSD RSI=52.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [RSI Debug] EURUSD RSI=44.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [RSI Debug] EURGBP RSI=48.47 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:52] [MA Debug] EURJPY Close=163.87100, SMA(10)=163.85620 → BUY
+[2025-05-02 17:21:52] [MA Debug] USDCAD Close=1.37912, SMA(10)=1.37871 → BUY
+[2025-05-02 17:21:52] [MA Debug] USDCHF Close=0.82702, SMA(10)=0.82666 → BUY
+[2025-05-02 17:21:52] [MA Debug] AUDUSD Close=0.64504, SMA(10)=0.64522 → SELL
+[2025-05-02 17:21:52] [MA Debug] EURUSD Close=1.13290, SMA(10)=1.13333 → SELL
+[2025-05-02 17:21:52] [MA Debug] EURGBP Close=0.85284, SMA(10)=0.85290 → SELL
+[2025-05-02 17:21:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:52] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:52] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:52] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:54] [RSI Debug] GBPNZD RSI=44.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:54] [MA Debug] GBPNZD Close=2.23007, SMA(10)=2.23010 → SELL
+[2025-05-02 17:21:54] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:56] [RSI Debug] AUDUSD RSI=53.32 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [RSI Debug] EURJPY RSI=58.73 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [RSI Debug] EURGBP RSI=50.97 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [RSI Debug] USDCHF RSI=58.40 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [RSI Debug] USDCAD RSI=54.62 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [RSI Debug] EURUSD RSI=47.10 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:56] [MA Debug] AUDUSD Close=0.64507, SMA(10)=0.64523 → SELL
+[2025-05-02 17:21:56] [MA Debug] EURJPY Close=163.88000, SMA(10)=163.85710 → BUY
+[2025-05-02 17:21:56] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:21:56] [MA Debug] USDCHF Close=0.82698, SMA(10)=0.82665 → BUY
+[2025-05-02 17:21:56] [MA Debug] USDCAD Close=1.37910, SMA(10)=1.37871 → BUY
+[2025-05-02 17:21:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:56] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:21:56] [MA Debug] EURUSD Close=1.13302, SMA(10)=1.13334 → SELL
+[2025-05-02 17:21:56] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:21:58] [RSI Debug] GBPNZD RSI=45.08 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:21:58] [MA Debug] GBPNZD Close=2.23011, SMA(10)=2.23010 → BUY
+[2025-05-02 17:22:00] [RSI Debug] EURGBP RSI=50.16 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [RSI Debug] USDCAD RSI=57.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [RSI Debug] AUDUSD RSI=51.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [RSI Debug] EURUSD RSI=45.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [RSI Debug] EURJPY RSI=57.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [RSI Debug] USDCHF RSI=59.46 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:00] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:22:00] [MA Debug] USDCAD Close=1.37924, SMA(10)=1.37880 → BUY
+[2025-05-02 17:22:00] [MA Debug] AUDUSD Close=0.64502, SMA(10)=0.64520 → SELL
+[2025-05-02 17:22:00] [MA Debug] EURUSD Close=1.13294, SMA(10)=1.13330 → SELL
+[2025-05-02 17:22:00] [MA Debug] EURJPY Close=163.87200, SMA(10)=163.86190 → BUY
+[2025-05-02 17:22:00] [MA Debug] USDCHF Close=0.82704, SMA(10)=0.82670 → BUY
+[2025-05-02 17:22:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:00] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:00] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:02] [RSI Debug] GBPNZD RSI=46.29 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:02] [MA Debug] GBPNZD Close=2.23018, SMA(10)=2.23016 → BUY
+[2025-05-02 17:22:04] [RSI Debug] EURGBP RSI=49.29 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [RSI Debug] EURUSD RSI=45.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [RSI Debug] AUDUSD RSI=51.00 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [RSI Debug] USDCHF RSI=59.46 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [RSI Debug] USDCAD RSI=57.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [RSI Debug] EURJPY RSI=58.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:04] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:22:04] [MA Debug] EURUSD Close=1.13293, SMA(10)=1.13330 → SELL
+[2025-05-02 17:22:04] [Multi-Indicator] RSI returned no signal → skipping
+[2025-05-02 17:22:04] [MA Debug] USDCHF Close=0.82704, SMA(10)=0.82670 → BUY
+[2025-05-02 17:22:04] [MA Debug] USDCAD Close=1.37924, SMA(10)=1.37880 → BUY
+[2025-05-02 17:22:04] [MA Debug] EURJPY Close=163.88100, SMA(10)=163.86280 → BUY
+[2025-05-02 17:22:04] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:04] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:06] [RSI Debug] GBPNZD RSI=46.12 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:06] [MA Debug] GBPNZD Close=2.23017, SMA(10)=2.23016 → BUY
+[2025-05-02 17:22:08] [RSI Debug] EURGBP RSI=52.28 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [RSI Debug] USDCAD RSI=57.67 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [RSI Debug] EURJPY RSI=58.99 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [RSI Debug] AUDUSD RSI=51.34 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [RSI Debug] EURUSD RSI=45.74 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [MA Debug] EURGBP Close=0.85293, SMA(10)=0.85289 → BUY
+[2025-05-02 17:22:08] [RSI Debug] USDCHF RSI=59.46 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:08] [MA Debug] USDCAD Close=1.37924, SMA(10)=1.37880 → BUY
+[2025-05-02 17:22:08] [MA Debug] EURJPY Close=163.88100, SMA(10)=163.86280 → BUY
+[2025-05-02 17:22:08] [MA Debug] AUDUSD Close=0.64501, SMA(10)=0.64520 → SELL
+[2025-05-02 17:22:08] [MA Debug] EURUSD Close=1.13296, SMA(10)=1.13331 → SELL
+[2025-05-02 17:22:08] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:08] [MA Debug] USDCHF Close=0.82704, SMA(10)=0.82670 → BUY
+[2025-05-02 17:22:08] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:08] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:08] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:08] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:10] [RSI Debug] GBPNZD RSI=43.56 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:10] [MA Debug] GBPNZD Close=2.23000, SMA(10)=2.23015 → SELL
+[2025-05-02 17:22:10] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:12] [RSI Debug] AUDUSD RSI=53.23 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [RSI Debug] USDCAD RSI=57.23 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [RSI Debug] EURGBP RSI=52.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [RSI Debug] USDCHF RSI=59.16 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [RSI Debug] EURUSD RSI=47.49 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [RSI Debug] EURJPY RSI=59.31 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:12] [MA Debug] AUDUSD Close=0.64507, SMA(10)=0.64521 → SELL
+[2025-05-02 17:22:12] [MA Debug] USDCAD Close=1.37922, SMA(10)=1.37880 → BUY
+[2025-05-02 17:22:12] [MA Debug] EURGBP Close=0.85294, SMA(10)=0.85290 → BUY
+[2025-05-02 17:22:12] [MA Debug] USDCHF Close=0.82703, SMA(10)=0.82670 → BUY
+[2025-05-02 17:22:12] [MA Debug] EURUSD Close=1.13303, SMA(10)=1.13331 → SELL
+[2025-05-02 17:22:12] [MA Debug] EURJPY Close=163.88300, SMA(10)=163.86300 → BUY
+[2025-05-02 17:22:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:12] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:12] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:14] [RSI Debug] GBPNZD RSI=41.12 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:14] [MA Debug] GBPNZD Close=2.22981, SMA(10)=2.23013 → SELL
+[2025-05-02 17:22:14] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:17] [RSI Debug] USDCHF RSI=56.63 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [RSI Debug] USDCAD RSI=59.14 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [RSI Debug] EURJPY RSI=60.09 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [RSI Debug] AUDUSD RSI=52.93 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [RSI Debug] EURUSD RSI=48.91 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [RSI Debug] EURGBP RSI=54.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:17] [MA Debug] USDCHF Close=0.82694, SMA(10)=0.82669 → BUY
+[2025-05-02 17:22:17] [MA Debug] USDCAD Close=1.37931, SMA(10)=1.37881 → BUY
+[2025-05-02 17:22:17] [MA Debug] EURJPY Close=163.88800, SMA(10)=163.86350 → BUY
+[2025-05-02 17:22:17] [MA Debug] AUDUSD Close=0.64506, SMA(10)=0.64521 → SELL
+[2025-05-02 17:22:17] [MA Debug] EURUSD Close=1.13309, SMA(10)=1.13332 → SELL
+[2025-05-02 17:22:17] [MA Debug] EURGBP Close=0.85298, SMA(10)=0.85290 → BUY
+[2025-05-02 17:22:17] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:17] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:17] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:17] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:17] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:17] 😊 Manual close on AUDJPY (ticket 250556526) [close on slave 10686586]
+[2025-05-02 17:22:18] [RSI Debug] GBPNZD RSI=43.16 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:18] [MA Debug] GBPNZD Close=2.22997, SMA(10)=2.23014 → SELL
+[2025-05-02 17:22:18] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:21] [RSI Debug] AUDUSD RSI=51.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [RSI Debug] USDCAD RSI=59.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [RSI Debug] EURJPY RSI=60.54 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [RSI Debug] EURGBP RSI=54.22 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [RSI Debug] EURUSD RSI=48.68 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [RSI Debug] USDCHF RSI=57.73 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [MA Debug] AUDUSD Close=0.64502, SMA(10)=0.64520 → SELL
+[2025-05-02 17:22:22] [MA Debug] USDCAD Close=1.37933, SMA(10)=1.37881 → BUY
+[2025-05-02 17:22:22] [MA Debug] EURJPY Close=163.89100, SMA(10)=163.86380 → BUY
+[2025-05-02 17:22:22] [MA Debug] EURGBP Close=0.85298, SMA(10)=0.85290 → BUY
+[2025-05-02 17:22:22] [MA Debug] EURUSD Close=1.13308, SMA(10)=1.13332 → SELL
+[2025-05-02 17:22:22] [MA Debug] USDCHF Close=0.82698, SMA(10)=0.82670 → BUY
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['SELL', 'BUY']
+[2025-05-02 17:22:22] [RSI Debug] GBPNZD RSI=43.98 (Thresholds: <49=BUY, >51=SELL)
+[2025-05-02 17:22:22] [MA Debug] GBPNZD Close=2.23003, SMA(10)=2.23015 → SELL
+[2025-05-02 17:22:22] [Multi-Indicator] Conflict between indicators: ['BUY', 'SELL']
