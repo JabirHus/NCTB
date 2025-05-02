@@ -76,6 +76,18 @@ def copy_master_trades(master, slaves, logger=None):
 
                 result = mt5.order_send(request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
+                    try:
+                        from gui.account_page import trade_counter, update_trade_label
+                        trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
+                        update_trade_label(slave['login'])
+                    except Exception as e:
+                        print(f'[TradeCounter] Error updating counter: {e}')
+                    try:
+                        from gui.account_page import update_trade_count
+                        count = len(mt5.positions_get() or [])
+                        update_trade_count(slave['login'], count)
+                    except Exception as e:
+                        print(f'[TradeCount] Failed to update slave trade count: {e}')
                     new_copy_logs.append(f"[Copier] ✅ Trade copied to slave {slave['login']} (ticket {result.order})")
                     slave_trade_map.setdefault(ticket, {})[slave['login']] = {
                         "ticket": result.order,
@@ -120,6 +132,12 @@ def copy_master_trades(master, slaves, logger=None):
 
                 result = mt5.order_send(close_request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
+                    try:
+                        from gui.account_page import trade_counter, update_trade_label
+                        trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
+                        update_trade_label(slave['login'])
+                    except Exception as e:
+                        print(f'[TradeCounter] Error updating counter: {e}')
                     reason = slave_trade.get("comment", "").lower()
                     if "tp" in reason:
                         icon = "✅ TP"
@@ -139,8 +157,14 @@ def copy_master_trades(master, slaves, logger=None):
                         log(f"[❌ Copier] Failed to close trade {slave_trade['ticket']} on slave {login} after retry: ({code}, '{msg}')")
 
             slave_trade_map.pop(ticket, None)
+            try:
+                from gui.account_page import trade_counter, update_trade_label
+                trade_counter[login] = max(0, trade_counter.get(login, 1) - 1)
+                update_trade_label(login)
+            except Exception as e:
+                print(f'[TradeCounter] Error decrementing slave: {e}')
 
         with open("last_trades.json", "w") as f:
             json.dump(list(last_trade_ids), f)
 
-        time.sleep(1)
+        time.sleep(1.5)

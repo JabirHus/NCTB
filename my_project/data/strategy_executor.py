@@ -154,7 +154,7 @@ class StrategyEvaluator:
             return "SELL"
         return None
 
-def place_trade(symbol, volume=0.1, direction_str="BUY"):
+def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
     with symbol_locks[symbol]:
         direction = mt5.ORDER_TYPE_BUY if direction_str == "BUY" else mt5.ORDER_TYPE_SELL
 
@@ -204,6 +204,25 @@ def place_trade(symbol, volume=0.1, direction_str="BUY"):
             return False
 
         if result.retcode == mt5.TRADE_RETCODE_DONE:
+            try:
+                from gui.account_page import update_trade_count
+                if master_login:
+                    count = len(mt5.positions_get() or [])
+                    update_trade_count(master_login, count)
+            except Exception as e:
+                print(f'[TradeCount] Failed to update master count: {e}')
+            try:
+                from gui.account_page import update_trade_count
+                count = len(mt5.positions_get() or [])
+                update_trade_count(symbol, count)
+            except Exception as e:
+                print(f'[TradeCount] Failed to update master trade count: {e}')
+        try:
+            from gui.account_page import trade_counter, update_trade_label
+            trade_counter[symbol] = trade_counter.get(symbol, 0) + 1
+            update_trade_label(symbol)
+        except Exception as e:
+            print(f'[TradeCounter] Error updating counter: {e}')
             active_trades.add(symbol)
             time.sleep(1.0)
             try:
@@ -253,6 +272,6 @@ def strategy_loop(master_login, master_password, master_server, symbol="EURUSD")
         df = get_symbol_data(symbol)
         if df is not None:
             direction = evaluator.evaluate(df)
-            if direction and place_trade(symbol, direction_str=direction):
+            if direction and place_trade(symbol, direction_str=direction, master_login=master_login):
                 log(f"[✅] {direction} trade placed on {symbol}")
         time.sleep(STRATEGY_CHECK_INTERVAL)

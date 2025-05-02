@@ -14,7 +14,13 @@ def connect_mt5(login, password, server, path="C:/Program Files/MetaTrader 5/ter
         if account_info is None:
             return False, "Failed to retrieve account info after login."
         
-        return True, account_info._asdict()
+        
+        positions = mt5.positions_get()
+        trade_count = len(positions) if positions else 0
+        account_data = account_info._asdict()
+        account_data["positions"] = trade_count
+        return True, account_data
+
 
     except Exception as e:
         return False, f"Exception occurred: {str(e)}"
