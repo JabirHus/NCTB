@@ -19,6 +19,8 @@ def register_trade_count_updater(callback):
     global trade_count_updater
     trade_count_updater = callback
 
+# [Fixed] Accurate trade tracking
+
 def update_trade_count(login, count):
     trade_counter[login] = count
     if login in label_map:

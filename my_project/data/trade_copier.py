@@ -22,6 +22,8 @@ def log(message):
         except Exception as e:
             print(f"[Logger Error] Failed to write to log file: {e}")
 
+# [Fixed] Accurate trade syncing and count logic
+
 def copy_master_trades(master, slaves, logger=None):
     global gui_logger
     gui_logger = logger
@@ -77,9 +79,8 @@ def copy_master_trades(master, slaves, logger=None):
                 result = mt5.order_send(request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
                     try:
-                        from gui.account_page import trade_counter, update_trade_label
+                        from gui.account_page import trade_counter
                         trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
-                        update_trade_label(slave['login'])
                     except Exception as e:
                         print(f'[TradeCounter] Error updating counter: {e}')
                     try:
@@ -133,9 +134,8 @@ def copy_master_trades(master, slaves, logger=None):
                 result = mt5.order_send(close_request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
                     try:
-                        from gui.account_page import trade_counter, update_trade_label
+                        from gui.account_page import trade_counter
                         trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
-                        update_trade_label(slave['login'])
                     except Exception as e:
                         print(f'[TradeCounter] Error updating counter: {e}')
                     reason = slave_trade.get("comment", "").lower()
@@ -158,9 +158,10 @@ def copy_master_trades(master, slaves, logger=None):
 
             slave_trade_map.pop(ticket, None)
             try:
-                from gui.account_page import trade_counter, update_trade_label
+                from gui.account_page import trade_counter
                 trade_counter[login] = max(0, trade_counter.get(login, 1) - 1)
-                update_trade_label(login)
+                count = len(mt5.positions_get() or [])
+                update_trade_count(login, count)
             except Exception as e:
                 print(f'[TradeCounter] Error decrementing slave: {e}')
 
