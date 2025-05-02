@@ -75,6 +75,7 @@ def create_account_page(root, account_frame, strategy_frame):
             thread.start()
 
     
+
     def monitor_manual_trades():
         import MetaTrader5 as mt5
         import time
@@ -102,13 +103,14 @@ def create_account_page(root, account_frame, strategy_frame):
                 for pos in positions:
                     current_tickets.add(pos.ticket)
 
-                    # Log new manual trades only once
                     if not pos.comment.startswith("Trade-") and pos.ticket not in logged_manuals:
                         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        log_to_gui(f"[{timestamp}] [🟢 Manual] Trade opened: {pos.symbol} {('BUY' if pos.type == 0 else 'SELL')} at {pos.price_open}")
+                        log_to_gui(f"[{timestamp}] [🟢 Manual] Trade opened: {pos.symbol} {'BUY' if pos.type == 0 else 'SELL'} at {pos.price_open}")
                         logged_manuals.add(pos.ticket)
+                        open_count = len(positions)
+                        trade_counter[master["login"]] = open_count
+                        update_trade_count(master["login"], open_count)
 
-            # Detect closed trades by comparing sets
             closed_tickets = previous_tickets - current_tickets
             for closed_ticket in closed_tickets:
                 if master["login"] in trade_counter:
@@ -118,8 +120,6 @@ def create_account_page(root, account_frame, strategy_frame):
 
             previous_tickets = current_tickets
             time.sleep(4)
-
-
     def open_add_account_modal(is_master):
         modal = tk.Toplevel(account_frame)
         modal.title(f"Add {'Master' if is_master else 'Slave'} Account")
