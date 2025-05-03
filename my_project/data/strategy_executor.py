@@ -17,8 +17,7 @@ gui_logger = None
 log_lock = threading.Lock()
 
 symbols = [
-    "EURUSD", "USDCHF", "AUDUSD", "USDCAD",
-    "EURJPY", "EURGBP", "GBPNZD"
+    "BTCUSD", "ETHUSD"
 ]
 
 symbol_locks = {s: threading.Lock() for s in symbols}
@@ -28,14 +27,13 @@ def log(message):
     full_msg = f"[{timestamp}] {message}"
     with log_lock:
         print(full_msg)
-        if gui_logger:
-            if "[✅]" in message or "closed:" in message:
-                gui_logger(full_msg)
+        if gui_logger and ("[✅]" in message or "closed:" in message):
+            gui_logger(full_msg)
         try:
             with open("trade_log.txt", "a", encoding="utf-8") as f:
                 f.write(full_msg + "\n")
         except Exception as e:
-            print(f"[Logger Error] Failed to write to log file: {e}")
+            print(f"[Logger Error] {e}")
 
 def load_strategy_from_db():
     conn = duckdb.connect(DB_PATH)
@@ -74,12 +72,10 @@ class StrategyEvaluator:
                 dir = self.evaluate_stochastic(df, config)
             elif ind == "Moving Average":
                 dir = self.evaluate_moving_average(df, config)
-
             if dir not in ("BUY", "SELL"):
                 log(f"[Multi-Indicator] {ind} returned no signal → skipping")
                 return None
             directions.append(dir)
-
         if all(d == directions[0] for d in directions):
             return directions[0]
         log(f"[Multi-Indicator] Conflict between indicators: {directions}")
@@ -105,7 +101,7 @@ class StrategyEvaluator:
         df.ta.macd(fast=fast, slow=slow, signal=signal, append=True)
         macd = df[f"MACD_{fast}_{slow}_{signal}"].iloc[-1]
         signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
-        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → {'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}")
+        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f}")
         if macd > signal_line:
             return "BUY"
         elif macd < signal_line:
@@ -120,7 +116,7 @@ class StrategyEvaluator:
         close = df["close"].iloc[-1]
         upper = df[f"BBU_{period}_{deviation}.0"].iloc[-1]
         lower = df[f"BBL_{period}_{deviation}.0"].iloc[-1]
-        log(f"[BB Debug] {self.symbol} Close={close:.5f}, Upper={upper:.5f}, Lower={lower:.5f}")
+        log(f"[Bollinger Debug] {self.symbol} Close={close:.5f}, Upper={upper:.5f}, Lower={lower:.5f}")
         if close < lower:
             return "BUY"
         elif close > upper:
@@ -133,8 +129,7 @@ class StrategyEvaluator:
         s = int(config["sub_indicators"]["Slowing"]["value"])
         df.ta.stoch(k=k, d=d, smooth_k=s, append=True)
         k_val = df[f"STOCHk_{k}_{d}_{s}"].iloc[-1]
-        d_val = df[f"STOCHd_{k}_{d}_{s}"].iloc[-1]
-        log(f"[Stoch Debug] {self.symbol} %K={k_val:.2f}, %D={d_val:.2f} → {'BUY' if k_val < 20 else 'SELL' if k_val > 80 else 'NO TRADE'}")
+        log(f"[Stochastic Debug] {self.symbol} %K={k_val:.2f}")
         if k_val < 20:
             return "BUY"
         elif k_val > 80:
@@ -147,7 +142,7 @@ class StrategyEvaluator:
         df.ta.sma(length=period, append=True)
         close = df["close"].iloc[-1]
         ma_val = df[f"SMA_{period}"].iloc[-(1 + shift)]
-        log(f"[MA Debug] {self.symbol} Close={close:.5f}, SMA({period})={ma_val:.5f} → {'BUY' if close > ma_val else 'SELL' if close < ma_val else 'NO TRADE'}")
+        log(f"[SMA Debug] {self.symbol} Close={close:.5f}, SMA={ma_val:.5f} (Shift: {shift})")
         if close > ma_val:
             return "BUY"
         elif close < ma_val:
@@ -159,36 +154,58 @@ def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
         direction = mt5.ORDER_TYPE_BUY if direction_str == "BUY" else mt5.ORDER_TYPE_SELL
 
         if symbol in active_trades:
+            log(f"[❌] Trade failed: {symbol} already active")
             return False
 
         tick = mt5.symbol_info_tick(symbol)
         info = mt5.symbol_info(symbol)
-        if info is None:
-            log(f"[❌] Failed to get symbol info for {symbol}")
+
+        if not info or not tick:
+            log(f"[❌] Trade failed: Missing symbol info or tick for {symbol}")
             return False
 
         if not info.visible:
             if not mt5.symbol_select(symbol, True):
-                log(f"[❌] Cannot select symbol {symbol}")
+                log(f"[❌] Trade failed: Could not make {symbol} visible")
                 return False
 
         digits = info.digits
         volume = max(info.volume_min, round(volume / info.volume_step) * info.volume_step)
-        price = tick.ask if direction == mt5.ORDER_TYPE_BUY else tick.bid
 
-        if digits == 3:
-            sl = price - 0.10 if direction == mt5.ORDER_TYPE_BUY else price + 0.10
-            tp = price + 0.20 if direction == mt5.ORDER_TYPE_BUY else price - 0.20
+        if volume <= 0:
+            log(f"[❌] Trade failed: Invalid volume for {symbol}")
+            return False
+
+        price = tick.ask if direction == mt5.ORDER_TYPE_BUY else tick.bid
+        if price is None or price <= 0:
+            log(f"[❌] Trade failed: Invalid price for {symbol}")
+            return False
+
+        # Define pip sizes per symbol type
+        if "JPY" in symbol:
+            pip = 0.01
+            sl_pips = 10   # 10 pips → 0.10
+            tp_pips = 20
+        elif symbol in ["BTCUSD", "ETHUSD"]:
+            pip = 1.0      # 1 pip = $1
+            sl_pips = 300  # 300 pips → $300
+            tp_pips = 600
         else:
-            sl = price - 0.0010 if direction == mt5.ORDER_TYPE_BUY else price + 0.0010
-            tp = price + 0.0020 if direction == mt5.ORDER_TYPE_BUY else price - 0.0020
+            pip = 0.0001
+            sl_pips = 10   # 10 pips → 0.0010
+            tp_pips = 20
+
+        # Calculate SL/TP based on direction
+        sl = price - sl_pips * pip if direction == mt5.ORDER_TYPE_BUY else price + sl_pips * pip
+        tp = price + tp_pips * pip if direction == mt5.ORDER_TYPE_BUY else price - tp_pips * pip
+
 
         request = {
             "action": mt5.TRADE_ACTION_DEAL,
             "symbol": symbol,
             "volume": volume,
             "type": direction,
-            "price": price,
+            "price": round(price, digits),
             "sl": round(sl, digits),
             "tp": round(tp, digits),
             "deviation": 10,
@@ -199,75 +216,58 @@ def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
         }
 
         result = mt5.order_send(request)
-        if result is None:
-            log(f"[❌] order_send returned None for {symbol}. Error: {mt5.last_error()}")
-            return False
-
-        if result.retcode == mt5.TRADE_RETCODE_DONE:
-            try:
-                from gui.account_page import update_trade_count
-                if master_login:
-                    count = len(mt5.positions_get() or [])
-                    update_trade_count(master_login, count)
-            except Exception as e:
-                print(f'[TradeCount] Failed to update master count: {e}')
-            try:
-                from gui.account_page import update_trade_count
-                count = len(mt5.positions_get() or [])
-                update_trade_count(symbol, count)
-            except Exception as e:
-                print(f'[TradeCount] Failed to update master trade count: {e}')
-        try:
-            from gui.account_page import trade_counter, update_trade_label
-            trade_counter[symbol] = trade_counter.get(symbol, 0) + 1
-            update_trade_label(symbol)
-        except Exception as e:
-            print(f'[TradeCounter] Error updating counter: {e}')
+        if result and result.retcode == mt5.TRADE_RETCODE_DONE:
             active_trades.add(symbol)
-            time.sleep(1.0)
             try:
-                conn = create_connection()
-                cursor = conn.cursor()
-                cursor.execute(
-                    "INSERT INTO trades (symbol, entry_price, exit_price, profit_loss) VALUES (?, ?, ?, ?)",
-                    (symbol, price, 0.0, 0.0)
-                )
-                conn.close()
+                from gui import account_page
+                account_page.update_trade_count(master_login, len(mt5.positions_get() or []))
             except Exception as e:
-                log(f"[❌ DB] Failed to log trade for {symbol}: {e}")
+                log(f"[TradeCounter] Update failed: {e}")
             return True
-        else:
-            log(f"[❌] Trade failed: {result.retcode}")
-            return False
 
-def strategy_loop_for_all(master_login, master_password, master_server, logger=None):
-    global gui_logger
-    gui_logger = logger
+        log(f"[❌] Trade failed: {result.retcode if result else mt5.last_error()}")
+        return False
+
 
     if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
-        log(f"[❌] MT5 Init failed: {mt5.last_error()}")
+        log(f"[❌ Reset] MT5 Init failed for reset: {mt5.last_error()}")
         return
+    positions = mt5.positions_get()
+    if positions:
+        for pos in positions:
+            close_type = mt5.ORDER_TYPE_SELL if pos.type == mt5.ORDER_TYPE_BUY else mt5.ORDER_TYPE_BUY
+            price = mt5.symbol_info_tick(pos.symbol).bid if close_type == mt5.ORDER_TYPE_SELL else mt5.symbol_info_tick(pos.symbol).ask
+            if not price or price <= 0:
+                continue
+            request = {
+                "action": mt5.TRADE_ACTION_DEAL,
+                "symbol": pos.symbol,
+                "volume": pos.volume,
+                "type": close_type,
+                "position": pos.ticket,
+                "price": price,
+                "deviation": 10,
+                "magic": 234001,
+                "comment": "AutoResetClose",
+                "type_time": mt5.ORDER_TIME_GTC,
+                "type_filling": mt5.ORDER_FILLING_IOC
+            }
+            result = mt5.order_send(request)
+            if result and result.retcode == mt5.TRADE_RETCODE_DONE:
+                log(f"[🔁 Reset] Closed position {pos.ticket} on {pos.symbol}")
+    active_trades.clear()
+    open_trade_registry.clear()
+    mt5.shutdown()
+    log("[🔄 Reset] Cleared all internal trade records.")
 
-    for symbol in symbols:
-        threading.Thread(
-            target=strategy_loop,
-            args=(master_login, master_password, master_server, symbol),
-            daemon=True
-        ).start()
-        time.sleep(1)
-
-def strategy_loop(master_login, master_password, master_server, symbol="EURUSD"):
+def strategy_loop(master_login, master_password, master_server, symbol):
     if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
-        log(f"[❌] MT5 Init failed: {mt5.last_error()}")
+        log(f"[❌] MT5 Init failed for {symbol}: {mt5.last_error()}")
         return
-
     strategy = load_strategy_from_db()
-    if not strategy or not isinstance(strategy, dict) or len(strategy) == 0:
-        log(f"[⚠] No strategy for {symbol}")
+    if not strategy:
         return
-
     evaluator = StrategyEvaluator(strategy, symbol)
-
     while True:
         df = get_symbol_data(symbol)
         if df is not None:
@@ -275,3 +275,55 @@ def strategy_loop(master_login, master_password, master_server, symbol="EURUSD")
             if direction and place_trade(symbol, direction_str=direction, master_login=master_login):
                 log(f"[✅] {direction} trade placed on {symbol}")
         time.sleep(STRATEGY_CHECK_INTERVAL)
+
+def reset_all_positions(master_login, master_password, master_server):
+    if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
+        log(f"[❌ Reset] MT5 Init failed for reset: {mt5.last_error()}")
+        return
+
+    positions = mt5.positions_get()
+    if positions:
+        for pos in positions:
+            close_type = mt5.ORDER_TYPE_SELL if pos.type == mt5.ORDER_TYPE_BUY else mt5.ORDER_TYPE_BUY
+            price = mt5.symbol_info_tick(pos.symbol).bid if close_type == mt5.ORDER_TYPE_SELL else mt5.symbol_info_tick(pos.symbol).ask
+            if not price or price <= 0:
+                log(f"[Reset] Skipped invalid price for {pos.symbol}")
+                continue
+
+            request = {
+                "action": mt5.TRADE_ACTION_DEAL,
+                "symbol": pos.symbol,
+                "volume": pos.volume,
+                "type": close_type,
+                "position": pos.ticket,
+                "price": price,
+                "deviation": 10,
+                "magic": 234001,
+                "comment": "AutoResetClose",
+                "type_time": mt5.ORDER_TIME_GTC,
+                "type_filling": mt5.ORDER_FILLING_IOC
+            }
+
+            result = mt5.order_send(request)
+            if result and result.retcode == mt5.TRADE_RETCODE_DONE:
+                log(f"[🔁 Reset] Closed position {pos.ticket} on {pos.symbol}")
+            else:
+                log(f"[❌ Reset] Failed to close {pos.ticket} on {pos.symbol}: {mt5.last_error()}")
+
+    active_trades.clear()
+    open_trade_registry.clear()
+    mt5.shutdown()
+    log("[🔄 Reset] Cleared all internal trade records.")
+
+
+def strategy_loop_for_all(master_login, master_password, master_server, logger=None):
+    global gui_logger
+    gui_logger = logger
+    def periodic_reset():
+        while True:
+            time.sleep(60)
+            reset_all_positions(master_login, master_password, master_server)
+    threading.Thread(target=periodic_reset, daemon=True).start()
+    for symbol in symbols:
+        threading.Thread(target=strategy_loop, args=(master_login, master_password, master_server, symbol), daemon=True).start()
+        time.sleep(1)
