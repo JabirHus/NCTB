@@ -321,8 +321,12 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
     gui_logger = logger
     def periodic_reset():
         while True:
-            time.sleep(60)
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            log("[✅] 30 minute cycle begins now")
+            time.sleep(1800)  # 30 minutes
             reset_all_positions(master_login, master_password, master_server)
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            log("[✅] 30 minute cycle ended. New cycle now")
     threading.Thread(target=periodic_reset, daemon=True).start()
     for symbol in symbols:
         threading.Thread(target=strategy_loop, args=(master_login, master_password, master_server, symbol), daemon=True).start()
