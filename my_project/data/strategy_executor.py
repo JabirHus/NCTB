@@ -8,16 +8,22 @@ import pandas_ta as ta
 from datetime import datetime
 import threading
 from data.db_handler import create_connection
-
+import ctypes
+# Prevent screen timeout
+ctypes.windll.kernel32.SetThreadExecutionState(0x80000002)
 DB_PATH = "trading_bot.db"
-STRATEGY_CHECK_INTERVAL = 4
+STRATEGY_CHECK_INTERVAL = 10
 open_trade_registry = {}
 active_trades = set()
 gui_logger = None
 log_lock = threading.Lock()
 
+def ensure_mt5_initialized(login, password, server):
+    mt5.shutdown()
+    return mt5.initialize(login=int(login), password=password, server=server)
+
 symbols = [
-    "BTCUSD", "ETHUSD"
+    "GBPCHF+", "USDCAD+", "EURUSD+", "GBPUSD+", "NZDUSD+", "USDJPY+", "EURGBP+", "AUDUSD+"
 ]
 
 symbol_locks = {s: threading.Lock() for s in symbols}
@@ -27,7 +33,7 @@ def log(message):
     full_msg = f"[{timestamp}] {message}"
     with log_lock:
         print(full_msg)
-        if gui_logger and ("[✅]" in message or "closed:" in message):
+        if gui_logger and ("[✅]" in message or "[🔁]" in message or "[🔄]" in message or "closed:" in message):
             gui_logger(full_msg)
         try:
             with open("trade_log.txt", "a", encoding="utf-8") as f:
@@ -56,8 +62,38 @@ class StrategyEvaluator:
         self.strategy = strategy
         self.symbol = symbol_name
 
+    
+    
+    
+    
     def evaluate(self, df):
-        directions = []
+        results = {}
+        all_signals = {}
+
+        # Precompute all possible indicators only once
+        try:
+            if "RSI" in self.strategy and self.strategy["RSI"].get("var"):
+                period = int(self.strategy["RSI"]["sub_indicators"]["Period"]["value"])
+                df.ta.rsi(length=period, append=True)
+        except Exception:
+            pass
+        try:
+            df.ta.macd(append=True)
+        except Exception:
+            pass
+        try:
+            df.ta.bbands(append=True)
+        except Exception:
+            pass
+        try:
+            df.ta.stoch(append=True)
+        except Exception:
+            pass
+        try:
+            df.ta.sma(append=True)
+        except Exception:
+            pass
+
         for ind, config in self.strategy.items():
             if not config.get("var", 0):
                 continue
@@ -72,22 +108,34 @@ class StrategyEvaluator:
                 dir = self.evaluate_stochastic(df, config)
             elif ind == "Moving Average":
                 dir = self.evaluate_moving_average(df, config)
-            if dir not in ("BUY", "SELL"):
-                log(f"[Multi-Indicator] {ind} returned no signal → skipping")
-                return None
-            directions.append(dir)
+
+            results[ind] = dir if dir in ("BUY", "SELL") else None
+            
+
+        signals_str = ", ".join(f"{k}={v}" for k, v in results.items())
+        directions = [v for v in results.values() if v]
+
+        if len(directions) < len(results):
+            log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → incomplete → skipping")
+            return None
+
         if all(d == directions[0] for d in directions):
+            log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → consensus: {directions[0]}")
             return directions[0]
-        log(f"[Multi-Indicator] Conflict between indicators: {directions}")
+
+        log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → conflict → skipping")
         return None
+
+
+
+
 
     def evaluate_rsi(self, df, config):
         period = int(config["sub_indicators"]["Period"]["value"])
         undersold = int(config["sub_indicators"]["Undersold"]["value"])
-        oversold = int(config["sub_indicators"]["Oversold"]["value"])
-        df.ta.rsi(length=period, append=True)
+        oversold = int(config["sub_indicators"]["Oversold"]["value"])        
         rsi_val = df[f"RSI_{period}"].iloc[-1]
-        log(f"[RSI Debug] {self.symbol} RSI={rsi_val:.2f} (Thresholds: <{undersold}=BUY, >{oversold}=SELL)")
+        log(f"[RSI Debug] {self.symbol} RSI={rsi_val:.2f} (Thresholds: <{undersold}=BUY, >{oversold}=SELL) → Suggestion: [{"BUY" if rsi_val < undersold else "SELL" if rsi_val > oversold else "NONE"}]")
         if rsi_val < undersold:
             return "BUY"
         elif rsi_val > oversold:
@@ -142,14 +190,14 @@ class StrategyEvaluator:
         df.ta.sma(length=period, append=True)
         close = df["close"].iloc[-1]
         ma_val = df[f"SMA_{period}"].iloc[-(1 + shift)]
-        log(f"[SMA Debug] {self.symbol} Close={close:.5f}, SMA={ma_val:.5f} (Shift: {shift})")
+        log(f"[SMA Debug] {self.symbol} Close={close:.5f}, SMA={ma_val:.5f} (Shift: {shift}) → Suggestion: [{"BUY" if close > ma_val else "SELL" if close < ma_val else "NONE"}]")
         if close > ma_val:
             return "BUY"
         elif close < ma_val:
             return "SELL"
         return None
 
-def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
+def place_trade(symbol, volume=1, direction_str="BUY", master_login=None):
     with symbol_locks[symbol]:
         direction = mt5.ORDER_TYPE_BUY if direction_str == "BUY" else mt5.ORDER_TYPE_SELL
 
@@ -170,6 +218,11 @@ def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
                 return False
 
         digits = info.digits
+        # Adjust volume for all USD pairs except those containing JPY
+        if "USD" in symbol and "JPY" not in symbol:
+            volume = 3
+        else:
+            volume = 1
         volume = max(info.volume_min, round(volume / info.volume_step) * info.volume_step)
 
         if volume <= 0:
@@ -228,40 +281,8 @@ def place_trade(symbol, volume=0.1, direction_str="BUY", master_login=None):
         log(f"[❌] Trade failed: {result.retcode if result else mt5.last_error()}")
         return False
 
-
-    if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
-        log(f"[❌ Reset] MT5 Init failed for reset: {mt5.last_error()}")
-        return
-    positions = mt5.positions_get()
-    if positions:
-        for pos in positions:
-            close_type = mt5.ORDER_TYPE_SELL if pos.type == mt5.ORDER_TYPE_BUY else mt5.ORDER_TYPE_BUY
-            price = mt5.symbol_info_tick(pos.symbol).bid if close_type == mt5.ORDER_TYPE_SELL else mt5.symbol_info_tick(pos.symbol).ask
-            if not price or price <= 0:
-                continue
-            request = {
-                "action": mt5.TRADE_ACTION_DEAL,
-                "symbol": pos.symbol,
-                "volume": pos.volume,
-                "type": close_type,
-                "position": pos.ticket,
-                "price": price,
-                "deviation": 10,
-                "magic": 234001,
-                "comment": "AutoResetClose",
-                "type_time": mt5.ORDER_TIME_GTC,
-                "type_filling": mt5.ORDER_FILLING_IOC
-            }
-            result = mt5.order_send(request)
-            if result and result.retcode == mt5.TRADE_RETCODE_DONE:
-                log(f"[🔁 Reset] Closed position {pos.ticket} on {pos.symbol}")
-    active_trades.clear()
-    open_trade_registry.clear()
-    mt5.shutdown()
-    log("[🔄 Reset] Cleared all internal trade records.")
-
 def strategy_loop(master_login, master_password, master_server, symbol):
-    if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
+    if not ensure_mt5_initialized(master_login, master_password, master_server):
         log(f"[❌] MT5 Init failed for {symbol}: {mt5.last_error()}")
         return
     strategy = load_strategy_from_db()
@@ -277,7 +298,7 @@ def strategy_loop(master_login, master_password, master_server, symbol):
         time.sleep(STRATEGY_CHECK_INTERVAL)
 
 def reset_all_positions(master_login, master_password, master_server):
-    if not mt5.initialize(login=int(master_login), password=master_password, server=master_server):
+    if not ensure_mt5_initialized(master_login, master_password, master_server):
         log(f"[❌ Reset] MT5 Init failed for reset: {mt5.last_error()}")
         return
 
@@ -314,6 +335,8 @@ def reset_all_positions(master_login, master_password, master_server):
     open_trade_registry.clear()
     mt5.shutdown()
     log("[🔄 Reset] Cleared all internal trade records.")
+    with open("last_trades.json", "w") as f:
+        json.dump([], f)
 
 
 def strategy_loop_for_all(master_login, master_password, master_server, logger=None):
@@ -321,10 +344,12 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
     gui_logger = logger
     def periodic_reset():
         while True:
-            log("[✅] 30 minute cycle begins now")
-            time.sleep(1800)  # 30 minutes
+            log("[✅] 1hr cycle begins now")
+            time.sleep(3600)  # 1 hour
             reset_all_positions(master_login, master_password, master_server)
-            log("[✅] 30 minute cycle ended. New cycle now")
+            time.sleep(2)
+            log("[✅] 1hr cycle ended. New cycle now")
+            
     threading.Thread(target=periodic_reset, daemon=True).start()
     for symbol in symbols:
         threading.Thread(target=strategy_loop, args=(master_login, master_password, master_server, symbol), daemon=True).start()
