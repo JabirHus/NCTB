@@ -149,7 +149,7 @@ class StrategyEvaluator:
         df.ta.macd(fast=fast, slow=slow, signal=signal, append=True)
         macd = df[f"MACD_{fast}_{slow}_{signal}"].iloc[-1]
         signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
-        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → {'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}")
+        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → [{'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}]")
         if macd > signal_line:
             return "BUY"
         elif macd < signal_line:
@@ -351,7 +351,7 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
     def periodic_reset():
         while True:
             log("[✅] 30 minute cycle begins now")
-            time.sleep(31800)  # 30 mins
+            time.sleep(1800)  # 30 mins
             reset_all_positions(master_login, master_password, master_server)
             time.sleep(2)
             log("[✅] 30 minute cycle ended. New cycle now")
