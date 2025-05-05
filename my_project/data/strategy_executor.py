@@ -149,7 +149,7 @@ class StrategyEvaluator:
         df.ta.macd(fast=fast, slow=slow, signal=signal, append=True)
         macd = df[f"MACD_{fast}_{slow}_{signal}"].iloc[-1]
         signal_line = df[f"MACDs_{fast}_{slow}_{signal}"].iloc[-1]
-        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f}")
+        log(f"[MACD Debug] {self.symbol} MACD={macd:.5f}, Signal={signal_line:.5f} → {'BUY' if macd > signal_line else 'SELL' if macd < signal_line else 'NO TRADE'}")
         if macd > signal_line:
             return "BUY"
         elif macd < signal_line:
@@ -218,11 +218,6 @@ def place_trade(symbol, volume=1, direction_str="BUY", master_login=None):
                 return False
 
         digits = info.digits
-        # Adjust volume for all USD pairs except those containing JPY
-        if "USD" in symbol and "JPY" not in symbol:
-            volume = 3
-        else:
-            volume = 1
         volume = max(info.volume_min, round(volume / info.volume_step) * info.volume_step)
 
         if volume <= 0:
@@ -328,6 +323,17 @@ def reset_all_positions(master_login, master_password, master_server):
             result = mt5.order_send(request)
             if result and result.retcode == mt5.TRADE_RETCODE_DONE:
                 log(f"[🔁 Reset] Closed position {pos.ticket} on {pos.symbol}")
+                # Notify slave accounts via log update
+                try:
+                    with open("closed_master_trades.json", "r") as f:
+                        closed_trades = json.load(f)
+                except (FileNotFoundError, json.JSONDecodeError):
+                    closed_trades = []
+
+                closed_trades.append({"ticket": pos.ticket, "symbol": pos.symbol})
+                with open("closed_master_trades.json", "w") as f:
+                    json.dump(closed_trades, f)
+
             else:
                 log(f"[❌ Reset] Failed to close {pos.ticket} on {pos.symbol}: {mt5.last_error()}")
 
@@ -344,11 +350,11 @@ def strategy_loop_for_all(master_login, master_password, master_server, logger=N
     gui_logger = logger
     def periodic_reset():
         while True:
-            log("[✅] 1hr cycle begins now")
-            time.sleep(3600)  # 1 hour
+            log("[✅] 30 minute cycle begins now")
+            time.sleep(31800)  # 30 mins
             reset_all_positions(master_login, master_password, master_server)
             time.sleep(2)
-            log("[✅] 1hr cycle ended. New cycle now")
+            log("[✅] 30 minute cycle ended. New cycle now")
             
     threading.Thread(target=periodic_reset, daemon=True).start()
     for symbol in symbols:

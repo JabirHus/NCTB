@@ -138,11 +138,18 @@ def copy_master_trades(master, slaves, logger=None):
                         trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
                     except Exception as e:
                         print(f'[TradeCounter] Error updating counter: {e}')
-                    reason = slave_trade.get("comment", "").lower()
-                    if "tp" in reason:
-                        icon = "✅ TP"
-                    elif "sl" in reason:
-                        icon = "🛑 SL"
+                    deal = mt5.history_deals_get(ticket=slave_trade["ticket"])
+                    profit = None
+                    if deal and len(deal) > 0:
+                        profit = deal[0].profit
+
+                    if profit is not None:
+                        if profit > 0:
+                            icon = "✅ TP"
+                        elif profit < 0:
+                            icon = "🛑 SL"
+                        else:
+                            icon = "😊 Manual"
                     else:
                         icon = "😊 Manual"
                     log(f"{icon} close on {slave_trade['symbol']} (ticket {slave_trade['ticket']}) [close on slave {login}]")
