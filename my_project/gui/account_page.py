@@ -15,11 +15,10 @@ trade_counter = {}
 trade_count_updater = None
 label_map = {}
 
+# Register a callback to update trade counts dynamically on the GUI
 def register_trade_count_updater(callback):
     global trade_count_updater
     trade_count_updater = callback
-
-# [Fixed] Accurate trade tracking
 
 def update_trade_count(login, count):
     trade_counter[login] = count
@@ -48,6 +47,7 @@ def create_account_page(root, account_frame, strategy_frame):
         log_text.insert(tk.END, msg + '\n')
         log_text.see(tk.END)
 
+    # Launch strategy executor only once if a master account exists
     def start_strategy_executor_if_ready():
         global executor_thread_started
         accounts = load_accounts()
@@ -61,6 +61,7 @@ def create_account_page(root, account_frame, strategy_frame):
             )
             thread.start()
 
+    # Launch trade copier thread only once if both master and slave accounts exist
     def start_copier_if_ready():
         global copier_thread_started
         accounts = load_accounts()

@@ -1,4 +1,5 @@
-
+# This module evaluates the user's strategy (e.g., RSI, MACD) on each symbol and places trades on the master account
+# Includes safeguards such as one-trade-per-symbol-per-direction and periodic position resets
 import MetaTrader5 as mt5
 import time
 import json
@@ -57,14 +58,12 @@ def get_symbol_data(symbol, timeframe=mt5.TIMEFRAME_M1, count=100):
     df["time"] = pd.to_datetime(df["time"], unit="s")
     return df
 
+# StrategyEvaluator: Handles multi-indicator evaluation based on user-configured strategies
+# Supports RSI, MACD, Bollinger Bands, Stochastic, and Moving Averages
 class StrategyEvaluator:
     def __init__(self, strategy, symbol_name=""):
         self.strategy = strategy
         self.symbol = symbol_name
-
-    
-    
-    
     
     def evaluate(self, df):
         results = {}
@@ -119,16 +118,12 @@ class StrategyEvaluator:
             log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → incomplete → skipping")
             return None
 
-        if all(d == directions[0] for d in directions):
+        if all(d == directions[0] for d in directions): # Requires all selected indicators to agree on the same direction
             log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → consensus: {directions[0]}")
             return directions[0]
 
         log(f"[Multi-Indicator] {self.symbol} signals → {signals_str} → conflict → skipping")
         return None
-
-
-
-
 
     def evaluate_rsi(self, df, config):
         period = int(config["sub_indicators"]["Period"]["value"])
@@ -197,6 +192,8 @@ class StrategyEvaluator:
             return "SELL"
         return None
 
+# place_trade: Executes a trade on the master account with automatic SL/TP settings
+# Enforces one active trade per symbol to manage risk
 def place_trade(symbol, volume=1, direction_str="BUY", master_login=None):
     with symbol_locks[symbol]:
         direction = mt5.ORDER_TYPE_BUY if direction_str == "BUY" else mt5.ORDER_TYPE_SELL
@@ -276,6 +273,8 @@ def place_trade(symbol, volume=1, direction_str="BUY", master_login=None):
         log(f"[❌] Trade failed: {result.retcode if result else mt5.last_error()}")
         return False
 
+# Runs the evaluation loop for one symbol using the loaded strategy
+# Fetches data every 10 seconds, evaluates indicators, and places trades if all agree
 def strategy_loop(master_login, master_password, master_server, symbol):
     if not ensure_mt5_initialized(master_login, master_password, master_server):
         log(f"[❌] MT5 Init failed for {symbol}: {mt5.last_error()}")
@@ -292,6 +291,8 @@ def strategy_loop(master_login, master_password, master_server, symbol):
                 log(f"[✅] {direction} trade placed on {symbol}")
         time.sleep(STRATEGY_CHECK_INTERVAL)
 
+# reset_all_positions: Closes all master trades and clears internal state trackers
+# Called every hour to prevent stale or stuck trades
 def reset_all_positions(master_login, master_password, master_server):
     if not ensure_mt5_initialized(master_login, master_password, master_server):
         log(f"[❌ Reset] MT5 Init failed for reset: {mt5.last_error()}")

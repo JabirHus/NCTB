@@ -1,3 +1,5 @@
+# Monitors the master account for new or closed trades and mirrors them on all connected slave accounts
+# Implements session handling, duplicate prevention, and closure tracking
 import MetaTrader5 as mt5
 import time
 import json
@@ -20,6 +22,8 @@ def log(message):
     except Exception as e:
         print(f"[Logger Error] Failed to write to log file: {e}")
 
+# Core function for detecting and replicating trades from master to slave accounts
+# Handles trade opening and closing while enforcing one-direction-per-symbol rule
 def copy_master_trades(master, slaves, logger=None):
     global gui_logger
     gui_logger = logger
@@ -77,6 +81,8 @@ def copy_master_trades(master, slaves, logger=None):
                             "type_filling": mt5.ORDER_FILLING_IOC
                         }
 
+                        # Detect master trades that have been closed
+                        # Send closure request to corresponding trade on each slave
                         result = mt5.order_send(close_request)
                         if result and result.retcode == mt5.TRADE_RETCODE_DONE:
                             log(f"[🔁 Slave Close] {pos.symbol} on {slave['login']}")
@@ -94,11 +100,15 @@ def copy_master_trades(master, slaves, logger=None):
         current_master_tickets = set(pos.ticket for pos in master_positions) if master_positions else set()
         new_copy_logs = []
 
+        # Check for newly opened trades by comparing current master tickets to the last known list
+        # Skip trades that were already copied to avoid duplication
         for pos in master_positions or []:
             ticket = pos.ticket
             if ticket in copied_this_session:
                 continue
 
+            # Send trade order to each slave account
+            # Trade parameters (symbol, volume, SL, TP, etc.) mirror the master exactly
             for slave in slaves:
                 if not mt5.initialize(login=int(slave["login"]), password=slave["password"], server=slave["server"]):
                     log(f"[❌ Copier] Failed to connect to slave {slave['login']}")
@@ -141,7 +151,11 @@ def copy_master_trades(master, slaves, logger=None):
         for msg in new_copy_logs:
             log(msg)
 
+        # Match ticket on slave, determine correct close type (opposite of original),
+        # and send a close order to MT5
         closed_tickets = set(slave_trade_map.keys()) - current_master_tickets
+        # Save updated list of copied master tickets to disk
+        # Ensures persistence across application restarts
         for ticket in closed_tickets:
             for slave in slaves:
                 login = slave['login']
