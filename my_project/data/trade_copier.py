@@ -1,4 +1,3 @@
-
 import MetaTrader5 as mt5
 import time
 import json
@@ -6,7 +5,6 @@ from datetime import datetime
 import threading
 
 log_lock = threading.Lock()
-
 gui_logger = None
 
 def log(message):
@@ -16,17 +14,16 @@ def log(message):
         print(full_msg)
     if gui_logger and ("trade copied" in message or "close on slave" in message):
         gui_logger(full_msg)
-        try:
-            with open("trade_log.txt", "a", encoding="utf-8") as f:
-                f.write(full_msg + "\n")
-        except Exception as e:
-            print(f"[Logger Error] Failed to write to log file: {e}")
-
-# [Fixed] Accurate trade syncing and count logic
+    try:
+        with open("trade_log.txt", "a", encoding="utf-8") as f:
+            f.write(full_msg + "\n")
+    except Exception as e:
+        print(f"[Logger Error] Failed to write to log file: {e}")
 
 def copy_master_trades(master, slaves, logger=None):
     global gui_logger
     gui_logger = logger
+
     try:
         with open("last_trades.json", "r") as f:
             last_trade_ids = set(json.load(f))
@@ -39,6 +36,54 @@ def copy_master_trades(master, slaves, logger=None):
 
     while True:
         time.sleep(1)
+
+        # === NEW LOGIC: Check for closed trades ===
+        try:
+            with open("closed_master_trades.json", "r") as f:
+                closed_trades = json.load(f)
+        except Exception:
+            closed_trades = []
+
+        for closed in closed_trades:
+            closed_symbol = closed.get("symbol")
+            if not closed_symbol:
+                continue
+
+            for slave in slaves:
+                if not mt5.initialize(login=int(slave["login"]), password=slave["password"], server=slave["server"]):
+                    log(f"[❌ Slave Close Init] Failed to init slave {slave['login']}")
+                    continue
+
+                slave_positions = mt5.positions_get(symbol=closed_symbol)
+                if slave_positions:
+                    for pos in slave_positions:
+                        close_type = mt5.ORDER_TYPE_SELL if pos.type == mt5.ORDER_TYPE_BUY else mt5.ORDER_TYPE_BUY
+                        tick = mt5.symbol_info_tick(pos.symbol)
+                        if not tick:
+                            continue
+                        price = tick.bid if close_type == mt5.ORDER_TYPE_SELL else tick.ask
+
+                        close_request = {
+                            "action": mt5.TRADE_ACTION_DEAL,
+                            "symbol": pos.symbol,
+                            "volume": pos.volume,
+                            "type": close_type,
+                            "position": pos.ticket,
+                            "price": price,
+                            "deviation": 10,
+                            "magic": 234001,
+                            "comment": "MasterClosed",
+                            "type_time": mt5.ORDER_TIME_GTC,
+                            "type_filling": mt5.ORDER_FILLING_IOC
+                        }
+
+                        result = mt5.order_send(close_request)
+                        if result and result.retcode == mt5.TRADE_RETCODE_DONE:
+                            log(f"[🔁 Slave Close] {pos.symbol} on {slave['login']}")
+                        else:
+                            log(f"[❌ Slave Close Fail] {pos.symbol} on {slave['login']}")
+
+        open("closed_master_trades.json", "w").write("[]")
 
         if not mt5.initialize(login=int(master["login"]), password=master["password"], server=master["server"]):
             log(f"[❌ Copier] Failed to initialize master: {mt5.last_error()}")
@@ -66,7 +111,6 @@ def copy_master_trades(master, slaves, logger=None):
                     "symbol": pos.symbol,
                     "volume": pos.volume,
                     "type": pos.type,
-                "copied_at": time.time(),
                     "price": price,
                     "sl": pos.sl,
                     "tp": pos.tp,
@@ -79,24 +123,15 @@ def copy_master_trades(master, slaves, logger=None):
 
                 result = mt5.order_send(request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
-                    try:
-                        from gui.account_page import trade_counter
-                        trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
-                    except Exception as e:
-                        print(f'[TradeCounter] Error updating counter: {e}')
-                    try:
-                        from gui.account_page import update_trade_count
-                        count = len(mt5.positions_get() or [])
-                        update_trade_count(slave['login'], count)
-                    except Exception as e:
-                        print(f'[TradeCount] Failed to update slave trade count: {e}')
+                    from gui.account_page import trade_counter, update_trade_count
+                    trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
+                    update_trade_count(slave['login'], len(mt5.positions_get() or []))
                     new_copy_logs.append(f"[Copier] ✅ Trade copied to slave {slave['login']} (ticket {result.order})")
                     slave_trade_map.setdefault(ticket, {})[slave['login']] = {
                         "ticket": result.order,
                         "symbol": pos.symbol,
                         "volume": pos.volume,
                         "type": pos.type,
-                "copied_at": time.time(),
                         "comment": pos.comment
                     }
 
@@ -135,11 +170,9 @@ def copy_master_trades(master, slaves, logger=None):
 
                 result = mt5.order_send(close_request)
                 if result and result.retcode == mt5.TRADE_RETCODE_DONE:
-                    try:
-                        from gui.account_page import trade_counter
-                        trade_counter[slave['login']] = trade_counter.get(slave['login'], 0) + 1
-                    except Exception as e:
-                        print(f'[TradeCounter] Error updating counter: {e}')
+                    from gui.account_page import trade_counter, update_trade_count
+                    trade_counter[login] = max(0, trade_counter.get(login, 1) - 1)
+                    update_trade_count(login, len(mt5.positions_get() or []))
                     reason = slave_trade.get("comment", "").lower()
                     if "tp" in reason:
                         icon = "✅ TP"
@@ -149,23 +182,9 @@ def copy_master_trades(master, slaves, logger=None):
                         icon = "😊 Manual"
                     log(f"{icon} close on {slave_trade['symbol']} (ticket {slave_trade['ticket']}) [close on slave {login}]")
                 else:
-                    time.sleep(1)
-                    retry_result = mt5.order_send(close_request)
-                    if retry_result and retry_result.retcode == mt5.TRADE_RETCODE_DONE:
-                        log(f"[Copier] 🔁 Retry succeeded: trade closed on slave {login} (ticket {slave_trade['ticket']})")
-                    else:
-                        code = retry_result.retcode if retry_result else result.retcode if result else 'N/A'
-                        msg = mt5.last_error()
-                        log(f"[❌ Copier] Failed to close trade {slave_trade['ticket']} on slave {login} after retry: ({code}, '{msg}')")
+                    log(f"[❌ Copier] Failed to close trade {slave_trade['ticket']} on slave {login}")
 
             slave_trade_map.pop(ticket, None)
-            try:
-                from gui.account_page import trade_counter
-                trade_counter[login] = max(0, trade_counter.get(login, 1) - 1)
-                count = len(mt5.positions_get() or [])
-                update_trade_count(login, count)
-            except Exception as e:
-                print(f'[TradeCounter] Error decrementing slave: {e}')
 
         with open("last_trades.json", "w") as f:
             json.dump(list(last_trade_ids), f)
