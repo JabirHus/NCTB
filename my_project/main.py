@@ -6,13 +6,17 @@ from gui.history_page import create_history_page
 from gui.strategy_page import create_strategy_page
 from data.db_handler import create_table, create_strategies_table, insert_sample_trade,drop_strategies_table, clear_trade_history, drop_trades_table
 from gui.account_page import create_account_page
+from data.account_storage import clear_all_accounts
 
 # Initialize database tables
-#drop_strategies_table()
 #drop_trades_table()
-#clear_trade_history()
+#drop_strategies_table()
+
 create_table()
 create_strategies_table()
+
+#clear_trade_history()
+#clear_all_accounts()
 
 # Insert a sample trade upon laoding the app(test data)
 insert_sample_trade()

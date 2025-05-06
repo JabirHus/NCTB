@@ -21,3 +21,7 @@ def remove_account(account_type, login):
     data[account_type] = [acc for acc in data[account_type] if acc["login"] != login]
     with open(FILE_PATH, "w") as f:
         json.dump(data, f, indent=4)
+        
+def clear_all_accounts():
+    with open(FILE_PATH, "w") as f:
+        json.dump({"masters": [], "slaves": []}, f, indent=4)
